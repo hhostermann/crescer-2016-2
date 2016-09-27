@@ -1,0 +1,23 @@
+public class Elfo{
+   private String nome;
+   private Item arco;
+   private Item flecha;
+   private int NQuantidade;
+   private int Experiencia;
+   
+   public Elfo(String n) {
+       nome = n;
+       NQuantidade=42;
+       arco = new Item ("Arco", 1);
+       flecha = new Item ("flecha", NQuantidade);
+    }
+   public void setNome(String n){
+        nome =n;
+    } 
+   public String getNome(){
+        return nome;
+    }
+    public void atirarFlecha(){
+       Experiencia++;
+    }
+}
