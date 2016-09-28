@@ -1,17 +1,16 @@
 public class Dwarf { 
     private String nome; 
     private Item machado;  
-    private Vida pontosDeVida; 
-    private int pV;
+    private int pontosDeVida;
     public Dwarf(String n) { 
         nome = n; 
         machado = new Item("Machado", 1); 
-        pontosDeVida = new Vida(110);
+        pontosDeVida = 110;
     } 
     public void setNome(String n) { 
         nome = "Aleatorio"; 
     } 
     public int getPontosDeVida() { 
-        return pV; 
+        return pontosDeVida; 
     } 
 }
