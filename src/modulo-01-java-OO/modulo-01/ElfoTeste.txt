@@ -39,7 +39,7 @@ public class ElfoTest
         elfoDoTeste.atirarFlecha();
         assertEquals(41, elfoDoTeste.getFlecha().getQuantidade());
     }
-    /*@Test //não funcionando ainda
+    @Test 
     public void elfoBullyn() { 
         // Arrange
         Elfo elfoDoTeste = new Elfo ("Elladan");
@@ -48,6 +48,5 @@ public class ElfoTest
         elfoDoTeste.atirarFlecha();
         assertEquals(41, elfoDoTeste.getFlecha().getQuantidade());
         assertEquals(100, dwarfDoTeste.getPontosDeVida());
-    }*/
-    
+    }    
 }
