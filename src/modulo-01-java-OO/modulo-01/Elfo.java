@@ -1,32 +1,29 @@
-public class Elfo {
-    private String nome;
-    private Item arco;
-    private Item flecha;
-    
-    public Elfo(String n) {
-        nome = n;
-        arco = new Item("Arco", 1);
-        flecha = new Item("Flechas", 2);
+public class Elfo { 
+    private String nome; 
+    private Item arco; 
+    private Item flecha; 
+    private int experiencia; 
+    public Elfo(String n) { 
+        nome = n; 
+        arco = new Item("Arco", 1); 
+        flecha = new Item("Flecha", 42); 
+    } 
+    public void setNome(String n) { 
+        nome = n; 
+    }  
+    public String getNome() { 
+        return nome; 
+    } 
+    public Item getArco() { 
+        return arco; 
     }
-    
-    public void setNome(String n) {
-        nome = n;
-    }
-    
-    public String getNome() {
-        return nome;
-    }
-    
-    public void atirarFlecha() {
+    public Item getFlecha() { 
+        return flecha; 
+    } 
+    public void atirarFlecha() { 
         flecha.setQuantidade(flecha.getQuantidade() - 1);
+        experiencia++; 
     }
 }
-
-
-
-
-
-
-
 
 
