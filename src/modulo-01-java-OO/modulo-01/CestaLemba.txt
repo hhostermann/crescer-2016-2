@@ -1,0 +1,27 @@
+
+public class CestaLemba {
+    private int numeroLemba;
+    private Item lemba;
+    private boolean resultado;
+    public CestaLemba(int n){
+        numeroLemba = n;
+        
+        lemba = new Item("Lemba",numeroLemba);
+    }   
+    public boolean dividirEmPar(){
+        boolean resultado = true;
+        if((numeroLemba > 1) && (numeroLemba < 100)){
+       if((numeroLemba % 2 == 0)&&(numeroLemba > 2)){
+         resultado = true;
+        }else{
+           resultado = false;
+        }
+     }
+     return resultado;
+    }
+        public Item getLemba() { 
+        return lemba; 
+    } 
+    }
+
+

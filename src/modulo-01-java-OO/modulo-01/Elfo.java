@@ -1,8 +1,11 @@
 public class Elfo { 
     private String nome; 
     private Item arco; 
-    private Item flecha; 
+    private Item flecha;
+    private Dwarf anao;
+    private Vida pV;
     private int experiencia; 
+    private int contador;
     public Elfo(String n) { 
         nome = n; 
         arco = new Item("Arco", 1); 
@@ -21,9 +24,11 @@ public class Elfo {
         return flecha; 
     } 
     public void atirarFlecha() { 
-        flecha.setQuantidade(flecha.getQuantidade() - 1);
-        experiencia++; 
+        if (flecha.getQuantidade>=0){
+            flecha.setQuantidade(flecha.getQuantidade() - 1);
+            anao.setPontosDeVida(anao.getPontosDeVida() - 10);
+            experiencia++; 
+        }
     }
 }
-
-
+    
