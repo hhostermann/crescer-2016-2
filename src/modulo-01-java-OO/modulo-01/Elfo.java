@@ -3,7 +3,6 @@ public class Elfo {
     private Item arco; 
     private Item flecha;
     private Dwarf anao;
-    private Vida pV;
     private int experiencia; 
     private int contador;
     public Elfo(String n) { 
@@ -24,11 +23,13 @@ public class Elfo {
         return flecha; 
     } 
     public void atirarFlecha() { 
-        if (flecha.getQuantidade>=0){
+        if (flecha.getQuantidade() >= 0 ){
             flecha.setQuantidade(flecha.getQuantidade() - 1);
             anao.setPontosDeVida(anao.getPontosDeVida() - 10);
             experiencia++; 
         }
+        else{
+            System.out.println("Acabaram as Flechas");
+        }
     }
 }
-    
