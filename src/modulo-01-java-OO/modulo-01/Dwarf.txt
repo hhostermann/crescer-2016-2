@@ -10,6 +10,9 @@ public class Dwarf {
     public void setNome(String n) { 
         nome = "Aleatorio"; 
     } 
+    public void setPontosDeVida(int novoPV){
+        pontosDeVida = novoPV;
+    }
     public int getPontosDeVida() { 
         return pontosDeVida; 
     } 
