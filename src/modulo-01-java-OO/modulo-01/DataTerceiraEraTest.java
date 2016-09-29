@@ -12,4 +12,10 @@ public class DataTerceiraEraTest{
         assertEquals (19, inicioGuerraDoAnel.getMes());
         assertEquals (3019, inicioGuerraDoAnel.getAno());
     }
+    @Test
+    public void dataBissexto(){
+        DataTerceiraEra  FimGuerraDoAnel = new DataTerceiraEra(1,10,3019);
+        FimGuerraDoAnel.ehBissexto();
+        assertEquals (false, FimGuerraDoAnel.ehBissexto());
+    }
 }
