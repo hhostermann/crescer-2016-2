@@ -27,7 +27,7 @@ public class DwarfTest
     } 
     
     @Test
-    public void elfoNasceComNome(){
+    public void dwarfNasceComNome(){
         //Arrange
         String nomeEsperado = "Miriel";
         //Act
@@ -37,7 +37,7 @@ public class DwarfTest
 
     } 
     @Test
-    public void elfoNasceComArco(){
+    public void dwarfDataNascimento(){
         //Act
         Dwarf dwarfDoTeste = new Dwarf ("Gorin");
         
@@ -45,12 +45,16 @@ public class DwarfTest
         assertEquals (1, dwarfDoTeste.getDataNascimento().getDia());
         assertEquals (1, dwarfDoTeste.getDataNascimento().getMes());
         assertEquals (1, dwarfDoTeste.getDataNascimento().getAno());
-        
-
     } 
-}
+   /* @Test
+    public void dwarfTestaNumeroSorte(){ // não funcionou
+        //Act
+        Dwarf dwarfDoTeste = new Dwarf ("Gorin");
+        dwarfDoTeste.perderVida();
+        dwarfDoTeste.perderVida();
+        dwarfDoTeste.perderVida();
+        //Assert   
+        assertEquals (-3.333, dwarfDoTeste.getNumeroSorte());
 
-        
-        
-        
-        
+    } */
+}
