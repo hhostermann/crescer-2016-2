@@ -18,10 +18,9 @@ public class ElfoTeste{
     public void elfoNasceComArco(){
         //Act
         Elfo elfoDoTeste = new Elfo ("Miriel");
-        elfoDoTeste.atirarFlecha(new Dwarf("Gimili"));
         //Assert   
-        assertEquals (41, elfoDoTeste.getFlecha().getQuantidade());
-        assertEquals (1, elfoDoTeste.getExperiencia());
+        assertEquals (42, elfoDoTeste.getFlecha().getQuantidade());
+
     }
     @Test
     public void criarElfo(){
@@ -50,7 +49,7 @@ public class ElfoTeste{
     @Test 
     public void elfoAtiraFlechaToString() { 
         Elfo elfoDoTeste = new Elfo("Nerdanel"); 
-        elfoDoTeste.atirarFlecha(new Dwarf("Gimili")); 
+        elfoDoTeste.atirarFlecha(new Dwarf());
         assertEquals("Nerdanel possui 41 flechas e 1 nível de experiência.", 
             elfoDoTeste.toString()); 
  
