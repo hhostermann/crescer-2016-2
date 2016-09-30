@@ -1,51 +1,77 @@
 
 public class Elfo{
     private String nome;
-    private Item arco;
-    private Item flecha;
     private int experiencia;
-    
-    public Elfo (String n){    // Chamando construtor debaixo 
-        this(n, 42); 
-    }
-     
-    public Elfo(String nome, int quantidadeFlechas) { 
-        this.nome = nome; 
-        arco = new Item("Arco", 1);
-        flecha = new Item("Flechas", quantidadeFlechas >= 0 ? quantidadeFlechas : 42); 
+    private Status status;
+    private Inventario inventario;
 
+    public Elfo(String n) {
+        // Chamando construtor debaixo
+        this(n, 42);
     }
-    public void setNome(String n){
+
+    public Elfo(String nome, int quantidadeFlechas) {
+        this.nome = nome;
+        this.inventario = new Inventario();
+        this.inventario.adicionarItem(new Item("Arco", 1));
+        this.inventario.adicionarItem(new Item("Flechas", quantidadeFlechas >= 0 ? quantidadeFlechas : 42));
+        status = Status.VIVO;
+    }
+
+    public void setNome(String n) {
         nome = n;
     }
-    public String getNome(){
+
+    public String getNome() {
         return nome;
     }
-    public Item getArco (){
-        return arco;
+
+    public Item getArco() {
+        return this.inventario.getItens().get(0);
     }
-    public Item getFlecha(){
-        return flecha;
-    }   
-    public int getExperiencia(){
+
+    public int getExperiencia() {
         return experiencia;
     }
-    public void atirarFlecha(Dwarf dwarf){
-      boolean temFlecha = flecha.getQuantidade() > 0;
-      if (temFlecha){
-          flecha.setQuantidade(flecha.getQuantidade()-1);
-          experiencia++;
-          dwarf.perderVida();
+
+    public Item getFlecha() {
+        return this.inventario.getItens().get(1);
+    }
+
+    public Status getStatus() {
+        return status;
+    }
+
+    public void atirarFlecha(Dwarf dwarf) {
+        int quantidadeFlechas = getFlecha().getQuantidade();
+        boolean temFlecha = quantidadeFlechas > 0;
+        if (temFlecha) {
+            getFlecha().setQuantidade(quantidadeFlechas - 1);
+            experiencia++;
+            dwarf.perderVida();
         }
-    }  
+    }
+
     public String toString() {
-        boolean flechaSingular = this.flecha.getQuantidade() == 1;
-        boolean experienciaSingular = this.experiencia == 0 || this.experiencia ==1;
-        return String.format("%s possui %d %s e %d %s de experiência." ,
+        //return "<nome> possui <flechas> flechas e <exp> níveis de experiência.";
+
+        int quantidadeFlechas = this.getFlecha().getQuantidade();
+        boolean flechaNoSingular = quantidadeFlechas == 1;
+        boolean experienciaNoSingular = this.experiencia == 0 || this.experiencia == 1;
+
+        return String.format("%s possui %d %s e %d %s de experiência.",
             this.nome,
-            this.flecha.getQuantidade(),
-            flechaSingular ? "flecha" : "flechas",
+            quantidadeFlechas,
+            // ?:
+            flechaNoSingular ? "flecha" : "flechas",
             this.experiencia,
-            experienciaSingular ? "nível" : "níveis"); 
-        }
+            experienciaNoSingular ? "nível" : "níveis"
+        );
+    }
+
+    /*public void atirarFlechaRefactory() {
+    experiencia++;
+    flecha.setQuantidade(flecha.getQuantidade()-1);
+    }*/
 }
+
