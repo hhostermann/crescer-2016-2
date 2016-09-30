@@ -4,6 +4,7 @@ public class Elfo{
     private Item arco;
     private Item flecha;
     private int experiencia;
+    private Inventario inventario;
     
     public Elfo (String n){    // Chamando construtor debaixo 
         this(n, 42); 
@@ -18,14 +19,19 @@ public class Elfo{
     public void setNome(String n){
         nome = n;
     }
+    public Inventario getInventario(int quantidadeFlechas){
+      inventario.adicionarItem(new Item("Arco", 1));
+      inventario.adicionarItem(new Item("Flechas", quantidadeFlechas >= 0 ? quantidadeFlechas : 42));
+      return inventario;
+    }
     public String getNome(){
         return nome;
     }
     public Item getArco (){
-        return arco;
+        return this.inventario.getItens().get(0);
     }
     public Item getFlecha(){
-        return flecha;
+        return this.inventario.getItens().get(1);
     }   
     public int getExperiencia(){
         return experiencia;
@@ -38,6 +44,12 @@ public class Elfo{
           dwarf.perderVida();
         }
     }  
+    public void adicionarItem(Item item){
+        inventario.adicionarItem(item);
+    }    
+    public void removerItem(Item item){
+        inventario.removerItem(item);
+    }
     public String toString() {
         boolean flechaSingular = this.flecha.getQuantidade() == 1;
         boolean experienciaSingular = this.experiencia == 0 || this.experiencia ==1;
