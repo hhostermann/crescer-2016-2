@@ -8,7 +8,7 @@ public class Inventario
         //ArrayList <Item> item = new ArrayList<Item> ();
     //}
    public void adicionarItem(Item item){
-            inventario.add(item);
+        inventario.add(item);
     }
    public void removerItem(Item item){
         inventario.remove(item);
