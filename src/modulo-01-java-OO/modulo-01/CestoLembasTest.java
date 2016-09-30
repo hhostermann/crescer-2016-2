@@ -5,20 +5,24 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
-public class CestoDeLembasTest
+public class CestoLembasTest
 {
     @Test 
     public void dividirCestoDoisLemba() { 
         // Arrange 
-        CestoDeLembas cesto = new CestoDeLembas(2); 
         // Act & Assert 
-        assertFalse(cesto.dividirPar()); 
+        assertFalse(new CestoLembas(2).dividirPar()); 
     } 
     @Test 
     public void dividirCestoQuatroLemba() { 
-        // Arrange 
-        CestoDeLembas cesto = new CestoDeLembas(4); 
+        // Arrange  
         // Act & Assert 
-        assertTrue(cesto.dividirPar()); 
+        assertTrue(new CestoLembas(4).dividirPar()); 
     } 
+    @Test
+    public void dividirCestoCincoLembas(){ 
+        // Act & Assert 
+        assertTrue (new CestoLembas(4).dividirPar()); 
+    
+    }
     } 
