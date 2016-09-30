@@ -4,7 +4,7 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
-public class ElfoTest{
+public class ElfoTeste{
     @Test
     public void elfoNasceComNome(){
         //Arrange
@@ -18,7 +18,7 @@ public class ElfoTest{
     public void elfoNasceComArco(){
         //Act
         Elfo elfoDoTeste = new Elfo ("Miriel");
-        elfoDoTeste.atirarFlecha(new Dwarf());
+        elfoDoTeste.atirarFlecha(new Dwarf("Gimili"));
         //Assert   
         assertEquals (41, elfoDoTeste.getFlecha().getQuantidade());
         assertEquals (1, elfoDoTeste.getExperiencia());
@@ -50,7 +50,7 @@ public class ElfoTest{
     @Test 
     public void elfoAtiraFlechaToString() { 
         Elfo elfoDoTeste = new Elfo("Nerdanel"); 
-        elfoDoTeste.atirarFlecha(new Dwarf()); 
+        elfoDoTeste.atirarFlecha(new Dwarf("Gimili")); 
         assertEquals("Nerdanel possui 41 flechas e 1 nível de experiência.", 
             elfoDoTeste.toString()); 
  
