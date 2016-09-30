@@ -45,8 +45,8 @@ public class Dwarf{
         }
     }*/
     public double getNumeroSorte(){
-        double resutado =101.0;        
-        if ((dataNascimento.ehBissexto() == true)&& (vida>=80)&&(vida<=90)){
+        double resutado =101.0;
+        if ((dataNascimento.ehBissexto() && vida>=80 && vida<=90)){
             resutado *= (-33);
             }
         if (!dataNascimento.ehBissexto()&& ("Seixas".equals(this.nome) || "Meireles".equals(this.nome))){
