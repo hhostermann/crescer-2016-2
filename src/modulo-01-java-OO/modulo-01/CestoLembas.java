@@ -1,7 +1,7 @@
-public class CestoDeLembas{
+public class CestoLembas{
     private int numeroLemba;
     
-    public CestoDeLembas(int numeroLemba){
+    public CestoLembas(int numeroLemba){
         this.numeroLemba=numeroLemba;
     }
     public boolean dividirPar(){
