@@ -12,12 +12,12 @@ public class Inventario
    public ArrayList<Item> getItens(){
        return inventario;
     }
-   public String getDescricoesItens(String GAMBI){
-       for (int i = 0; i < inventario.size(); i++) { 
-            Item itemAtual = inventario.get(i);
-            GAMBI = itemAtual.getDescricao();
-            System.out.println ("%s, ", itemAtual.getDescricao()); // erro no .printl
-        }   }
-        
+   public String getDescricoesItens(){
+    String descricaoRetornar="";
+    for(int i=0; i< inventario.size(); i++){
+        descricaoRetornar += inventario.get(i).getDescricao()+",";
+    }
+    return descricaoRetornar;
+   }
    }
 
