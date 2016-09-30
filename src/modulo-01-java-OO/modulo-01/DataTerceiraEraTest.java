@@ -4,18 +4,16 @@ import org.junit.Before;
 import org.junit.Test;
 
 public class DataTerceiraEraTest{
-    @Test
-    
-    public void dataRetorna(){
-        DataTerceiraEra  inicioGuerraDoAnel = new DataTerceiraEra(1,19,3019);
-        assertEquals (1, inicioGuerraDoAnel.getDia());
-        assertEquals (19, inicioGuerraDoAnel.getMes());
-        assertEquals (3019, inicioGuerraDoAnel.getAno());
-    }
-    @Test
-    public void dataBissexto(){
+    public void dataFimDaGuerra(){
         DataTerceiraEra  FimGuerraDoAnel = new DataTerceiraEra(1,10,3019);
-        FimGuerraDoAnel.ehBissexto();
-        assertEquals (false, FimGuerraDoAnel.ehBissexto());
+        assertFalse (new DataTerceiraEra(1,10,3019).ehBissexto());
     }
+     
+    public void dataBissexto(){
+        assertTrue (new DataTerceiraEra(1,10,2000).ehBissexto());
+    }             
+    @Test 
+    public void criarAno1100QueNaoEhBissexto() { 
+        assertFalse(new DataTerceiraEra(1, 1, 1100).ehBissexto()); 
+    } 
 }
