@@ -11,8 +11,8 @@ public class Item {
         quantidade = novaQuantidade;
     }
     
-    public String getDescricao(){
-        return descricao;
+    public void aumentarUnidades(int unidades) {
+        quantidade += unidades;
     }
     
     public int getQuantidade() {
