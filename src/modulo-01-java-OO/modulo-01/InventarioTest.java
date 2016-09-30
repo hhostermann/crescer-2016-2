@@ -137,5 +137,16 @@ public class InventarioTest {
         inventario.adicionarItem(new Item("Lucky egg", 3));
         return inventario;
     }
+    @Test
+    private Inventario ordenarInventario(){
+        Inventario inventario = new Inventario();
+        inventario.adicionarItem(new Item("Espada de aço", 2));
+        inventario.adicionarItem(new Item("Poção polissuco", 45));
+        inventario.adicionarItem(new Item("Lucky egg", 3));
+        
+        assertEquals(2, inventario.getOrdem().get(0).getQuantidade());
+        assertEquals(3, inventario.getOrdem().get(1).getQuantidade());
+        assertEquals(45, inventario.getOrdem().get(2).getQuantidade());
+    }
 }
 
