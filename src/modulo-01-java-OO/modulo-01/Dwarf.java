@@ -6,6 +6,7 @@ public class Dwarf{
     private String nome;
     private DataTerceiraEra dataNascimento;
     private Status status;
+    private Inventario inventario;
     private double numeroSorte;
     private double resutado;
     {
@@ -15,6 +16,7 @@ public class Dwarf{
         nome = n;
         dataNascimento = new DataTerceiraEra (1, 1, 1);
         status = Status.VIVO;
+        inventario = new Inventario();
     }
     public void setNome(String n){ 
         nome = n;
@@ -73,5 +75,11 @@ public class Dwarf{
     }
     public int getExperiencia(){
         return experiencia;
+    }
+    public void adicionarItem(Item item){
+        inventario.adicionarItem(item);
+    }    
+    public void removerItem(Item item){
+        inventario.removerItem(item);
     }
 }
