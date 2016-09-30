@@ -18,6 +18,10 @@ public class Item {
     public int getQuantidade() {
         return quantidade;
     }
+    
+    public String getDescricao() {
+        return descricao;
+    }
 }
 
 
