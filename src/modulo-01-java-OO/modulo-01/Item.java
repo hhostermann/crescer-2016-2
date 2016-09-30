@@ -11,6 +11,10 @@ public class Item {
         quantidade = novaQuantidade;
     }
     
+    public String getDescricao(){
+        return descricao;
+    }
+    
     public int getQuantidade() {
         return quantidade;
     }
