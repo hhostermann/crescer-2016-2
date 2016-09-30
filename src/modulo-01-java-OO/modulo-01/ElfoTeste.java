@@ -19,9 +19,11 @@ public class ElfoTeste{
         //Act
         Elfo elfoDoTeste = new Elfo ("Miriel");
         elfoDoTeste.atirarFlecha(new Dwarf("Gimili"));
-        //Assert   
-        assertEquals (41, elfoDoTeste.getFlecha().getQuantidade());
-        assertEquals (1, elfoDoTeste.getExperiencia());
+        
+        elfoDoTeste.adicionarItem("arco", 1);
+        //Assert      
+        assertTrue(elfoDoTeste.getArco().getItens().contains(arco));
+        //assertEquals (1, elfoDoTeste.getExperiencia());
     }
     @Test
     public void criarElfo(){
