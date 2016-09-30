@@ -1,9 +1,7 @@
 
 public class DataTerceiraEra
 {
-    private int dia;
-    private int mes;
-    private int ano;
+    private int dia, mes, ano;
     
     public DataTerceiraEra(int dia, int mes, int ano) { 
         this.dia = dia; 
@@ -11,23 +9,15 @@ public class DataTerceiraEra
         this.ano = ano;
     } 
     public int getDia (){
-        return dia;
+        return this.dia;
     }
     public int getMes (){
-        return mes;
+        return this.mes;
     }    
     public int getAno (){
-        return ano;
+        return this.ano;
     }
     public boolean ehBissexto(){
-        if ((ano % 400 == 0) && (ano % 100 != 0)){
-           return true;
-        }
-        if ((ano % 4 == 0) && ( (ano % 100 != 0) || (ano % 400 == 0))){
-            return true;
-        }
-        else{
-            return false;
-        }
+        return this.ano % 400 == 0 || this.ano % 4 == 0 && this.ano % 4 != 0;
     }
 }
