@@ -4,20 +4,16 @@ public class Elfo{
     private Item arco;
     private Item flecha;
     private int experiencia;
+    private Inventario inventario;
     
-    public Elfo (String n){    // Chamando construtor debaixo 
-        this(n, 42); 
-    }
-     
-    public Elfo(String nome, int quantidadeFlechas) { 
-        this.nome = nome; 
-        arco = new Item("Arco", 1);
-        flecha = new Item("Flechas", quantidadeFlechas >= 0 ? quantidadeFlechas : 42); 
+    public Elfo (String n){    // Chamando construtor debaixo  
+        this.nome = n;  }
 
-    }
-    public void setNome(String n){
-        nome = n;
-    }
+     public Inventario getInventario(int quantidadeFlechas){ 
+      inventario.adicionarItem(new Item("Arco", 1)); 
+      inventario.adicionarItem(new Item("Flechas", quantidadeFlechas >= 0 ? quantidadeFlechas : 42)); 
+      return inventario; 
+    } 
     public String getNome(){
         return nome;
     }
