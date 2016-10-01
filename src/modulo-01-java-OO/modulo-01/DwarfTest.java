@@ -23,7 +23,7 @@ public class DwarfTest
         dwarf.perdeVida(); 
         // Assert 
         assertEquals(0, dwarf.getExperiencia()); 
-        assertEquals(110, dwarf.getVida(), .0);    
+        assertEquals(80, dwarf.getVida(), .0);    
     } 
  
     @Test 
@@ -36,10 +36,35 @@ public class DwarfTest
  
     @Test 
     public void dwarfPerderVidaNormal(){ 
-        Dwarf dwarf = new Dwarf("André Nunin", new DataTerceiraEra(2, 3, 2015)); 
+        Dwarf dwarf = new Dwarf("Aleatorioo", new DataTerceiraEra(2, 3, 2015)); 
         dwarf.perdeVida(); 
-        assertEquals(110, dwarf.getVida(), .0); 
+        assertEquals(100, dwarf.getVida(), .0); 
         assertEquals(0, dwarf.getExperiencia()); 
+    }     @Test 
+    public void dwarfPerderVidaSobrevive(){ 
+        Dwarf dwarf = new Dwarf("Aleatorioo", new DataTerceiraEra(2, 3, 2015)); 
+        dwarf.perdeVida(); 
+        assertEquals(100, dwarf.getVida(), .0); 
+        assertEquals(Status.VIVO, dwarf.getStatus()); 
+    } 
+    
+    public void dwarfPerderVidaMorre(){ 
+        Dwarf dwarf = new Dwarf("Aleatorioo", new DataTerceiraEra(2, 3, 2015)); 
+        dwarf.perdeVida(); 
+        dwarf.perdeVida(); 
+        dwarf.perdeVida(); 
+        dwarf.perdeVida(); 
+        dwarf.perdeVida(); 
+        dwarf.perdeVida(); 
+        dwarf.perdeVida(); 
+        dwarf.perdeVida(); 
+        dwarf.perdeVida(); 
+        dwarf.perdeVida(); 
+        dwarf.perdeVida(); 
+        dwarf.perdeVida(); 
+        
+        assertEquals(0, dwarf.getVida(), .0); 
+        assertEquals(Status.MORTO, dwarf.getStatus()); 
     } 
 } 
 
