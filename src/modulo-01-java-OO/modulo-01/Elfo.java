@@ -24,14 +24,17 @@ public class Elfo
    public int getExperiencia(){
         return experiencia;
     }
-   public void atirarFlecha(){
-       if (flecha.getQuantidade() > 0){
-           flecha.setQuantidade(flecha.getQuantidade() - 1);
-           experiencia++;
-       }
-   }
    public Item getFlecha(){
        return flecha;
     }
-
+   public void atirarFlecha(Dwarf dwarf){
+       if (flecha.getQuantidade() > 0){
+           flecha.setQuantidade(flecha.getQuantidade() - 1);
+           experiencia++;
+           dwarf.perdeVida();
+       }
+   }
+   public String toString(){
+       return nome+ " possui "+flecha.getQuantidade()+" flechas e "+experiencia+" níveis de experiência.";
+    }
 }
