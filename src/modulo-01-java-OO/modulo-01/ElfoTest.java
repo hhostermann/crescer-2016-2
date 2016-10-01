@@ -13,14 +13,14 @@ public class ElfoTest
          String nomeTeste;
          //Act
          nomeTeste = "legolas";
-         Elfo elfoTest = new Elfo(nomeTeste);
+         Elfo elfoTest = new Elfo(nomeTeste, 3);
          //Assert
         assertEquals(nomeTeste,  elfoTest.getNome());
         
     }
     @Test
     public void elfoAtiraCincoFlecha(){
-        Elfo elfoTeste =  new Elfo ("Galandriel");
+        Elfo elfoTeste =  new Elfo ("Galandriel", 5);
         Dwarf dwarf = new Dwarf();
         elfoTeste.atirarFlecha(dwarf);
         elfoTeste.atirarFlecha(dwarf);
@@ -32,14 +32,14 @@ public class ElfoTest
     }
     @Test
     public void elfoAtiraFlecha(){
-        Elfo elfoTeste =  new Elfo ("Arwen");
+        Elfo elfoTeste =  new Elfo ("Arwen", 3);
         Dwarf dwarf = new Dwarf();
         elfoTeste.atirarFlecha(dwarf);
         assertEquals (1, elfoTeste.getExperiencia());
     }
     @Test
     public void elfoAtiraQuarentaCincoFlecha(){
-        Elfo elfoTeste =  new Elfo ("Galandriel");
+        Elfo elfoTeste =  new Elfo ("Galandriel", 42);
         Dwarf dwarf = new Dwarf();
         elfoTeste.atirarFlecha(dwarf);
         elfoTeste.atirarFlecha(dwarf);
@@ -94,7 +94,7 @@ public class ElfoTest
     @Test 
     public void elfoAtiraDwarf(){
         //ACT
-        Elfo elfoTeste = new Elfo("Dobby");
+        Elfo elfoTeste = new Elfo("Dobby", 42);
         Dwarf dwarf = new Dwarf();
         elfoTeste.atirarFlecha(dwarf);
         
@@ -102,7 +102,7 @@ public class ElfoTest
     }
     @Test
     public void elfoToString(){
-        Elfo elfoTeste = new Elfo("Legolas");
+        Elfo elfoTeste = new Elfo("Legolas", 42);
         Dwarf dwarf = new Dwarf();
         elfoTeste.atirarFlecha(dwarf);
         elfoTeste.atirarFlecha(dwarf);
