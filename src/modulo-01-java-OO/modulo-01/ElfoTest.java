@@ -21,7 +21,7 @@ public class ElfoTest
     @Test
     public void elfoAtiraCincoFlecha(){
         Elfo elfoTeste =  new Elfo ("Galandriel", 5);
-        Dwarf dwarf = new Dwarf();
+        Dwarf dwarf = new Dwarf("Aleatorio", new DataTerceiraEra(1,1,2000));
         elfoTeste.atirarFlecha(dwarf);
         elfoTeste.atirarFlecha(dwarf);
         elfoTeste.atirarFlecha(dwarf);
@@ -32,15 +32,15 @@ public class ElfoTest
     }
     @Test
     public void elfoAtiraFlecha(){
-        Elfo elfoTeste =  new Elfo ("Arwen", 3);
-        Dwarf dwarf = new Dwarf();
+        Elfo elfoTeste =  new Elfo ("Arwen");
+        Dwarf dwarf = new Dwarf("Aleatorio", new DataTerceiraEra(1,1,2000));
         elfoTeste.atirarFlecha(dwarf);
         assertEquals (1, elfoTeste.getExperiencia());
     }
     @Test
     public void elfoAtiraQuarentaCincoFlecha(){
-        Elfo elfoTeste =  new Elfo ("Galandriel", 42);
-        Dwarf dwarf = new Dwarf();
+        Elfo elfoTeste =  new Elfo ("Galandriel");
+        Dwarf dwarf = new Dwarf("Aleatorio", new DataTerceiraEra(1,1,2000));
         elfoTeste.atirarFlecha(dwarf);
         elfoTeste.atirarFlecha(dwarf);
         elfoTeste.atirarFlecha(dwarf);
@@ -89,21 +89,21 @@ public class ElfoTest
         
         assertEquals(0, elfoTeste.getFlecha().getQuantidade()); 
         assertEquals (42, elfoTeste.getExperiencia());
-        assertEquals (-310, dwarf.getVida());
+        assertEquals (110, dwarf.getVida());
     }
     @Test 
     public void elfoAtiraDwarf(){
         //ACT
-        Elfo elfoTeste = new Elfo("Dobby", 42);
-        Dwarf dwarf = new Dwarf();
+        Elfo elfoTeste = new Elfo("Dobby");
+        Dwarf dwarf = new Dwarf("Aleatorio", new DataTerceiraEra(1,1,2000));
         elfoTeste.atirarFlecha(dwarf);
         
-        assertEquals (100, dwarf.getVida());
+        assertEquals (110, dwarf.getVida());
     }
     @Test
     public void elfoToString(){
-        Elfo elfoTeste = new Elfo("Legolas", 42);
-        Dwarf dwarf = new Dwarf();
+        Elfo elfoTeste = new Elfo("Legolas");
+        Dwarf dwarf = new Dwarf("Aleatorio", new DataTerceiraEra(1,1,2000));
         elfoTeste.atirarFlecha(dwarf);
         elfoTeste.atirarFlecha(dwarf);
         elfoTeste.atirarFlecha(dwarf);
