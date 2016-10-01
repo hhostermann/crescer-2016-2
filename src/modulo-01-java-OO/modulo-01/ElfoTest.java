@@ -89,7 +89,7 @@ public class ElfoTest
         
         assertEquals(0, elfoTeste.getFlecha().getQuantidade()); 
         assertEquals (42, elfoTeste.getExperiencia());
-        assertEquals (110, dwarf.getVida());
+        assertEquals (-10, dwarf.getVida());
     }
     @Test 
     public void elfoAtiraDwarf(){
@@ -98,7 +98,7 @@ public class ElfoTest
         Dwarf dwarf = new Dwarf("Aleatorio", new DataTerceiraEra(1,1,2000));
         elfoTeste.atirarFlecha(dwarf);
         
-        assertEquals (110, dwarf.getVida());
+        assertEquals (100, dwarf.getVida());
     }
     @Test
     public void elfoToString(){
