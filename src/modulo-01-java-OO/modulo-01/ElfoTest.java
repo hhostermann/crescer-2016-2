@@ -35,5 +35,56 @@ public class ElfoTest
         elfoTeste.atirarFlecha();
         assertEquals (1, elfoTeste.getExperiencia());
     }
-    
+    @Test
+    public void elfoAtiraQuarentaCincoFlecha(){
+        Elfo elfoTeste =  new Elfo ("Galandriel");
+        elfoTeste.atirarFlecha();
+        elfoTeste.atirarFlecha();
+        elfoTeste.atirarFlecha();
+        elfoTeste.atirarFlecha();
+        elfoTeste.atirarFlecha();      
+		elfoTeste.atirarFlecha();
+        elfoTeste.atirarFlecha();
+        elfoTeste.atirarFlecha();
+        elfoTeste.atirarFlecha();
+        elfoTeste.atirarFlecha();       
+		elfoTeste.atirarFlecha();
+        elfoTeste.atirarFlecha();
+        elfoTeste.atirarFlecha();
+        elfoTeste.atirarFlecha();
+        elfoTeste.atirarFlecha();       
+		elfoTeste.atirarFlecha();
+        elfoTeste.atirarFlecha();
+        elfoTeste.atirarFlecha();
+        elfoTeste.atirarFlecha();
+        elfoTeste.atirarFlecha();        
+		elfoTeste.atirarFlecha();
+        elfoTeste.atirarFlecha();
+        elfoTeste.atirarFlecha();
+        elfoTeste.atirarFlecha();
+        elfoTeste.atirarFlecha();        
+		elfoTeste.atirarFlecha();
+        elfoTeste.atirarFlecha();
+        elfoTeste.atirarFlecha();
+        elfoTeste.atirarFlecha();
+        elfoTeste.atirarFlecha();        
+		elfoTeste.atirarFlecha();
+        elfoTeste.atirarFlecha();
+        elfoTeste.atirarFlecha();
+        elfoTeste.atirarFlecha();
+        elfoTeste.atirarFlecha();        
+		elfoTeste.atirarFlecha();
+        elfoTeste.atirarFlecha();
+        elfoTeste.atirarFlecha();
+        elfoTeste.atirarFlecha();
+        elfoTeste.atirarFlecha();       
+		elfoTeste.atirarFlecha();
+        elfoTeste.atirarFlecha();
+        elfoTeste.atirarFlecha();
+        elfoTeste.atirarFlecha();
+        elfoTeste.atirarFlecha();
+        
+        assertEquals(0, elfoTeste.getFlecha().getQuantidade()); 
+        assertEquals (42, elfoTeste.getExperiencia());
+    }
 }
