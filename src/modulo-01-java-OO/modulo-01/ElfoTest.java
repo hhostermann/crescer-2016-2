@@ -111,6 +111,32 @@ public class ElfoTest
         elfoTeste.toString();
         assertEquals ("Legolas possui 38 flechas e 4 níveis de experiência.", elfoTeste.toString());
     }
+        @Test
+    public void elfoTo12String(){
+        Elfo elfoTeste = new Elfo("Legolas");
+        Dwarf dwarf = new Dwarf("Aleatorio", new DataTerceiraEra(1,1,1457));
+        elfoTeste.atirarFlecha(dwarf);
+        elfoTeste.atirarFlecha(dwarf);
+        elfoTeste.atirarFlecha(dwarf);
+        elfoTeste.atirarFlecha(dwarf);
+        elfoTeste.atirarFlecha(dwarf);
+        elfoTeste.atirarFlecha(dwarf);
+        elfoTeste.atirarFlecha(dwarf);
+        elfoTeste.atirarFlecha(dwarf);
+        elfoTeste.atirarFlecha(dwarf);
+        elfoTeste.atirarFlecha(dwarf);
+        elfoTeste.atirarFlecha(dwarf);
+        elfoTeste.atirarFlecha(dwarf);
+        elfoTeste.toString();
+        assertEquals ("Legolas possui 30 flechas e 12 níveis de experiência.", elfoTeste.toString());
+    }
+        @Test
+    public void elfo0ToString(){
+        Elfo elfoTeste = new Elfo("Legolas");
+        Dwarf dwarf = new Dwarf("Aleatorio", new DataTerceiraEra(1,1,2000));
+        elfoTeste.toString();
+        assertEquals ("Legolas possui 42 flechas e 0 nível de experiência.", elfoTeste.toString());
+    }
 }
 
 
