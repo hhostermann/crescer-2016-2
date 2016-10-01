@@ -18,4 +18,22 @@ public class ElfoTest
         assertEquals(nomeTeste,  elfoTest.getNome());
         
     }
+    @Test
+    public void elfoAtiraCincoFlecha(){
+        Elfo elfoTeste =  new Elfo ("Galandriel");
+        elfoTeste.atirarFlecha();
+        elfoTeste.atirarFlecha();
+        elfoTeste.atirarFlecha();
+        elfoTeste.atirarFlecha();
+        elfoTeste.atirarFlecha();
+        
+        assertEquals (5, elfoTeste.getExperiencia());
+    }
+    @Test
+    public void elfoAtiraFlecha(){
+        Elfo elfoTeste =  new Elfo ("Arwen");
+        elfoTeste.atirarFlecha();
+        assertEquals (1, elfoTeste.getExperiencia());
+    }
+    
 }
