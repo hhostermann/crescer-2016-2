@@ -63,5 +63,16 @@ public class Inventario {
                 itemAtual.setQuantidade (somaQuantidade);
             }
         }
+    }       
+    public void ordenarItensAscedentes() {
+        for(int i = 0; i < (itens.size() - 1); i++) {
+            if(itens.get(i).getQuantidade() > itens.get(i + 1).getQuantidade()) {
+                Item aux = itens.get(i);
+
+                itens.set(i, itens.get(i + 1));
+
+                itens.set(i + 1, aux);
+            }
+        }
     }
 }  
