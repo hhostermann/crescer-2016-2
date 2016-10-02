@@ -37,6 +37,12 @@ public class Inventario {
         }
         return maisPopuloso;
     }
+    public void aumentarUnidadesItens(int quantidade) {
+        for(Item itemAtual : getItens()){
+            itemAtual.setQuantidade(quantidade + itemAtual.getQuantidade());
+        }
+    }
+
     public void somarUnidadeItens(){
         int soma = 0;
         for (Item itemAtual : getItens()){
