@@ -1,15 +1,8 @@
 
 public class Elfo
 {
-    /*
-
-     * Os Elfos querem um superávit de flechas, 
-       * para isso não podem ter flechas negativas.
-         * Altere o código para garantir que um elfo não tenha flechas negativas.*/
 
    private String nome;
-   private Item arco;
-   private Item flecha;
    private int experiencia;
    private Inventario inventario;
    public Elfo(String n){  
@@ -27,22 +20,27 @@ public class Elfo
    public int getExperiencia(){
         return experiencia;
     }
+   public Item getArco(){
+      return inventario.getItens().get(0);
+    }
    public Item getFlecha(){
-       return flecha;
+      return inventario.getItens().get(1);
     }
    public void atirarFlecha(Dwarf dwarf){
-       if (flecha.getQuantidade() > 0){
-           flecha.setQuantidade(flecha.getQuantidade() - 1);
+       int quantidadeFlechas = getFlecha().getQuantidade();
+       boolean temFlecha = quantidadeFlechas > 0;
+       if (temFlecha){
+           getFlecha().setQuantidade(quantidadeFlechas - 1);
            experiencia++;
            dwarf.perdeVida();
        }
    }
    public String toString(){
-       boolean flechaSingular = this.flecha.getQuantidade() == 1;
+       boolean flechaSingular = inventario.getItens().get(1).getQuantidade() == 1;
        boolean experienciaSingular = this.experiencia == 0 || this.experiencia == 1;
        
        return String.format("%s possui %d %s e %d %s de experiência.", this.nome, 
-                                                                       this.flecha.getQuantidade(),
+                                                                       inventario.getItens().get(1).getQuantidade(),
                                                                        flechaSingular ? "flecha" : "flechas", 
                                                                        this.experiencia,
                                                                        experienciaSingular ? "nível" : "níveis");
