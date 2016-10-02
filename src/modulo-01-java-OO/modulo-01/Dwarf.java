@@ -48,12 +48,12 @@ public class Dwarf
         return resutado;
     }
     public void perdeVida(){
-        if (this.vida >=0){  
+        if (this.vida >0){  
             if (resutado > 0){
                 experiencia += 2;
             }
             if (resutado<100){
-                vida-=10;
+                vida -= 10;
             }
         }
         else {
