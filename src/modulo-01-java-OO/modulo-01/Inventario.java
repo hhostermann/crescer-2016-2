@@ -25,4 +25,16 @@ public class Inventario {
         }
         return resultado.isEmpty() ?resultado : resultado.substring(0, resultado.length () -1);
     }
-}   
+    public Item getItemMaisPopuloso(){
+        Item maisPopuloso = null;
+        int maiorQuantidade = 0;
+        for (Item itemAtual : getItens()){
+            if (itemAtual.getQuantidade() > maiorQuantidade){
+                maisPopuloso = itemAtual;
+                maiorQuantidade = itemAtual.getQuantidade();
+    
+        }
+        return maisPopuloso;
+        }
+    }
+}  
