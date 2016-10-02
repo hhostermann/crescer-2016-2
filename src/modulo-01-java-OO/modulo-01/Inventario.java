@@ -33,8 +33,29 @@ public class Inventario {
                 maisPopuloso = itemAtual;
                 maiorQuantidade = itemAtual.getQuantidade();
     
+            }
         }
         return maisPopuloso;
+    }
+    public void somarUnidadeItens(){
+        int soma = 0;
+        for (Item itemAtual : getItens()){
+            int retorno = itemAtual.getQuantidade();
+            boolean positivo = retorno > 0;
+            int somaQuantidade = (1000 * soma) + retorno;
+            if (!positivo){
+                retorno = Math.abs(retorno);
+            }
+            for (int i = 0; i <= retorno; i++){
+                soma += i;
+            }
+            //positivo == true ? itemAtual.setQuantidade (somaQuantidade) : itemAtual.setQuantidade (somaQuantidade);
+            if (positivo){
+                itemAtual.setQuantidade (somaQuantidade);
+            }
+            else {
+                itemAtual.setQuantidade (somaQuantidade);
+            }
         }
     }
 }  
