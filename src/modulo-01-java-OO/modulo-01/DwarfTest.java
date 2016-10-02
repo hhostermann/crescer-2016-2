@@ -66,5 +66,20 @@ public class DwarfTest
         assertEquals(0, dwarf.getVida(), .0); 
         assertEquals(Status.MORTO, dwarf.getStatus()); 
     } 
+     
+    @Test 
+    public void adicionarItemInventario() { 
+        Dwarf dwarf = new Dwarf("Aleatorioo", new DataTerceiraEra(2, 3, 2015)); 
+        Item sabreLuz = new Item("Sabre de Luz", 1); 
+        dwarf.adicionarItem(sabreLuz); 
+        assertTrue(dwarf.getInventario().getItens().contains(sabreLuz)); 
+    } 
+ 
+    @Test 
+    public void inventarioSemAdicionarItem() { 
+        Dwarf dwarf = new Dwarf("Aleatorioo", new DataTerceiraEra(2, 3, 2015));
+        Item pedra = new Item("Pedra", 1); 
+        assertFalse(dwarf.getInventario().getItens().contains(pedra)); 
+    } 
 } 
 
