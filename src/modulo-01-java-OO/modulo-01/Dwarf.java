@@ -64,7 +64,7 @@ public class Dwarf
     public void adicionarItem(Item item){
         this.inventario.adicionarItem (item);
     }
-    public void perderItem(Item item){
+    public void removerItem(Item item){
         this.inventario.adicionarItem (item);
     }
     
