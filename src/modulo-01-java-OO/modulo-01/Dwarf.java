@@ -72,7 +72,7 @@ public class Dwarf
         boolean temSorte = getNumeroSorte() == -3333;
         
         if(temSorte){
-            inventario.somarUnidadeItens();
+            inventario.aumentarUnidadesItens(1000);
         }
     }
 }
