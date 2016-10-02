@@ -1,6 +1,5 @@
-import java.util.ArrayList; 
-
- 
+import java.util.ArrayList;
+import java.util.Arrays;
 public class Inventario { 
     private ArrayList<Item> itens; 
  
@@ -42,8 +41,7 @@ public class Inventario {
             itemAtual.setQuantidade(quantidade + itemAtual.getQuantidade());
         }
     }
-
-    public void somarUnidadeItens(){
+    public void somarUnidadesItens(){
         int soma = 0;
         for (Item itemAtual : getItens()){
             int retorno = itemAtual.getQuantidade();
@@ -72,6 +70,29 @@ public class Inventario {
                 itens.set(i, itens.get(i + 1));
 
                 itens.set(i + 1, aux);
+            }
+        }
+    }
+
+    public void ordenarItensDescedentes() {
+        for(int i = (itens.size() - 1); i > 0; i--) {
+            if(itens.get(i).getQuantidade() > itens.get(i - 1).getQuantidade()) {
+                Item aux = itens.get(i);
+
+                itens.set(i, itens.get(i - 1));
+
+                itens.set(i - 1, aux);
+            }
+        }
+    }
+
+    public void ordenarItens(TipoOrdenacao tipo) {
+
+        for(int x = 0; x < itens.size(); x++) {
+            if (tipo == TipoOrdenacao.ASCEDENTE) {
+                ordenarItensAscedentes();
+            } else {
+                ordenarItensDescedentes();
             }
         }
     }
