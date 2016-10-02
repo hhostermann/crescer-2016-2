@@ -11,16 +11,15 @@ public class Elfo
    private Item arco;
    private Item flecha;
    private int experiencia;
-
+   private Inventario inventario;
    public Elfo(String n){  
         this(n, 42); 
-       } 
-     
-       public Elfo(String nome, int quantidadeFlechas) { 
-       this.nome = nome; 
-        arco = new Item("Arco", 1); 
-        flecha = new Item("Flechas", 42); 
-        flecha = new Item("Flechas", quantidadeFlechas >= 0 ? quantidadeFlechas : 42); 
+       }   
+   public Elfo(String nome, int quantidadeFlechas) { 
+       this.nome = nome;
+       this.inventario = new Inventario();
+       this.inventario.adicionarItem(new Item("Arco", 1)); 
+       this.inventario.adicionarItem(new Item("Flechas", quantidadeFlechas >= 0 ? quantidadeFlechas : 42)); 
     } 
    public String getNome(){
         return nome;
