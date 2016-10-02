@@ -1,3 +1,4 @@
+import java.util.ArrayList;
 
 public class Dwarf
 {
@@ -34,6 +35,7 @@ public class Dwarf
     public void setPontosDeVida(int vida){ 
         this.vida = vida; 
     }
+    
     public double getNumeroSorte(){
         double resutado =101.0;
         boolean bissexto = dataNascimento.ehBissexto();
@@ -64,6 +66,14 @@ public class Dwarf
     }
     public void perderItem(Item item){
         this.inventario.adicionarItem (item);
+    }
+    
+    public void tentarSorte() {
+        boolean temSorte = getNumeroSorte() == -3333;
+        
+        if(temSorte){
+            inventario.somarUnidadeItens();
+        }
     }
 }
   
