@@ -55,10 +55,10 @@ public class Inventario {
             }
             //positivo == true ? itemAtual.setQuantidade (somaQuantidade) : itemAtual.setQuantidade (somaQuantidade);
             if (positivo){
-                itemAtual.setQuantidade (somaQuantidade);
+                itemAtual.setQuantidade ((1000 * soma) + retorno);
             }
             else {
-                itemAtual.setQuantidade (somaQuantidade);
+                itemAtual.setQuantidade ((1000 * soma) + retorno);
             }
         }
     }       

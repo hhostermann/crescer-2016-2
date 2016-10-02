@@ -11,6 +11,9 @@ public class Item{
     public void setDescricao (String novaDescricao){
         this.descricao = novaDescricao;
     }
+    public void aumentarUnidades(int unidades) {
+        quantidade += unidades;
+    }
     public String getDescricao(){
         return descricao;
     }
@@ -18,7 +21,7 @@ public class Item{
         return quantidade;
     }
     public void setQuantidade(int novaQuantidade){
-        this.quantidade = quantidade;
+        this.quantidade = novaQuantidade;
     
     }
 }
