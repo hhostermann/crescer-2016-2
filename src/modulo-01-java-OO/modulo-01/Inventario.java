@@ -1,81 +1,99 @@
 import java.util.ArrayList;
-
-public class Inventario {
-    private ArrayList<Item> itens;
-    private ArrayList<Item> ordem;
-
-    public Inventario() {
-        itens = new ArrayList<>();
-        ordem = new ArrayList<>();
-    }
-    
-    public ArrayList<Item> getOrdem() {
-        return ordem;
-    }
-    public ArrayList<Item> getItens() {
-        return itens;
-    }
-
-    public void adicionarItem(Item item) {
-        itens.add(item);
-    }
-
-    public void removerItem(Item item) {
-        itens.remove(item);
-    }
-    public void ordenarItens(Inventario armazenaQantidade,int i, int u, int l,t, int contador, int cont){
-        
-            for (u=0;u>itens.size();u++){
-                 for (i=0;i>itens.size();i++){
-                     contador = itens.get(i).getQuantidade();
-                        if (cont < contador){
-                            cont = contador;
-                            l=i;
-            }
-            ordem.add(itens.get(l));
-                if (itens.get(i).getQuantidade() > ordem.get(i).getQuantidade() &&  ordem.get(i).getQuantidade() < itens.get(i+1).getQuantidade() ){
-                    contador = t+1;
-                    ordem.add(itens.get(contador));
-                }
-            }
-            
-      
-    }}
-    public String getDescricoesItens() {
-        //"Adaga,Escudo,Bracelete"
+import java.util.Arrays;
+public class Inventario { 
+    private ArrayList<Item> itens; 
+ 
+    public Inventario() { 
+        itens = new ArrayList<>(); 
+     } 
+    public ArrayList<Item> getItens() { 
+        return itens; 
+    } 
+     
+    public void adicionarItem(Item item) { 
+        itens.add(item); 
+    } 
+     
+    public void removerItem(Item item) { 
+        itens.remove(item); 
+    } 
+    public String getDescricoesItens(){
         String resultado = "";
-
-        /*for (int i = 0; i < itens.size(); i++) {
-        Item itemAtual = itens.get(i);
-        resultado += String.format("%s,", itemAtual.getDescricao());
-        }*/
-
-        /*int i = 0;
-        while (i < itens.size()) {
-        Item itemAtual = itens.get(i);
-        resultado += String.format("%s,", itemAtual.getDescricao());
-        i++;
-        }*/
-
-        /*int i = 0;
-        do {;
-        Item itemAtual = itens.get(i);
-        resultado += String.format("%s,", itemAtual.getDescricao());
-        i++;
-        } while (i < itens.size());*/
-
-        for (Item itemAtual : itens) {
+        for (Item itemAtual : getItens()){
             resultado += String.format("%s,", itemAtual.getDescricao());
         }
-
-        return resultado.isEmpty() ? resultado : resultado.substring(0, resultado.length() - 1);
+        return resultado.isEmpty() ?resultado : resultado.substring(0, resultado.length () -1);
     }
+    public Item getItemMaisPopuloso(){
+        Item maisPopuloso = null;
+        int maiorQuantidade = 0;
+        for (Item itemAtual : getItens()){
+            if (itemAtual.getQuantidade() > maiorQuantidade){
+                maisPopuloso = itemAtual;
+                maiorQuantidade = itemAtual.getQuantidade();
     
-    public void aumentarUnidadesDosItens(int unidades) {
-        for (Item item : itens) {
-            item.aumentarUnidades(unidades);
+            }
+        }
+        return maisPopuloso;
+    }
+    public void aumentarUnidadesItens(int quantidade) {
+        for(Item itemAtual : getItens()){
+            itemAtual.setQuantidade(quantidade + itemAtual.getQuantidade());
         }
     }
-    
-}
+    public void somarUnidadesItens(){
+        int soma = 0;
+        for (Item itemAtual : getItens()){
+            int retorno = itemAtual.getQuantidade();
+            boolean positivo = retorno > 0;
+            int somaQuantidade = (1000 * soma) + retorno;
+            if (!positivo){
+                retorno = Math.abs(retorno);
+            }
+            for (int i = 0; i <= retorno; i++){
+                soma += i;
+            }
+            //positivo == true ? itemAtual.setQuantidade (somaQuantidade) : itemAtual.setQuantidade (somaQuantidade);
+            if (positivo){
+                itemAtual.setQuantidade ((1000 * soma) + retorno);
+            }
+            else {
+                itemAtual.setQuantidade ((1000 * soma) + retorno);
+            }
+        }
+    }       
+    public void ordenarItensAscedentes() {
+        for(int i = 0; i < (itens.size() - 1); i++) {
+            if(itens.get(i).getQuantidade() > itens.get(i + 1).getQuantidade()) {
+                Item aux = itens.get(i);
 
+                itens.set(i, itens.get(i + 1));
+
+                itens.set(i + 1, aux);
+            }
+        }
+    }
+
+    public void ordenarItensDescedentes() {
+        for(int i = (itens.size() - 1); i > 0; i--) {
+            if(itens.get(i).getQuantidade() > itens.get(i - 1).getQuantidade()) {
+                Item aux = itens.get(i);
+
+                itens.set(i, itens.get(i - 1));
+
+                itens.set(i - 1, aux);
+            }
+        }
+    }
+
+    public void ordenarItens(TipoOrdenacao tipo) {
+
+        for(int x = 0; x < itens.size(); x++) {
+            if (tipo == TipoOrdenacao.ASCEDENTE) {
+                ordenarItensAscedentes();
+            } else {
+                ordenarItensDescedentes();
+            }
+        }
+    }
+}  
