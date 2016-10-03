@@ -1,5 +1,3 @@
- 
-public enum TipoOrdenacao
-{
-    ASCEDENTE, DESCENDENTE
+public enum TipoOrdenacao {
+    ASCENDENTE, DESCENDENTE
 }

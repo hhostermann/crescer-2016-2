@@ -1,51 +1,43 @@
-import java.util.ArrayList;
-public class HobbitContador
-{
-    public int calcularDiferenca(ArrayList<ArrayList<Integer>> lista){
-        int[] produtoPares = new int [lista.size()];
-        for(int i = 0; i < lista.size(); i++){
-            for(int u = 0; u < 2; u++){
-                int numeroAtual = lista.get(i).get(u);
-                if(u==0)
-                    produtoPares[i]= numeroAtual;
-                else
-                    produtoPares[i]*= numeroAtual;
-            }
+import java.util.*;
+
+public class HobbitContador {
+    public int calcularDiferenca(ArrayList<ArrayList<Integer>> pares) {
+        int somaProdutos = 0, somaMmc = 0;
+
+        for (ArrayList<Integer> par : pares) {
+            int a = par.get(0), b = par.get(1);
+            somaProdutos += a * b;
+            somaMmc += new CalculadorMmc(a, b).calcular();
         }
-        int somaProdutos = 0;
-        for (int i = 0; i < lista.size(); i++){
-            somaProdutos += produtoPares[i];
-        }
-        int[] mmcPares = new int[lista.size()];    
-        int sobra = 0;
-        int a = 0;
-        int b = 0;    
-        for(int i = 0; i < lista.size(); i++){
-            for(int u=0; u < 2; u++){
-                if(u==1){
-                    int numeroAtual = lista.get(i).get(u-1);
-                    int numeroPosterior  = lista.get(i).get(u);
-                    mmcPares[i] = calculaMmc(numeroAtual, numeroPosterior);
-                }
-            }
-        }
-        int somaMmc = 0;
-        for (int i=0; i<lista.size(); i++){
-            somaMmc += mmcPares[i];
-        }
+        
+        // Fluent APIs
+        // crieUmHobbit().depoisCalculeMmc().depoisEnviePorEmail();
+
         return somaProdutos - somaMmc;
     }
 
-    public int calculaMmc(int numeroAtual, int numeroPosterior){
-        int a = numeroAtual;
-        int b = numeroPosterior;
-        int sobra = 0;
-        do{
-            sobra = a % b;
-            a = b;
-            b = sobra;
-        }while(sobra!=0);
+    private class CalculadorMmc {
+        private int a, b, mdc;
+        private CalculadorMmc(int a, int b) {
+            this.a = a;
+            this.b = b;
+            this.mdc = mdc(a, b);
+        }
 
-        return (numeroAtual * numeroPosterior)/a;
+        // https://en.wikipedia.org/wiki/Least_common_multiple
+        private int calcular() {
+            boolean temZero = a == 0 || b == 0;
+            return temZero ? 0 : a * b / mdc;
+        }
+
+        // https://en.wikipedia.org/wiki/Greatest_common_divisor
+        private int mdc(int a, int b) {
+            while (b != 0) {
+                int troca = b;
+                b = a % b;
+                a = troca;
+            }
+            return a;
+        }
     }
 }
