@@ -61,39 +61,46 @@ public class Inventario {
                 itemAtual.setQuantidade ((1000 * soma) + retorno);
             }
         }
-    }       
-    public void ordenarItensAscedentes() {
-        for(int i = 0; i < (itens.size() - 1); i++) {
-            if(itens.get(i).getQuantidade() > itens.get(i + 1).getQuantidade()) {
-                Item aux = itens.get(i);
+    }      
+    public void ordenarItens() {
+        ordenarItens(TipoOrdenacao.ASCENDENTE);
 
-                itens.set(i, itens.get(i + 1));
-
-                itens.set(i + 1, aux);
-            }
-        }
     }
+    public void ordenarItens(TipoOrdenacao tipoOrdenacao) {
+        // Versão mais estável do Bubblesort - Melhor caso O(n), Pior caso O(n^2)
+        // homenagem ao do-while: para forçar entrada na lógica
+        boolean posicoesSendoTrocadas;
+        boolean ascendente = tipoOrdenacao == TipoOrdenacao.ASCENDENTE;
+        do {
 
-    public void ordenarItensDescedentes() {
-        for(int i = (itens.size() - 1); i > 0; i--) {
-            if(itens.get(i).getQuantidade() > itens.get(i - 1).getQuantidade()) {
-                Item aux = itens.get(i);
+            posicoesSendoTrocadas = false;
 
-                itens.set(i, itens.get(i - 1));
+            for (int j = 0; j < this.itens.size() - 1; j++) {
 
-                itens.set(i - 1, aux);
+                Item itemAtual = this.itens.get(j);
+
+                Item proximo = this.itens.get(j + 1);
+
+
+                boolean precisaTrocar = 
+
+
+                    ascendente ? itemAtual.getQuantidade() > proximo.getQuantidade() : itemAtual.getQuantidade() < proximo.getQuantidade();
+
+
+                if (precisaTrocar) {
+
+                    this.itens.set(j, proximo);
+
+                    this.itens.set(j + 1, itemAtual);
+
+                    posicoesSendoTrocadas = true;
+
+                }
+
             }
-        }
-    }
 
-    public void ordenarItens(TipoOrdenacao tipo) {
-
-        for(int x = 0; x < itens.size(); x++) {
-            if (tipo == TipoOrdenacao.ASCEDENTE) {
-                ordenarItensAscedentes();
-            } else {
-                ordenarItensDescedentes();
-            }
-        }
+        } while (posicoesSendoTrocadas);
     }
-}  
+}
+
