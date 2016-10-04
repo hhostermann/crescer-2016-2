@@ -1,5 +1,5 @@
  
 public enum TipoOrdenacao
 {
-    ASCEDENTE, DESCENDENTE
+    ASCENDENTE, DESCENDENTE
 }
