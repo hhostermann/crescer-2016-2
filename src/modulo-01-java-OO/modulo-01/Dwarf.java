@@ -1,40 +1,15 @@
 import java.util.ArrayList;
 
-public class Dwarf
+public class Dwarf extends Personagem
 {
-    private int vida;
-    private String nome;
+    private int vida; 
     private DataTerceiraEra dataNascimento;
-    private int experiencia;
-    private Status status;
     private double resutado; 
-    private Inventario inventario;
-    public Dwarf(String n, DataTerceiraEra dataNascimento){
-        this.nome = n;        
-        this.dataNascimento = dataNascimento;
+     public Dwarf(String nome, DataTerceiraEra dataNascimento){
+        super(nome);        
         this.vida=110;
-        this.status = status.VIVO;
-        this.inventario = new Inventario(); 
-    }
- 
-    public Inventario getInventario(){
-        return inventario;
-    }
-        public int getVida(){
-        return vida;
-    }
-    public String getNome(){
-        return nome;
-    }
-    public int getExperiencia(){
-        return experiencia;
-    }
-    public Status getStatus(){
-        return status;
-    }
-    public void setPontosDeVida(int vida){ 
-        this.vida = vida; 
-    }
+        this.dataNascimento = dataNascimento;
+    }  
     
     public double getNumeroSorte(){
         double resutado =101.0;
@@ -50,7 +25,7 @@ public class Dwarf
     public void perdeVida(){
         if (this.vida >0){  
             if (resutado > 0){
-                experiencia += 2;
+                experiencia += 2; 
             }
             if (resutado<100){
                 vida -= 10;
@@ -61,12 +36,10 @@ public class Dwarf
             status = status.MORTO;
         }
     }
-    public void adicionarItem(Item item){
-        this.inventario.adicionarItem (item);
-    }
-    public void removerItem(Item item){
-        this.inventario.adicionarItem (item);
-    }
+ 
+    public int getVida(){
+        return vida;
+    } 
     
     public void tentarSorte() {
         boolean temSorte = getNumeroSorte() == -3333;
@@ -74,6 +47,10 @@ public class Dwarf
         if(temSorte){
             inventario.aumentarUnidadesItens(1000);
         }
+    }
+    
+    public void setPontosDeVida(int vida){ 
+        this.vida = vida; 
     }
 }
   
