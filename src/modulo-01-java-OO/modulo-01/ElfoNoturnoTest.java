@@ -20,7 +20,7 @@ public class ElfoNoturnoTest
         ElfoNoturno ElfoNoturno = new ElfoNoturno("Batman" , 42);
         Dwarf balin = new Dwarf("Gimili", new DataTerceiraEra(1, 1, 1));
         ElfoNoturno.atirarFlecha(balin);
-        assertEquals(100, balin.getVida());
+        assertEquals(100, balin.getVida(),.0);
     }
     @Test
     public void ElfoNoturnoAtiraDuasFlechaEmUmDwarf() {
@@ -29,7 +29,7 @@ public class ElfoNoturnoTest
         Dwarf balin = new Dwarf("Gimili", new DataTerceiraEra(1, 1, 1));
         ElfoNoturno.atirarFlecha(balin);
         ElfoNoturno.atirarFlecha(balin);
-        assertEquals(90, balin.getVida());
+        assertEquals(90, balin.getVida(),.0);
     }
     @Test
     public void ElfoNoturnoAtiraUmaFlechaEmCadaDwarf() {
@@ -38,7 +38,7 @@ public class ElfoNoturnoTest
         Dwarf gloin = new Dwarf("Gimili", new DataTerceiraEra(1, 1, 1));
         ElfoNoturno.atirarFlecha(balin);
         ElfoNoturno.atirarFlecha(gloin);
-        assertEquals(100, balin.getVida());
-        assertEquals(100, gloin.getVida());
+        assertEquals(100, balin.getVida(),.0);
+        assertEquals(100, gloin.getVida(),.0);
     }
 }

@@ -1,6 +1,6 @@
 
 public class ElfoVerde extends Elfo {
- 
+   
     public ElfoVerde(String nome, int quantidadeFlechas){ 
        super(nome);
        this.inventario.adicionarItem(new Item("Arco de Vidro", 1)); 
@@ -8,6 +8,10 @@ public class ElfoVerde extends Elfo {
        this.inventario.adicionarItem(new Item("Espada de aço valiriano", 1)); 
     }
     
+     protected void alistamentoMilitar(Elfo elfo){
+       elfo = new ElfoVerde(nome, quantidadeFlechas);
+       elfo.adicionarElfo(elfo);
+    }   
     public void atirarFlecha(Dwarf dwarf){
        int quantidadeFlechas = getFlecha().getQuantidade();
        boolean temFlecha = quantidadeFlechas > 0;
@@ -17,5 +21,5 @@ public class ElfoVerde extends Elfo {
            dwarf.perdeVida();
        }
     }
+      
 }
- 

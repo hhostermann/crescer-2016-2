@@ -20,7 +20,7 @@ public class ElfoVerdeTest
         ElfoVerde ElfoVerde = new ElfoVerde("ElfoVerde" , 42);
         Dwarf balin = new Dwarf("Gimili", new DataTerceiraEra(1, 1, 1));
         ElfoVerde.atirarFlecha(balin);
-        assertEquals(100, balin.getVida());
+        assertEquals(100, balin.getVida(),.0);
     }
     @Test
     public void ElfoVerdeAtiraDuasFlechaEmUmDwarf() {
@@ -29,7 +29,7 @@ public class ElfoVerdeTest
         Dwarf balin = new Dwarf("Gimili", new DataTerceiraEra(1, 1, 1));
         ElfoVerde.atirarFlecha(balin);
         ElfoVerde.atirarFlecha(balin);
-        assertEquals(90, balin.getVida());
+        assertEquals(90, balin.getVida(),.0);
     }
     @Test
     public void ElfoVerdeAtiraUmaFlechaEmCadaDwarf() {
@@ -38,7 +38,27 @@ public class ElfoVerdeTest
         Dwarf gloin = new Dwarf("Gimili", new DataTerceiraEra(1, 1, 1));
         ElfoVerde.atirarFlecha(balin);
         ElfoVerde.atirarFlecha(gloin);
-        assertEquals(100, balin.getVida());
-        assertEquals(100, gloin.getVida());
+        assertEquals(100, balin.getVida(),.0);
+        assertEquals(100, gloin.getVida(),.0);
     }
+    
+    @Test 
+    public void adicionarNoExercito() { 
+        Elfo elfoverde = new ElfoVerde("Aleatorioo", 44); 
+        elfoverde.alistamentoMilitar(elfoverde);  
+        boolean elfo = elfoverde.getElfos().contains(elfoverde);
+        assertTrue(elfo); 
+    } 
 }
+
+
+
+
+
+
+
+
+
+
+
+
