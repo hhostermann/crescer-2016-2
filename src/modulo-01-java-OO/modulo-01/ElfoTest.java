@@ -55,7 +55,7 @@ public class ElfoTest
         Elfo elfo = new Elfo("Batman");
         Dwarf balin = new Dwarf("Gimili", new DataTerceiraEra(1, 1, 1));
         elfo.atirarFlecha(balin);
-        assertEquals(100, balin.getVida());
+        assertEquals(100, balin.getVida(),.0);
     }
     @Test
     public void elfoAtiraDuasFlechaEmUmDwarf() {
@@ -64,7 +64,7 @@ public class ElfoTest
         Dwarf balin = new Dwarf("Gimili", new DataTerceiraEra(1, 1, 1));
         elfo.atirarFlecha(balin);
         elfo.atirarFlecha(balin);
-        assertEquals(90, balin.getVida());
+        assertEquals(90, balin.getVida(),.0);
     }
     @Test
     public void elfoAtiraUmaFlechaEmCadaDwarf() {
@@ -73,8 +73,8 @@ public class ElfoTest
         Dwarf gloin = new Dwarf("Gimili", new DataTerceiraEra(1, 1, 1));
         elfo.atirarFlecha(balin);
         elfo.atirarFlecha(gloin);
-        assertEquals(100, balin.getVida());
-        assertEquals(100, gloin.getVida());
+        assertEquals(100, balin.getVida(),.0);
+        assertEquals(100, gloin.getVida(),.0);
     }
     @Test
     public void elfoToStringComInformacoesIniciais() {
@@ -105,47 +105,10 @@ public class ElfoTest
     @Test
     public void elfoAtira41FlechasEToString() {
         Elfo legolas = new Elfo("Legolas");
+        for(int i=0; i<41; i++){
         legolas.atirarFlecha(new Dwarf("Gimili", new DataTerceiraEra(1, 1, 1)));
-        legolas.atirarFlecha(new Dwarf("Gimili", new DataTerceiraEra(1, 1, 1)));
-        legolas.atirarFlecha(new Dwarf("Gimili", new DataTerceiraEra(1, 1, 1)));
-        legolas.atirarFlecha(new Dwarf("Gimili", new DataTerceiraEra(1, 1, 1)));
-        legolas.atirarFlecha(new Dwarf("Gimili", new DataTerceiraEra(1, 1, 1)));
-        legolas.atirarFlecha(new Dwarf("Gimili", new DataTerceiraEra(1, 1, 1)));
-        legolas.atirarFlecha(new Dwarf("Gimili", new DataTerceiraEra(1, 1, 1)));
-        legolas.atirarFlecha(new Dwarf("Gimili", new DataTerceiraEra(1, 1, 1)));
-        legolas.atirarFlecha(new Dwarf("Gimili", new DataTerceiraEra(1, 1, 1)));
-        legolas.atirarFlecha(new Dwarf("Gimili", new DataTerceiraEra(1, 1, 1)));
-        legolas.atirarFlecha(new Dwarf("Gimili", new DataTerceiraEra(1, 1, 1)));
-        legolas.atirarFlecha(new Dwarf("Gimili", new DataTerceiraEra(1, 1, 1)));
-        legolas.atirarFlecha(new Dwarf("Gimili", new DataTerceiraEra(1, 1, 1)));
-        legolas.atirarFlecha(new Dwarf("Gimili", new DataTerceiraEra(1, 1, 1)));
-        legolas.atirarFlecha(new Dwarf("Gimili", new DataTerceiraEra(1, 1, 1)));
-        legolas.atirarFlecha(new Dwarf("Gimili", new DataTerceiraEra(1, 1, 1)));
-        legolas.atirarFlecha(new Dwarf("Gimili", new DataTerceiraEra(1, 1, 1)));
-        legolas.atirarFlecha(new Dwarf("Gimili", new DataTerceiraEra(1, 1, 1)));
-        legolas.atirarFlecha(new Dwarf("Gimili", new DataTerceiraEra(1, 1, 1)));
-        legolas.atirarFlecha(new Dwarf("Gimili", new DataTerceiraEra(1, 1, 1)));
-        legolas.atirarFlecha(new Dwarf("Gimili", new DataTerceiraEra(1, 1, 1)));
-        legolas.atirarFlecha(new Dwarf("Gimili", new DataTerceiraEra(1, 1, 1)));
-        legolas.atirarFlecha(new Dwarf("Gimili", new DataTerceiraEra(1, 1, 1)));
-        legolas.atirarFlecha(new Dwarf("Gimili", new DataTerceiraEra(1, 1, 1)));
-        legolas.atirarFlecha(new Dwarf("Gimili", new DataTerceiraEra(1, 1, 1)));
-        legolas.atirarFlecha(new Dwarf("Gimili", new DataTerceiraEra(1, 1, 1)));
-        legolas.atirarFlecha(new Dwarf("Gimili", new DataTerceiraEra(1, 1, 1)));    
-        legolas.atirarFlecha(new Dwarf("Gimili", new DataTerceiraEra(1, 1, 1)));
-        legolas.atirarFlecha(new Dwarf("Gimili", new DataTerceiraEra(1, 1, 1)));
-        legolas.atirarFlecha(new Dwarf("Gimili", new DataTerceiraEra(1, 1, 1)));
-        legolas.atirarFlecha(new Dwarf("Gimili", new DataTerceiraEra(1, 1, 1)));
-        legolas.atirarFlecha(new Dwarf("Gimili", new DataTerceiraEra(1, 1, 1)));
-        legolas.atirarFlecha(new Dwarf("Gimili", new DataTerceiraEra(1, 1, 1)));
-        legolas.atirarFlecha(new Dwarf("Gimili", new DataTerceiraEra(1, 1, 1)));
-        legolas.atirarFlecha(new Dwarf("Gimili", new DataTerceiraEra(1, 1, 1)));
-        legolas.atirarFlecha(new Dwarf("Gimili", new DataTerceiraEra(1, 1, 1)));
-        legolas.atirarFlecha(new Dwarf("Gimili", new DataTerceiraEra(1, 1, 1)));
-        legolas.atirarFlecha(new Dwarf("Gimili", new DataTerceiraEra(1, 1, 1)));
-        legolas.atirarFlecha(new Dwarf("Gimili", new DataTerceiraEra(1, 1, 1)));
-        legolas.atirarFlecha(new Dwarf("Gimili", new DataTerceiraEra(1, 1, 1)));
-        legolas.atirarFlecha(new Dwarf("Gimili", new DataTerceiraEra(1, 1, 1)));
+         
+    }
         assertEquals("Legolas possui 1 flecha e 41 níveis de experiência.",
         legolas.toString());
     }

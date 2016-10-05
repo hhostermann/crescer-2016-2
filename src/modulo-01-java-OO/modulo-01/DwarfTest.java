@@ -19,19 +19,17 @@ public class DwarfTest
         Dwarf dwarf = new Dwarf("Gimli", new DataTerceiraEra(1,1,2000)); 
         dwarf.perdeVida(); 
         dwarf.perdeVida(); 
-        // Act 
-        dwarf.perdeVida(); 
         // Assert 
         assertEquals(0, dwarf.getExperiencia()); 
-        assertEquals(80, dwarf.getVida(), .0);    
+        assertEquals(90, dwarf.getVida(), .0);    
     } 
  
     @Test 
     public void dwarfPerderVidaComAnoNaoBissextoMeirelesNaoPerde() { 
-        Dwarf meireles = new Dwarf("Meireles", new DataTerceiraEra(2, 3, 2015)); 
+        Dwarf meireles = new Dwarf("Meireles", new DataTerceiraEra(2, 3, 1)); 
         meireles.perdeVida(); 
         assertEquals(0, meireles.getExperiencia()); 
-        assertEquals(100, meireles.getVida(), .0); 
+        assertEquals(110, meireles.getVida(), .0); 
     } 
  
     @Test 
