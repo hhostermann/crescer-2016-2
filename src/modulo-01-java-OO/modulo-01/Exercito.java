@@ -1,40 +1,38 @@
 import java.util.ArrayList;
 import java.util.Arrays;
-public abstract class Exercito{  
+public class Exercito{  
     
-    private ArrayList<Elfo> elfos; 
- 
-    public Exercito() { 
-        elfos = new ArrayList<>(); 
-        
-     } 
-     
-    public ArrayList<Elfo> getElfos() { 
-        return elfos; 
-    } 
-    public void adicionarElfo(Elfo elfo){
-        elfos.add(elfo);
-       
-    }
-    public void removerElfo(Elfo elfo) { 
-        elfos.remove(elfo); 
-    } 
+    private ArrayList<Elfo> exercito = new ArrayList<>();  
     
-    abstract void alistamentoMilitar(Elfo elfo);
-    
-}
+    private ArrayList<Elfo> porStatus = new ArrayList<>();
 
-/*poliformismo pro personagem
-
-puxa pro elfo
-
-e no elfo tu coloc
-e dai nos outros tu puxa
-    public Inventario() {
-    public String getDescricoesItens(){
-        String resultado = "";
-        for (Item itemAtual : getItens()){
-            resultado += String.format("%s,", itemAtual.getDescricao());
+    public void alistamentoMilitar(Elfo elfo) { 
+        boolean alistar = elfo instanceof ElfoVerde || elfo instanceof ElfoNoturno;
+        if (alistar){
+            exercito.add(elfo);
         }
-        return resultado.isEmpty() ?resultado : resultado.substring(0, resultado.length () -1);
-    }*/
+    } 
+    public ArrayList<Elfo> getExercito() { 
+        return this.exercito; 
+    } 
+
+    public Elfo buscar(String nome) {
+        Elfo elfoRetorno = null;
+        for(Elfo elfo : exercito){
+            if (elfo.getNome() == nome){
+                elfoRetorno = elfo;
+                break;
+            }
+        }
+        return elfoRetorno;
+    }
+    public ArrayList<Elfo> buscar(Status status) {
+        porStatus = new ArrayList<Elfo>();
+        for(Elfo elfo : exercito){
+            if (elfo.getStatus() == status){
+                porStatus.add(elfo);
+            }
+        }
+        return porStatus;
+    }
+}
