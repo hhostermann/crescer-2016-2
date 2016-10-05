@@ -1,19 +1,24 @@
 
-public class Elfo
-{
-
-   private String nome;
-   private int experiencia;
-   private Inventario inventario;
-   public Elfo(String n){  
-        this(n, 42); 
-       }   
+public class Elfo extends Personagem { 
+   protected double vida; 
+   protected int quantidadeFlechas;
+   public Elfo(String n) {  
+            this(n, 42); 
+            
+    }   
    public Elfo(String nome, int quantidadeFlechas) { 
-       this.nome = nome;
-       this.inventario = new Inventario();
+      super(nome);
+       this.vida = 100;
+       inicializarInventario(quantidadeFlechas);
+    }
+    
+   protected void inicializarInventario(int quantidadeFlechas) {
+       
        this.inventario.adicionarItem(new Item("Arco", 1)); 
        this.inventario.adicionarItem(new Item("Flechas", quantidadeFlechas >= 0 ? quantidadeFlechas : 42)); 
-    } 
+    }
+    
+   protected void alistamentoMilitar(Elfo elfo){}       
    public String getNome(){
         return nome;
     }
@@ -24,6 +29,8 @@ public class Elfo
       return inventario.getItens().get(0);
     }
    public Item getFlecha(){
+       
+       
       return inventario.getItens().get(1);
     }
    public void atirarFlecha(Dwarf dwarf){
@@ -45,4 +52,8 @@ public class Elfo
                                                                        this.experiencia,
                                                                        experienciaSingular ? "nível" : "níveis");
     }
-}
+
+ 
+       
+    }
+

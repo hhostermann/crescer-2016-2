@@ -1,58 +1,22 @@
 import java.util.ArrayList;
 
-public class Dwarf
-{
-    private int vida;
-    private String nome;
+public class Dwarf extends Personagem
+{ 
     private DataTerceiraEra dataNascimento;
-    private int experiencia;
-    private Status status;
     private double resutado; 
-    private Inventario inventario;
-    public Dwarf(String n, DataTerceiraEra dataNascimento){
-        this.nome = n;        
+     public Dwarf(String nome, DataTerceiraEra dataNascimento){
+        super(nome);        
+        vida = 110;
         this.dataNascimento = dataNascimento;
-        this.vida=110;
-        this.status = status.VIVO;
-        this.inventario = new Inventario(); 
-    }
- 
-    public Inventario getInventario(){
-        return inventario;
-    }
-        public int getVida(){
-        return vida;
-    }
-
-    public void perderVida() {
-        boolean estaMorto = status.equals(Status.MORTO);
-        // sai do método
-        if (estaMorto) {
-            return;
+    }  
+    protected void inicializarInventario(int quantidadeFlechas) {}
+    protected void alistamentoMilitar(Elfo elfo){}   
+    public void tentarSorte() {
+        boolean temSorte = getNumeroSorte() == -3333;
+        
+        if(temSorte){
+            inventario.aumentarUnidadesItens(1000);
         }
-
-        double numero = this.getNumeroSorte();
-        if (numero < 0) {
-            this.experiencia += 2;
-        }
-        if (numero > 100) {
-            int vidaAposFlechada = this.vida - 10;
-            if (vidaAposFlechada == 0) {
-                status = Status.MORTO;
-            }
-            if (vida > 0) {
-                vida = vidaAposFlechada;
-            }
-        }
-    }
-    public int getExperiencia(){
-        return experiencia;
-    }
-    public Status getStatus(){
-        return status;
-    }
-    public void setPontosDeVida(int vida){ 
-        this.vida = vida; 
     }
     
     public double getNumeroSorte(){
@@ -67,34 +31,26 @@ public class Dwarf
         return resutado;
     }
     public void perdeVida(){
-        if (this.vida >0){  
-            if (resutado > 0){
-                experiencia += 2;
+        boolean estaMorto = status.equals(status.MORTO);    
+        if (estaMorto){
+            return;
+        }
+        double numero = this.getNumeroSorte();
+        if (numero < 0){
+                this.experiencia += 2; 
             }
-            if (resutado<100){
-                vida -= 10;
+        if (numero > 100){
+            double vidaAposFlechada = this.vida - 10;
+            if (vidaAposFlechada == 0){
+                status = status.MORTO;
+             }
+             if (vida>0) {
+                 vida = vidaAposFlechada;
             }
         }
-        else {
-            this.vida = 0;
-            status = status.MORTO;
-        }
-
-        return resultado;
-    }
-    public void adicionarItem(Item item){
-        this.inventario.adicionarItem (item);
-    }
-    public void removerItem(Item item){
-        this.inventario.adicionarItem (item);
-    }
+    } 
     
-    public void tentarSorte() {
-        boolean temSorte = getNumeroSorte() == -3333;
-        
-        if(temSorte){
-            inventario.aumentarUnidadesItens(1000);
-        }
+    public void setPontosDeVida(int vida){ 
+        this.vida = vida; 
     }
-}
-  
+} 
