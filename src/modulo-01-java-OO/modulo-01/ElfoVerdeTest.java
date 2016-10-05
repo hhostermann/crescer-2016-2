@@ -41,15 +41,7 @@ public class ElfoVerdeTest
         assertEquals(100, balin.getVida(),.0);
         assertEquals(100, gloin.getVida(),.0);
     }
-    
-    @Test 
-    public void adicionarNoExercito() { 
-        Elfo elfoverde = new ElfoVerde("Aleatorioo", 44); 
-        elfoverde.alistamentoMilitar(elfoverde);  
-        boolean elfo = elfoverde.getElfos().contains(elfoverde);
-        assertTrue(elfo); 
-    } 
-}
+    }
 
 
 
