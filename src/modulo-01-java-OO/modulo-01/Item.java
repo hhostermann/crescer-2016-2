@@ -24,4 +24,11 @@ public class Item{
         this.quantidade = novaQuantidade;
     
     }
+    @Override 
+    public boolean equals(Object obj) { 
+        Item outro = (Item)obj; 
+        return 
+            this.descricao.equals(outro.descricao) && 
+            this.quantidade == outro.quantidade; 
+    } 
 }

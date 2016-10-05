@@ -1,10 +1,11 @@
 
-public class Personagem { 
+public abstract class Personagem extends Exercito { 
     protected String nome; 
     protected int experiencia; 
     protected Inventario inventario; 
     protected Status status;
-    protected int vida;
+    protected double vida;
+    protected Exercito exercito;
     public Personagem(String nome) { 
         this.nome = nome; 
         this.status = Status.VIVO; 
@@ -15,6 +16,10 @@ public class Personagem {
     } 
     public String getNome() { 
         return nome; 
+    } 
+    
+    public Exercito getExercito() { 
+        return exercito; 
     } 
     public Inventario getInventario() { 
         return inventario; 
@@ -31,9 +36,10 @@ public class Personagem {
     public void removerItem(Item item){
         this.inventario.removerItem (item);
     }
-    public int getVida(){
+    public double getVida(){
         return vida;
     } 
+    abstract void inicializarInventario(int quantidadeFlechas);
     
 }
     

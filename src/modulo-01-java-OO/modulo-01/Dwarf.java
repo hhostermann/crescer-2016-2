@@ -1,15 +1,23 @@
 import java.util.ArrayList;
 
 public class Dwarf extends Personagem
-{
-    private int vida; 
+{ 
     private DataTerceiraEra dataNascimento;
     private double resutado; 
      public Dwarf(String nome, DataTerceiraEra dataNascimento){
         super(nome);        
-        this.vida=110;
+        vida = 110;
         this.dataNascimento = dataNascimento;
     }  
+    protected void inicializarInventario(int quantidadeFlechas) {}
+    protected void alistamentoMilitar(Elfo elfo){}   
+    public void tentarSorte() {
+        boolean temSorte = getNumeroSorte() == -3333;
+        
+        if(temSorte){
+            inventario.aumentarUnidadesItens(1000);
+        }
+    }
     
     public double getNumeroSorte(){
         double resutado =101.0;
@@ -23,34 +31,26 @@ public class Dwarf extends Personagem
         return resutado;
     }
     public void perdeVida(){
-        if (this.vida >0){  
-            if (resutado > 0){
-                experiencia += 2; 
+        boolean estaMorto = status.equals(status.MORTO);    
+        if (estaMorto){
+            return;
+        }
+        double numero = this.getNumeroSorte();
+        if (numero < 0){
+                this.experiencia += 2; 
             }
-            if (resutado<100){
-                vida -= 10;
+        if (numero > 100){
+            double vidaAposFlechada = this.vida - 10;
+            if (vidaAposFlechada == 0){
+                status = status.MORTO;
+             }
+             if (vida>0) {
+                 vida = vidaAposFlechada;
             }
         }
-        else {
-            this.vida = 0;
-            status = status.MORTO;
-        }
-    }
- 
-    public int getVida(){
-        return vida;
     } 
-    
-    public void tentarSorte() {
-        boolean temSorte = getNumeroSorte() == -3333;
-        
-        if(temSorte){
-            inventario.aumentarUnidadesItens(1000);
-        }
-    }
     
     public void setPontosDeVida(int vida){ 
         this.vida = vida; 
     }
-}
-  
+} 
