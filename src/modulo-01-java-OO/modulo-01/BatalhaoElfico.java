@@ -3,6 +3,7 @@ import java.util.HashMap;
 public class BatalhaoElfico {
     HashMap<Integer, Elfo> batalhao = new HashMap<Integer, Elfo>();
     private HashMap<Status, ArrayList<Elfo>> porStatus;
+    private Elfo elfo;
     public void alistamentoMilitar(Elfo elfo) { 
         boolean alistar = elfo instanceof ElfoVerde || elfo instanceof ElfoNoturno;
         int ibgeElfico = elfo.getContadorDeElfos();
@@ -11,12 +12,19 @@ public class BatalhaoElfico {
             this.batalhao.put(ibgeElfico, elfo);
         }
     }
-        public HashMap<Integer, Elfo> getBatalhao(){
+    public HashMap<Integer, Elfo> getBatalhao(){
        return this.batalhao;
     }
-      public Elfo buscar(Integer contadorDeElfos  ) {
-        return batalhao.get(contadorDeElfos);
-    }
+    /*public Elfo buscar(String nome) {
+           
+        for(Integer ibgeElfico : this.batalhao.keySet()){
+            String nomePesquisar = elfo.getNome();
+            boolean acharElfo =  batalhao.contains(nome);                         // TO_DO
+            if (batalhao.contains(nomePesquisar)){
+                    return batalhao.get(contadorDeElfos);
+              }
+            }
+    }*/
     public void agruparPorStatus() {
         HashMap<Status, ArrayList<Elfo>> porStatus = new HashMap<>();
         porStatus.clear();
