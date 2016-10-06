@@ -15,13 +15,22 @@ public class BatalhaoElfico {
     public HashMap<Integer, Elfo> getBatalhao(){
        return this.batalhao;
     }
-    /*public Elfo buscar(String nome) {
+                    
+                        //KISband
+                        
+        public Elfo buscar(String nome){
+        return batalhao.get(nome);
+    }
+    
+    
+    /*
+    public Elfo buscar(String nome) {
         String nomePesquisar = nome;
-        for(Integer ibgeElfico : this.batalhao.keySet()){
+        for(int i=0; i < this.batalhao.size(); i++){
             if (nomePesquisar == elfo.getNome()){
-                int numeroElfico = ibgeElfico; 
+                int numeroElfico = elfo.getContadorDeElfos(); 
                 return batalhao.get(numeroElfico);
-                  break;                                                                            TO_DO
+                  break;                                                                           // TO_DO
               }
             else{
                 return null;
