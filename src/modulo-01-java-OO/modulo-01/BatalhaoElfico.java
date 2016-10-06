@@ -16,14 +16,18 @@ public class BatalhaoElfico {
        return this.batalhao;
     }
     /*public Elfo buscar(String nome) {
-           
+        String nomePesquisar = nome;
         for(Integer ibgeElfico : this.batalhao.keySet()){
-            String nomePesquisar = elfo.getNome();
-            boolean acharElfo =  batalhao.contains(nome);                         // TO_DO
-            if (batalhao.contains(nomePesquisar)){
-                    return batalhao.get(contadorDeElfos);
+            if (nomePesquisar == elfo.getNome()){
+                int numeroElfico = ibgeElfico; 
+                return batalhao.get(numeroElfico);
+                  break;                                                                            TO_DO
               }
+            else{
+                return null;
             }
+            }
+            
     }*/
     public void agruparPorStatus() {
         HashMap<Status, ArrayList<Elfo>> porStatus = new HashMap<>();
