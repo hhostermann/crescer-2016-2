@@ -1,18 +1,14 @@
 import java.util.ArrayList;
 import java.util.Arrays;
-public class Exercito{  
-    
+public class ExercitoDeElfo {  
     private ArrayList<Elfo> exercito = new ArrayList<>();  
-    
-    private ArrayList<Elfo> porStatus = new ArrayList<>();
-
     public void alistamentoMilitar(Elfo elfo) { 
         boolean alistar = elfo instanceof ElfoVerde || elfo instanceof ElfoNoturno;
         if (alistar){
             exercito.add(elfo);
         }
     } 
-    public ArrayList<Elfo> getExercito() { 
+    public ArrayList<Elfo> getExercitoDeElfo() { 
         return this.exercito; 
     } 
 
@@ -27,7 +23,7 @@ public class Exercito{
         return elfoRetorno;
     }
     public ArrayList<Elfo> buscar(Status status) {
-        porStatus = new ArrayList<Elfo>();
+        ArrayList<Elfo> porStatus = new ArrayList<Elfo>();
         for(Elfo elfo : exercito){
             if (elfo.getStatus() == status){
                 porStatus.add(elfo);
