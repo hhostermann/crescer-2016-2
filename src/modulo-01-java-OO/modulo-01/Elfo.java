@@ -2,6 +2,7 @@
 public class Elfo extends Personagem { 
    protected double vida; 
    protected int quantidadeFlechas;
+   private static int contadorDeElfos; 
    public Elfo(String n) {  
             this(n, 42); 
             
@@ -10,15 +11,16 @@ public class Elfo extends Personagem {
       super(nome);
        this.vida = 100;
        inicializarInventario(quantidadeFlechas);
+       contadorDeElfos++;
     }
-    
    protected void inicializarInventario(int quantidadeFlechas) {
        
        this.inventario.adicionarItem(new Item("Arco", 1)); 
        this.inventario.adicionarItem(new Item("Flechas", quantidadeFlechas >= 0 ? quantidadeFlechas : 42)); 
     }
-    
-   protected void alistamentoMilitar(Elfo elfo){}       
+   public static int getContadorDeElfos() { 
+        return contadorDeElfos; 
+    }  
    public String getNome(){
         return nome;
     }

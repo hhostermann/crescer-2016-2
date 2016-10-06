@@ -7,6 +7,12 @@ import org.junit.Test;
  
 public class ElfoVerdeTest
 {
+    
+    @After
+    //Executa antes de cada cenário de testes.
+    public void tearDown(){
+        System.gc();
+    }
      @Test
     public void ElfoVerdeAtiraDuasFlecha() {
         // Arrange

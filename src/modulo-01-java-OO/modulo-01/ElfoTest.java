@@ -4,6 +4,11 @@ import org.junit.Before;
 import org.junit.Test;
 public class ElfoTest
 {
+     @After 
+    // executa após cada cenário de testes. 
+    public void tearDown() { 
+        System.gc(); 
+    } 
     @Test
 
     public void elfoNasceComNome() {
@@ -134,6 +139,22 @@ public class ElfoTest
         assertEquals(Status.VIVO, elfo.getStatus());
 
     }
+    @Test 
+    public void aoCriarElfoIncrementaContador() { 
+        int contadorDeElfos = Elfo.getContadorDeElfos();
+        Elfo elfo = new Elfo("Nyna Magsandoral", 42); 
+        assertEquals(1+contadorDeElfos, Elfo.getContadorDeElfos()); 
+    } 
+ 
+    @Test 
+    public void aoCriarVariosElfosIncrementaContador() { 
+        int contadorDeElfos = Elfo.getContadorDeElfos();
+        Elfo elfo =new Elfo("Nyna Magsandoral", 42); 
+        Elfo elfo1 = new ElfoVerde("Flardryn Brynan", 42); 
+        Elfo elfo2 = new Elfo("Isilfarrel Xilrieth", 42); 
+        assertEquals(3 + contadorDeElfos , Elfo.getContadorDeElfos()); 
+    } 
+ 
 }
 
 

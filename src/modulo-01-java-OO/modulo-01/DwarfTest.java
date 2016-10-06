@@ -8,6 +8,11 @@ import org.junit.Test;
 
 public class DwarfTest
 {
+     @After 
+    // executa após cada cenário de testes. 
+    public void tearDown() { 
+        System.gc(); 
+    } 
     @Test
     public void criarDwarf(){
         Dwarf dwarfTeste = new Dwarf("Aleatorio", new DataTerceiraEra(1,1,2000));

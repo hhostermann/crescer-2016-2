@@ -7,6 +7,11 @@ import org.junit.Test;
 
 public class InventarioTest
 {
+     @After 
+    // executa após cada cenário de testes. 
+    public void tearDown() { 
+        System.gc(); 
+    } 
     @Test
     public void ordenaritens(){
         Inventario itens = new Inventario();
