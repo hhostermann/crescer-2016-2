@@ -7,7 +7,13 @@ import org.junit.Test;
 
 public class ElfoNoturnoTest
 {
-     @Test
+  
+    @After
+    //Executa antes de cada cenário de testes.
+    public void tearDown(){
+        System.gc();
+    }
+    @Test
     public void ElfoNoturnoAtiraDuasFlecha() {
         // Arrange
         ElfoNoturno legolas = new ElfoNoturno("Batman" , 42);
