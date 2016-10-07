@@ -1,61 +1,71 @@
+public class Elfo extends Personagem {
 
-public class Elfo extends Personagem { 
-   protected double vida; 
-   protected int quantidadeFlechas;
-   private static int contadorDeElfos; 
-   public Elfo(String n) {  
-            this(n, 42); 
-            
-    }   
-   public Elfo(String nome, int quantidadeFlechas) { 
-      super(nome);
-       this.vida = 100;
-       inicializarInventario(quantidadeFlechas);
-       contadorDeElfos++;
-    }
-   protected void inicializarInventario(int quantidadeFlechas) {
-       
-       this.inventario.adicionarItem(new Item("Arco", 1)); 
-       this.inventario.adicionarItem(new Item("Flechas", quantidadeFlechas >= 0 ? quantidadeFlechas : 42)); 
-    }
-   public static int getContadorDeElfos() { 
-        return contadorDeElfos; 
-    }  
-   public String getNome(){
-        return nome;
-    }
-   public int getExperiencia(){
-        return experiencia;
-    }
-   public Item getArco(){
-      return inventario.getItens().get(0);
-    }
-   public Item getFlecha(){
-       
-       
-      return inventario.getItens().get(1);
-    }
-   public void atirarFlecha(Dwarf dwarf){
-       int quantidadeFlechas = getFlecha().getQuantidade();
-       boolean temFlecha = quantidadeFlechas > 0;
-       if (temFlecha){
-           getFlecha().setQuantidade(quantidadeFlechas - 1);
-           experiencia++;
-           dwarf.perdeVida();
-       }
-   }
-   public String toString(){
-       boolean flechaSingular = inventario.getItens().get(1).getQuantidade() == 1;
-       boolean experienciaSingular = this.experiencia == 0 || this.experiencia == 1;
-       
-       return String.format("%s possui %d %s e %d %s de experiência.", this.nome, 
-                                                                       inventario.getItens().get(1).getQuantidade(),
-                                                                       flechaSingular ? "flecha" : "flechas", 
-                                                                       this.experiencia,
-                                                                       experienciaSingular ? "nível" : "níveis");
+    private static int contadorDeElfos;
+    
+    public Elfo(String n) {
+        // Chamando construtor debaixo
+        this(n, 42);
     }
 
- 
-       
+    public Elfo(String nome, int quantidadeFlechas) {
+        super(nome);
+        this.vida = 100;
+        this.inicializarInventario(quantidadeFlechas);
+        Elfo.contadorDeElfos++;
+    }
+    
+    // ~Elfo() { }
+    // https://docs.oracle.com/javase/7/docs/api/java/lang/Object.html#finalize()
+    protected void finalize() throws Throwable {
+        super.finalize();
+        Elfo.contadorDeElfos--;
+    }
+    
+    public static int getContadorDeElfos() {
+        return Elfo.contadorDeElfos;
+    }
+
+    public Item getArco() {
+        return this.inventario.getItens().get(0);
+    }
+
+    public Item getFlecha() {
+        return this.inventario.getItens().get(1);
+    }
+
+    public void atirarFlecha(Dwarf dwarf) {
+        atirarFlechas(dwarf, 1);
+    }
+
+    protected void atirarFlechas(Dwarf dwarf, int fatorExperiencia) {
+        int quantidadeFlechas = getFlecha().getQuantidade();
+        boolean temFlecha = quantidadeFlechas > 0;
+        if (temFlecha) {
+            getFlecha().setQuantidade(quantidadeFlechas - 1);
+            experiencia += 1 * fatorExperiencia;
+            dwarf.perderVida();
+        }
+    }
+
+    protected void inicializarInventario(int quantidadeFlechas) {
+        this.inventario.adicionarItem(new Item("Arco", 1));
+        this.inventario.adicionarItem(new Item("Flechas", quantidadeFlechas >= 0 ? quantidadeFlechas : 42));
+    }
+
+    public String toString() {
+        //return "<nome> possui <flechas> flechas e <exp> níveis de experiência.";
+
+        int quantidadeFlechas = this.getFlecha().getQuantidade();
+        boolean flechaNoSingular = quantidadeFlechas == 1;
+        boolean experienciaNoSingular = this.experiencia == 0 || this.experiencia == 1;
+
+        return String.format("%s possui %d %s e %d %s de experiência.",
+            this.nome,
+            quantidadeFlechas,
+            // ?:
+            flechaNoSingular ? "flecha" : "flechas",
+            this.experiencia,
+            experienciaNoSingular ? "nível" : "níveis"
+        );
     }
 

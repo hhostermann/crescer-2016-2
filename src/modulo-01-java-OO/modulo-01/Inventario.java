@@ -66,6 +66,11 @@ public class Inventario {
         ordenarItens(TipoOrdenacao.ASCENDENTE);
 
     }
+
+    public void ordenarItens() {
+        ordenarItens(TipoOrdenacao.ASCENDENTE);
+    }
+
     public void ordenarItens(TipoOrdenacao tipoOrdenacao) {
         // Versão mais estável do Bubblesort - Melhor caso O(n), Pior caso O(n^2)
         // homenagem ao do-while: para forçar entrada na lógica
@@ -83,6 +88,7 @@ public class Inventario {
 
 
                 boolean precisaTrocar = 
+                    ascendente ? itemAtual.getQuantidade() > proximo.getQuantidade() : itemAtual.getQuantidade() < proximo.getQuantidade();
 
 
                     ascendente ? itemAtual.getQuantidade() > proximo.getQuantidade() : itemAtual.getQuantidade() < proximo.getQuantidade();
@@ -95,12 +101,13 @@ public class Inventario {
                     this.itens.set(j + 1, itemAtual);
 
                     posicoesSendoTrocadas = true;
-
                 }
-
             }
-
         } while (posicoesSendoTrocadas);
+
     }
 }
+
+
+
 

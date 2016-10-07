@@ -1,13 +1,7 @@
-
-public class DataTerceiraEra
-{
-    // variáveis de instância - substitua o exemplo abaixo pelo seu próprio
-    private int dia;
-    private int mes;
-    private int ano;
-
-    public DataTerceiraEra(int dia, int mes, int ano)
-    {
+public final class DataTerceiraEra {
+    private int dia, mes, ano;
+    
+    public DataTerceiraEra(int dia, int mes, int ano) {
         this.dia = dia;
         this.mes = mes;
         this.ano = ano;
