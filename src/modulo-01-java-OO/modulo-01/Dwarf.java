@@ -1,56 +1,73 @@
-import java.util.ArrayList;
 
-public class Dwarf extends Personagem
+public class Dwarf
 { 
-    private DataTerceiraEra dataNascimento;
-    private double resutado; 
-     public Dwarf(String nome, DataTerceiraEra dataNascimento){
-        super(nome);        
-        vida = 110;
+   private String nome;
+   private DataTerceiraEra dataNascimento ;
+   private int hP;
+   private Status status;
+   private int xP;
+   private Inventario inventario;
+   public Dwarf(String nome, DataTerceiraEra dataNascimento)
+    {
+        this.nome = nome;
         this.dataNascimento = dataNascimento;
-    }  
-    protected void inicializarInventario(int quantidadeFlechas) {}
-    protected void alistamentoMilitar(Elfo elfo){}   
-    public void tentarSorte() {
-        boolean temSorte = getNumeroSorte() == -3333;
+        this.status = status.VIVO;
+        this.inventario = new Inventario(); 
+        this.hP=110;
+    }
+   public Status getStatus(){
+       return status;
+    }
+   public Inventario getInventario(){
+       return inventario;
+    }
+   public int getXP(){
+       return xP;
+    }
+   public int getHP(){
+       return hP;
+    }
+   public void perderVida(){
+       if (hP <=0){
+           hP = 0;
+           status = status.MORTO;
+        }
+       if (hP >0){
+            double sorte = getNumeroSorte();
+            if (sorte < 0){
+                xP = xP + 2;
+            }
+            if (sorte > 100){
+                hP = hP - 10;
         
-        if(temSorte){
-            inventario.aumentarUnidadesItens(1000);
+            }      
         }
     }
-    
-    public double getNumeroSorte(){
-        double resutado =101.0;
-        boolean bissexto = dataNascimento.ehBissexto();
-        if(bissexto && this.vida>=80 && this.vida<=90){
-            resutado *= -33.0;
+   public double getNumeroSorte(){
+       boolean bissexto = dataNascimento.ehBissexto();
+       double valorInicial = 101.0;
+       if (bissexto && (hP >= 80 && hP <= 90)){
+           valorInicial *= -33;
+           
         }
-        if (!bissexto && ("Seixas".equals(this.nome) || "Meireles".equals(this.nome))){
-            resutado = resutado*33 % 100;
+       if (!bissexto && (nome == "Seixas" || nome == "Meireles")){
+           valorInicial *= 33 % 100;
+           
         }
-        return resutado;
+       return valorInicial;
     }
-    public void perdeVida(){
-        boolean estaMorto = status.equals(status.MORTO);    
-        if (estaMorto){
-            return;
-        }
-        double numero = this.getNumeroSorte();
-        if (numero < 0){
-                this.experiencia += 2; 
-            }
-        if (numero > 100){
-            double vidaAposFlechada = this.vida - 10;
-            if (vidaAposFlechada == 0){
-                status = status.MORTO;
-             }
-             if (vida>0) {
-                 vida = vidaAposFlechada;
-            }
-        }
-    } 
-    
-    public void setPontosDeVida(int vida){ 
-        this.vida = vida; 
+   public void adicionarItem(Item item){
+       this.inventario.adicionarItem(item);
     }
-} 
+   public void removerItem(Item item){
+       this.inventario.removerItem(item);
+    }
+   public void tentarSorte(){
+       boolean sorte = getNumeroSorte() == -3333;
+       if (sorte){
+           inventario.AumentarQuantidadeItens(1000);
+           
+        }
+        
+    }
+}

@@ -1,106 +1,131 @@
-import java.util.ArrayList;
-import java.util.Arrays;
-public class Inventario { 
-    private ArrayList<Item> itens; 
- 
-    public Inventario() { 
-        itens = new ArrayList<>(); 
-     } 
-    public ArrayList<Item> getItens() { 
-        return itens; 
-    } 
-     
-    public void adicionarItem(Item item) { 
-        itens.add(item); 
-    } 
-     
-    public void removerItem(Item item) { 
-        itens.remove(item); 
-    } 
-    public String getDescricoesItens(){
-        String resultado = "";
-        for (Item itemAtual : getItens()){
-            resultado += String.format("%s,", itemAtual.getDescricao());
-        }
-        return resultado.isEmpty() ?resultado : resultado.substring(0, resultado.length () -1);
-    }
-    public Item getItemMaisPopuloso(){
-        Item maisPopuloso = null;
-        int maiorQuantidade = 0;
-        for (Item itemAtual : getItens()){
-            if (itemAtual.getQuantidade() > maiorQuantidade){
-                maisPopuloso = itemAtual;
-                maiorQuantidade = itemAtual.getQuantidade();
+import java.util.ArrayList; 
+public class Inventario
+{
+    private ArrayList<Item> inventario = new ArrayList<>();
+    private TipoOrdenacao tipo;
     
-            }
-        }
-        return maisPopuloso;
+    public ArrayList<Item> getItem(){//retorna inventario
+        return inventario;
     }
-    public void aumentarUnidadesItens(int quantidade) {
-        for(Item itemAtual : getItens()){
+    public void adicionarItem(Item item){ //adiciona item
+        inventario.add(item);
+    }
+    public void removerItem(Item item){//remove item
+        inventario.remove(item);
+    }
+    public String getDescricoesItens(){ // retorna o nome dos itens separados por ","
+        String retorno = ""; 
+        for (Item itemAtual : getItem()){
+            retorno += String.format("%s, ", itemAtual.getDescricao());
+        }
+        return retorno.isEmpty() ? retorno : retorno.substring(0, retorno.length () -2);
+        }
+    public void AumentarQuantidadeItens(int quantidade){ //aumenta a quantidade do item 
+        for (Item itemAtual : getItem()){
             itemAtual.setQuantidade(quantidade + itemAtual.getQuantidade());
+       }
+       }   
+    public Item itemMaiorQuantidade(){ //pega numero que tem maior quantidade no inventario 
+        Item maiorItem = null;
+        for (Item itemAtual : getItem()) { 
+            if (itemAtual.getQuantidade()< maiorItem.getQuantidade()){
+                maiorItem  = itemAtual;                     
         }
-    }
-    public void somarUnidadesItens(){
-        int soma = 0;
-        for (Item itemAtual : getItens()){
-            int retorno = itemAtual.getQuantidade();
-            boolean positivo = retorno > 0;
-            int somaQuantidade = (1000 * soma) + retorno;
-            if (!positivo){
-                retorno = Math.abs(retorno);
-            }
-            for (int i = 0; i <= retorno; i++){
-                soma += i;
-            }
-            //positivo == true ? itemAtual.setQuantidade (somaQuantidade) : itemAtual.setQuantidade (somaQuantidade);
-            if (positivo){
-                itemAtual.setQuantidade ((1000 * soma) + retorno);
-            }
-            else {
-                itemAtual.setQuantidade ((1000 * soma) + retorno);
-            }
         }
-    }      
-    public void ordenarItens() {
-        ordenarItens(TipoOrdenacao.ASCENDENTE);
-
+        return maiorItem;
     }
-    public void ordenarItens(TipoOrdenacao tipoOrdenacao) {
-        // Versão mais estável do Bubblesort - Melhor caso O(n), Pior caso O(n^2)
-        // homenagem ao do-while: para forçar entrada na lógica
-        boolean posicoesSendoTrocadas;
-        boolean ascendente = tipoOrdenacao == TipoOrdenacao.ASCENDENTE;
-        do {
-
-            posicoesSendoTrocadas = false;
-
-            for (int j = 0; j < this.itens.size() - 1; j++) {
-
-                Item itemAtual = this.itens.get(j);
-
-                Item proximo = this.itens.get(j + 1);
-
-
-                boolean precisaTrocar = 
-
-
-                    ascendente ? itemAtual.getQuantidade() > proximo.getQuantidade() : itemAtual.getQuantidade() < proximo.getQuantidade();
-
-
-                if (precisaTrocar) {
-
-                    this.itens.set(j, proximo);
-
-                    this.itens.set(j + 1, itemAtual);
-
-                    posicoesSendoTrocadas = true;
-
+    public void ordenarItens(TipoOrdenacao tipo){
+        Item reserva;
+        for(int i=inventario.size()-1; i>= 1; i--){  
+            for(int j=0; j<i ; j++){
+                if(tipo == TipoOrdenacao.ASCENDENTE){
+                    if(inventario.get(j).getQuantidade()>inventario.get(j+1).getQuantidade()){
+                        reserva = inventario.get(j);
+                        inventario.set(j, inventario.get(j+1));
+                        inventario.set(j+1, reserva);
+                    }
                 }
-
+                else if(tipo == TipoOrdenacao.DESCENDENTE){
+                    if(inventario.get(j).getQuantidade()<inventario.get(j+1).getQuantidade()){
+                        reserva = inventario.get(j);
+                        inventario.set(j, inventario.get(j+1));
+                        inventario.set(j+1, reserva);
+                    }
+                }
             }
-
-        } while (posicoesSendoTrocadas);
+        }
+    }
+    public void aumentarQuantidadePorItem() {
+        for (Item itens : this.inventario) {
+            itens.aumentarQuantidade();
+        }
+    }
+    public Item buscar(String descricao){
+        Item resultado = null;
+        for(int i=0; i<inventario.size(); i++){
+            Item itemAtual = inventario.get(i);
+            if(descricao.equals(itemAtual.getDescricao())){ //n comparar com ==
+                resultado = itemAtual;
+                break;
+            }
+        }
+        return resultado;
+    }
+    public double getMediaQuantidades(){
+        int somador = getSomatorioQuantidades (), sizeInventario = inventario.size();
+        double media = 0;
+        return media = somador / sizeInventario; 
+    }   
+    public int getSomatorioQuantidades (){
+        int somador  = 0;
+        for(int i=0; i<inventario.size(); i++){
+            int quantidadeItemAtual = inventario.get(i).getQuantidade();
+            somador += quantidadeItemAtual;
+        }
+        return somador;
+    }
+    public Inventario unir(Inventario inventario){
+        ArrayList<Item> itemInventario = inventario.getItem();
+        Inventario resultado = new Inventario();
+        for(int i=0; i<this.inventario.size(); i++){
+            Item itemAtual = this.inventario.get(i);
+            resultado.adicionarItem(itemAtual);
+        }
+        for(int i=0; i<itemInventario.size(); i++){
+            Item itemAtual = itemInventario.get(i);
+            resultado.adicionarItem(itemAtual);
+        }
+        return resultado;
+    }
+    public Inventario diferenciar(Inventario inventario){
+        ArrayList<Item> itemInventarioRecebido = inventario.getItem();
+        Inventario resultado = new Inventario();
+        for(int i=0; i<this.inventario.size(); i++){
+            boolean verdadeiro = false;
+            Item itemAtual = this.inventario.get(i);
+            for(int j=0; j<itemInventarioRecebido.size(); j++){
+                if(itemAtual.getDescricao() == itemInventarioRecebido.get(j).getDescricao()){
+                    verdadeiro = true;
+                    break;
+                }
+            }      
+            if(!verdadeiro)
+                resultado.adicionarItem(itemAtual);
+        }
+        return resultado;
+    }
+    public Inventario cruzar(Inventario inventario){
+        ArrayList<Item> itemInventarioRecebido = inventario.getItem();
+        Inventario resultado = new Inventario();
+        for(int i=0; i<this.inventario.size(); i++){
+            boolean tem = false;
+            Item itemAtual = this.inventario.get(i);
+            for(int j=0; j<itemInventarioRecebido.size(); j++){
+                if(itemAtual.getDescricao() == itemInventarioRecebido.get(j).getDescricao()){
+                    resultado.adicionarItem(itemAtual);
+                }
+            }      
+        }
+        return resultado;
     }
 }
-
