@@ -1,6 +1,5 @@
 import java.util.ArrayList; 
-public class Inventario
-{
+public class Inventario {
     private ArrayList<Item> inventario = new ArrayList<>();
     private TipoOrdenacao tipo;
     
