@@ -5,7 +5,6 @@ public abstract class Personagem  {
     protected Inventario inventario; 
     protected Status status;
     protected double vida;
-    protected ExercitoDeElfo exercito;
     public Personagem(String nome) { 
         this.nome = nome; 
         this.status = Status.VIVO; 
@@ -16,11 +15,7 @@ public abstract class Personagem  {
     } 
     public String getNome() { 
         return nome; 
-    } 
-    
-    public ExercitoDeElfo getExercitoDeElfo() { 
-        return exercito; 
-    } 
+    }   
     public Inventario getInventario() { 
         return inventario; 
     } 

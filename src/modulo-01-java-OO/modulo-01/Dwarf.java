@@ -1,18 +1,15 @@
 
-public class Dwarf
-{ 
-   private String nome;
-   private DataTerceiraEra dataNascimento ;
-   private int hP;
-   private Status status;
-   private int xP;
-   private Inventario inventario;
+public class Dwarf extends Personagem{ 
+
+   protected DataTerceiraEra dataNascimento ;
+   protected int hP; 
+   protected Status status;
+
+   protected Inventario inventario;
    public Dwarf(String nome, DataTerceiraEra dataNascimento)
     {
-        this.nome = nome;
+       super(nome);
         this.dataNascimento = dataNascimento;
-        this.status = status.VIVO;
-        this.inventario = new Inventario(); 
         this.hP=110;
     }
    public Status getStatus(){
@@ -20,9 +17,6 @@ public class Dwarf
     }
    public Inventario getInventario(){
        return inventario;
-    }
-   public int getXP(){
-       return xP;
     }
    public int getHP(){
        return hP;
@@ -35,10 +29,10 @@ public class Dwarf
        if (hP >0){
             double sorte = getNumeroSorte();
             if (sorte < 0){
-                xP = xP + 2;
+                experiencia += 2;
             }
             if (sorte > 100){
-                hP = hP - 10;
+                hP =  - 10;
         
             }      
         }
@@ -56,12 +50,6 @@ public class Dwarf
         }
        return valorInicial;
     }
-   public void adicionarItem(Item item){
-       this.inventario.adicionarItem(item);
-    }
-   public void removerItem(Item item){
-       this.inventario.removerItem(item);
-    }
    public void tentarSorte(){
        boolean sorte = getNumeroSorte() == -3333;
        if (sorte){
@@ -70,4 +58,5 @@ public class Dwarf
         }
         
     }
+   public void inicializarInventario(int quantidadeFlechas){};
 }

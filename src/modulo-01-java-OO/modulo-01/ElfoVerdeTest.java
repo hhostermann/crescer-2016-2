@@ -1,5 +1,4 @@
 
-
 import static org.junit.Assert.*;
 import org.junit.After;
 import org.junit.Before;
@@ -7,12 +6,6 @@ import org.junit.Test;
  
 public class ElfoVerdeTest
 {
-    
-    @After
-    //Executa antes de cada cenário de testes.
-    public void tearDown(){
-        System.gc();
-    }
      @Test
     public void ElfoVerdeAtiraDuasFlecha() {
         // Arrange
@@ -26,7 +19,7 @@ public class ElfoVerdeTest
         ElfoVerde ElfoVerde = new ElfoVerde("ElfoVerde" , 42);
         Dwarf balin = new Dwarf("Gimili", new DataTerceiraEra(1, 1, 1));
         ElfoVerde.atirarFlecha(balin);
-        assertEquals(100, balin.getVida(),.0);
+        assertEquals(100, balin.getHP(),.0);
     }
     @Test
     public void ElfoVerdeAtiraDuasFlechaEmUmDwarf() {
@@ -35,7 +28,7 @@ public class ElfoVerdeTest
         Dwarf balin = new Dwarf("Gimili", new DataTerceiraEra(1, 1, 1));
         ElfoVerde.atirarFlecha(balin);
         ElfoVerde.atirarFlecha(balin);
-        assertEquals(90, balin.getVida(),.0);
+        assertEquals(90, balin.getHP(),.0);
     }
     @Test
     public void ElfoVerdeAtiraUmaFlechaEmCadaDwarf() {
@@ -44,8 +37,9 @@ public class ElfoVerdeTest
         Dwarf gloin = new Dwarf("Gimili", new DataTerceiraEra(1, 1, 1));
         ElfoVerde.atirarFlecha(balin);
         ElfoVerde.atirarFlecha(gloin);
-        assertEquals(100, balin.getVida(),.0);
-        assertEquals(100, gloin.getVida(),.0);
+        assertEquals (2, ElfoVerde.getXP());
+        assertEquals(100, balin.getHP(),.0);
+        assertEquals(100, gloin.getHP(),.0);
     }
     }
 

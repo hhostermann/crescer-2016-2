@@ -15,7 +15,7 @@ public class ElfoNoturno extends Elfo {
            if (temFlecha){
            getFlecha().setQuantidade(quantidadeFlechas - 1);
            experiencia = experiencia + 3;
-           dwarf.perdeVida();
+           dwarf.perderVida();
            vida = vida * (0.95);
            }
        }

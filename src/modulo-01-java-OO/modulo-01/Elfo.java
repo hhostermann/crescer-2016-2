@@ -1,14 +1,14 @@
-public class Elfo
-{
+public class Elfo extends Personagem{
     private String nome;
     private Item arco;
     private Item flecha;
     private int xP;
-    
+    private int hP;
     public Elfo(String nome){
-        this.nome = nome;
+        super(nome);
         arco = new Item("arco", 1);
         flecha = new Item ("flecha", 42);
+        hP = 100;
     }
     public void atirarFlecha(Dwarf dwarf){
         int flechaNum = flecha.getQuantidade();
@@ -32,7 +32,5 @@ public class Elfo
         return String.format ("%s possui %d %s e %d %s de experiência.", this.nome, flechaAtual, flechaSing ? "flecha" : "flechas",
                                                                      xpAtual, xpSing ? "nível" : "níveis");
     }
-                                                                             
-    
-   
+    public void inicializarInventario (int quantidadeFlechas){}
     } 

@@ -79,8 +79,8 @@ public class DwarfTest
     public void dwarfAdicionaDoisItens(){
         Dwarf dwarfTest = new Dwarf ("Titu", new DataTerceiraEra (1,1,2016));
         Item machado = new Item ("machado", 1);
-        dwarfTest.adicionarItem(machado);
         Item escudo = new Item ("escudo", 1);
+        dwarfTest.adicionarItem(machado);
         dwarfTest.adicionarItem(escudo);
         assertEquals (2, dwarfTest.getInventario().getItem().size());
     }
@@ -88,20 +88,21 @@ public class DwarfTest
     public void dwarfAdicionaTresItensERemoveUm(){
         Dwarf dwarfTest = new Dwarf ("Titu", new DataTerceiraEra (1,1,2016));
         Item machado = new Item ("machado", 1);
-        dwarfTest.adicionarItem(machado);
         Item escudo = new Item ("escudo", 1);
-        dwarfTest.adicionarItem(escudo);
         Item caneca = new Item ("Caneca", 1);
+        dwarfTest.adicionarItem(machado);
+        dwarfTest.adicionarItem(escudo);
         dwarfTest.adicionarItem(caneca);
         dwarfTest.removerItem(caneca);
         assertEquals (2, dwarfTest.getInventario().getItem().size());
-    }   public void dwarfAdicionaTresItensERemoveUmeTentaSorte(){
+    }   
+    public void dwarfAdicionaTresItensERemoveUmeTentaSorte(){
         Dwarf dwarfTest = new Dwarf ("Titu", new DataTerceiraEra (1,1,2016));
         Item machado = new Item ("machado", 4);
-        dwarfTest.adicionarItem(machado);
+        Item caneca = new Item ("Caneca", 16);
         Item escudo = new Item ("escudo", 3);
         dwarfTest.adicionarItem(escudo);
-        Item caneca = new Item ("Caneca", 16);
+        dwarfTest.adicionarItem(machado);
         dwarfTest.adicionarItem(caneca);
         dwarfTest.removerItem(caneca);
         dwarfTest.tentarSorte();
