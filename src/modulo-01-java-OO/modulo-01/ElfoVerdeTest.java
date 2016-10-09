@@ -28,7 +28,7 @@ public class ElfoVerdeTest
         Dwarf balin = new Dwarf("Gimili", new DataTerceiraEra(1, 1, 1));
         ElfoVerde.atirarFlecha(balin);
         ElfoVerde.atirarFlecha(balin);
-        assertEquals(90, balin.getHP(),.0);
+        assertEquals(90, balin.getHP());
     }
     @Test
     public void ElfoVerdeAtiraUmaFlechaEmCadaDwarf() {
@@ -37,7 +37,7 @@ public class ElfoVerdeTest
         Dwarf gloin = new Dwarf("Gimili", new DataTerceiraEra(1, 1, 1));
         ElfoVerde.atirarFlecha(balin);
         ElfoVerde.atirarFlecha(gloin);
-        assertEquals (2, ElfoVerde.getXP());
+        assertEquals (4, ElfoVerde.getExperiencia());
         assertEquals(100, balin.getHP(),.0);
         assertEquals(100, gloin.getHP(),.0);
     }
