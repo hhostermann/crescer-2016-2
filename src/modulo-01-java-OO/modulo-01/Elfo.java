@@ -4,11 +4,13 @@ public class Elfo extends Personagem{
     private Item flecha;
     private int xP;
     private int hP;
+    protected static int ibgElfico = 0;
     public Elfo(String nome){
         super(nome);
         arco = new Item("arco", 1);
         flecha = new Item ("flecha", 42);
         hP = 100;
+        ibgElfico ++;
     }
     public void atirarFlecha(Dwarf dwarf){
         int flechaNum = flecha.getQuantidade();
