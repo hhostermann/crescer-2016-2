@@ -42,7 +42,7 @@ public class DwarfTest
         assertEquals (-3333, dwarfTest.getNumeroSorte(), 0.0);
         assertEquals (90, dwarfTest.getHP(), 0.0);
         assertEquals (Status.VIVO, dwarfTest.getStatus());
-        assertEquals (6, dwarfTest.getXP());
+        assertEquals (6, dwarfTest.getExperiencia());
     }
     @Test
     public void dwarfTentaSorteNaoBissextoMeirelesPerdeVida(){
@@ -67,12 +67,11 @@ public class DwarfTest
     }
     @Test
     public void dwarfAdicionaUmItem(){
-    
         Dwarf dwarfTest = new Dwarf ("Emiliano", new DataTerceiraEra(1,1,2017));
         Item espada = new Item ("espada", 1);
         dwarfTest.adicionarItem(espada);
         assertTrue (dwarfTest.getInventario().getItem().contains(espada));
-        assertEquals (1 , dwarfTest.getInventario().getItem().size());
+
         
     }
     @Test 
@@ -82,7 +81,8 @@ public class DwarfTest
         Item escudo = new Item ("escudo", 1);
         dwarfTest.adicionarItem(machado);
         dwarfTest.adicionarItem(escudo);
-        assertEquals (2, dwarfTest.getInventario().getItem().size());
+        assertTrue (dwarfTest.getInventario().getItem().contains(machado));
+        assertTrue (dwarfTest.getInventario().getItem().contains(escudo));
     }
     @Test 
     public void dwarfAdicionaTresItensERemoveUm(){
@@ -94,7 +94,9 @@ public class DwarfTest
         dwarfTest.adicionarItem(escudo);
         dwarfTest.adicionarItem(caneca);
         dwarfTest.removerItem(caneca);
-        assertEquals (2, dwarfTest.getInventario().getItem().size());
+        assertTrue (dwarfTest.getInventario().getItem().contains(machado));
+        assertTrue (dwarfTest.getInventario().getItem().contains(escudo));
+        assertFalse (dwarfTest.getInventario().getItem().contains(caneca));
     }   
     public void dwarfAdicionaTresItensERemoveUmeTentaSorte(){
         Dwarf dwarfTest = new Dwarf ("Titu", new DataTerceiraEra (1,1,2016));
