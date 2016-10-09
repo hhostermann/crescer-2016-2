@@ -11,6 +11,7 @@ public class Dwarf extends Personagem{
        super(nome);
         this.dataNascimento = dataNascimento;
         this.hP=110;
+        status = status.VIVO;
     }
    public Status getStatus(){
        return status;
@@ -32,7 +33,7 @@ public class Dwarf extends Personagem{
                 experiencia += 2;
             }
             if (sorte > 100){
-                hP =  - 10;
+                hP -= 10;
         
             }      
         }
