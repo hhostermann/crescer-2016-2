@@ -1,43 +1,69 @@
-import java.util.*;
-
-public class HobbitContador {
-    public int calcularDiferenca(ArrayList<ArrayList<Integer>> pares) {
-        int somaProdutos = 0, somaMmc = 0;
-
-        for (ArrayList<Integer> par : pares) {
-            int a = par.get(0), b = par.get(1);
-            somaProdutos += a * b;
-            somaMmc += new CalculadorMmc(a, b).calcular();
-        }
-        
-        // Fluent APIs
-        // crieUmHobbit().depoisCalculeMmc().depoisEnviePorEmail();
-
-        return somaProdutos - somaMmc;
-    }
-
-    private class CalculadorMmc {
-        private int a, b, mdc;
-        private CalculadorMmc(int a, int b) {
-            this.a = a;
-            this.b = b;
-            this.mdc = mdc(a, b);
-        }
-
-        // https://en.wikipedia.org/wiki/Least_common_multiple
-        private int calcular() {
-            boolean temZero = a == 0 || b == 0;
-            return temZero ? 0 : a * b / mdc;
-        }
-
-        // https://en.wikipedia.org/wiki/Greatest_common_divisor
-        private int mdc(int a, int b) {
-            while (b != 0) {
-                int troca = b;
-                b = a % b;
-                a = troca;
+import java.util.ArrayList;
+public class HobbitContador{
+    public int calcularDiferenca(ArrayList<ArrayList<Integer>> lista){
+        int[] produtoDosPares = new int [lista.size()];
+        int [] mmcDosPares = new int [lista.size()];
+        int somaDosProdutos = 0;
+        int somaDosMmc = 0;
+        int resto = 0;
+        int x = 0;
+        int y = 0;
+        for(int i=0; i<lista.size(); i++){
+            for (int j=0; j<lista.size(); j++){
+                if( j==1){
+                    int nodoAtual = lista.get(i).get(j-1);
+                    int nodoPosterior = lista.get(i).get(j);
+                    mmcDosPares[i] = calcularMmc(nodoAtual,(nodoPosterior));
+                }
             }
-            return a;
         }
+        for (int i=0; i< lista.size(); i++){
+            for (int j=0; j<2 ; j++){
+               int nodoAtual = lista.get(i).get(j);
+               if (j==0){
+                   produtoDosPares[i] = nodoAtual;
+                }
+               else{
+                   produtoDosPares[i] *= nodoAtual;
+                }
+            }
+        }
+        for (int i=0; i<lista.size();i++){
+            somaDosProdutos += produtoDosPares[i];
+            somaDosMmc += mmcDosPares[i];
+        }
+        return somaDosProdutos - somaDosMmc;
     }
+    public int calcularMmc(int nodoAtual, int nodoPosterior){
+        int x = nodoAtual;
+        int y = nodoPosterior;
+        int resto = 0;
+        do{
+            resto = x%y;
+            x = y;
+            y = resto;
+        }while(resto!=0);
+        return (nodoAtual * nodoPosterior) / x;
+    }
+    public int obterMaiorMultiploDeTresAte(int numeroInformado){
+        int maiorNumero = 0;
+        for (int i=0; i<numeroInformado; i++){
+            if (numeroInformado % 3 == 0){
+                 maiorNumero = i; 
+            }
+        }
+        return maiorNumero;
+    }
+     public ArrayList<Integer> obterMultiplosDeTresAte(int numero) {
+        ArrayList<Integer> multiplosDeTres = new ArrayList<>();   
+        for (int i = 0; i <= numero; i++){
+           if (i % 3 == 0) {
+               multiplosDeTres.add(i);
+            }
+        }
+        return multiplosDeTres;
+    }     
 }
+// http://www.javaprogressivo.net/2012/09/array-multidimensional-ou-matriz-array_6673.html
+//http://www.devfuria.com.br/logica-de-programacao/mmc/
+//http://brasilescola.uol.com.br/matematica/produto-soma-pela-diferenca.htm

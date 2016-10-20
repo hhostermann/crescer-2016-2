@@ -1,8 +1,7 @@
-import java.util.ArrayList;
-import java.util.Arrays;
+import java.util.*;
 public class ExercitoDeElfo {  
     private ArrayList<Elfo> exercito = new ArrayList<>();  
-    public void alistamentoMilitar(Elfo elfo) { 
+    public void alistar(Elfo elfo) { 
         boolean alistar = elfo instanceof ElfoVerde || elfo instanceof ElfoNoturno;
         if (alistar){
             exercito.add(elfo);
@@ -10,8 +9,7 @@ public class ExercitoDeElfo {
     } 
     public ArrayList<Elfo> getExercitoDeElfo() { 
         return this.exercito; 
-    } 
-
+    }
     public Elfo buscar(String nome) {
         Elfo elfoRetorno = null;
         for(Elfo elfo : exercito){

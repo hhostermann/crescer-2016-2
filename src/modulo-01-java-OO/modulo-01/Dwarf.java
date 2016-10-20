@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 // Java: public final class
 // C#: public sealed class
 public class Dwarf extends Personagem {
@@ -21,19 +22,62 @@ public class Dwarf extends Personagem
     public Dwarf(String nome, DataTerceiraEra dataNascimento) {
         super(nome);
         this.dataNascimento = dataNascimento;
+=======
+
+public class Dwarf extends Personagem{ 
+
+   protected DataTerceiraEra dataNascimento ;
+   protected int hP; 
+   protected Status status;
+
+   protected Inventario inventario;
+   public Dwarf(String nome, DataTerceiraEra dataNascimento)
+    {
+       super(nome);
+        this.dataNascimento = dataNascimento;
+        this.hP=110;
+        status = status.VIVO;
     }
-    
-    public double getNumeroSorte(){
-        double resutado =101.0;
-        boolean bissexto = dataNascimento.ehBissexto();
-        if(bissexto && this.vida>=80 && this.vida<=90){
-            resutado *= -33.0;
-        }
-        if (!bissexto && ("Seixas".equals(this.nome) || "Meireles".equals(this.nome))){
-            resutado = resutado*33 % 100;
-        }
-        return resutado;
+   public Status getStatus(){
+       return status;
     }
+   public Inventario getInventario(){
+       return inventario;
+    }
+   public int getHP(){
+       return hP;
+    }
+   public void perderVida(){
+       if (hP <=0){
+           hP = 0;
+           status = status.MORTO;
+        }
+       if (hP >0){
+            double sorte = getNumeroSorte();
+            if (sorte < 0){
+                experiencia += 2;
+            }
+            if (sorte > 100){
+                hP -= 10;
+        
+            }      
+        }
+>>>>>>> master
+    }
+   public double getNumeroSorte(){
+       boolean bissexto = dataNascimento.ehBissexto();
+       double valorInicial = 101.0;
+       if (bissexto && (hP >= 80 && hP <= 90)){
+           valorInicial *= -33;
+           
+        }
+       if (!bissexto && (nome == "Seixas" || nome == "Meireles")){
+           valorInicial *= 33 % 100;
+           
+        }
+       return valorInicial;
+    }
+<<<<<<< HEAD
     public void perdeVida(){
         boolean estaMorto = status.equals(status.MORTO);    
         if (estaMorto){
@@ -87,4 +131,15 @@ public class Dwarf extends Personagem
     }
     
     public void inicializarInventario(int quantidadeFlechas) { }
+=======
+   public void tentarSorte(){
+       boolean sorte = getNumeroSorte() == -3333;
+       if (sorte){
+           inventario.AumentarQuantidadeItens(1000);
+           
+        }
+        
+    }
+   public void inicializarInventario(int quantidadeFlechas){};
+>>>>>>> master
 }

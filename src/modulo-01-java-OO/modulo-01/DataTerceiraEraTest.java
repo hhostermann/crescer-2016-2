@@ -1,11 +1,8 @@
-
-
 import static org.junit.Assert.*;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
-public class DataTerceiraEraTest
-{
+public class DataTerceiraEraTest{
     @Test
     public void criarAno3019QueNaoEhBissexto() { 
         // Arrange 

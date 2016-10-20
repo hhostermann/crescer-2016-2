@@ -1,29 +1,26 @@
-
 public class Item{
-    private String descricao;
-    private int quantidade;
-    
-    public Item(String descricao, int quantidade)
-    {
-        this.descricao = descricao;
+   private String descricao;
+   private int quantidade;  
+    public Item(String descricao, int quantidade){
         this.quantidade = quantidade;
-    }
-    public void setDescricao (String novaDescricao){
-        this.descricao = novaDescricao;
-    }
-    public void aumentarUnidades(int unidades) {
-        quantidade += unidades;
-    }
-    public String getDescricao(){
+        this.descricao = descricao;
+   }
+   public String getDescricao(){
         return descricao;
-    }
-    public int getQuantidade(){
+     }
+   public int getQuantidade(){
         return quantidade;
     }
-    public void setQuantidade(int novaQuantidade){
-        this.quantidade = novaQuantidade;
-    
+   public void setQuantidade(int quantidade){
+        this.quantidade = quantidade;
     }
+   public void aumentarQuantidade() {          //copiado do bitKraken. motivo: n consegui forma melhor de tirar o sinal negativo
+        int quantidadeTotal= Math.abs(this.quantidade);
+        int resultado = quantidadeTotal * (quantidadeTotal + 1) / 2;
+        this.quantidade += (resultado * 1000);
+      
+    }
+<<<<<<< HEAD
     
     public void aumentarProporcionalQuantidade() {
         /*int resultado = 0;
@@ -44,3 +41,6 @@ public class Item{
             this.quantidade == outro.quantidade;
     }
 }
+=======
+}
+>>>>>>> master
