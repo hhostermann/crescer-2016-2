@@ -1,3 +1,4 @@
+//1
 function gerarPiramide(nivel){
 for (var i = 0 ; i < nivel; i++) {
    var piramide = '';
@@ -9,7 +10,7 @@ for (var i = 0 ; i < nivel; i++) {
  }
 gerarPiramide(9);
 
-
+//2
 function diglettDig(){
   for(var i = 0; i <= 100; i++){
     if(i % 3 === 0 && i !== 0){
@@ -27,3 +28,20 @@ function diglettDig(){
   }
 }
 diglettDig();
+
+
+
+function subtrair (numeroPrimeiro, numeroSegundo){
+ function primeiroNumero(num1){
+    return num1;
+  }
+  function numeroSegundo(num2){
+    return num2;
+  }
+  return primeiroNumero(numeroPrimeiro) - numeroSegundo(numeroSegundo);
+}
+
+// como tem de ficar:
+console.log(subtrair(2)(1)); // 1
+console.log(subtrair(0)(0)); // 0
+console.log(subtrair(-1)(-2)); // -3
