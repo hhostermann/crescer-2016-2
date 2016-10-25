@@ -28,20 +28,74 @@ function diglettDig(){
   }
 }
 diglettDig();
-
-
-
-function subtrair (numeroPrimeiro, numeroSegundo){
- function primeiroNumero(num1){
-    return num1;
+//3
+//não consegui fazer! TO_DO
+//4
+function subtrair (numeroPrimeiro){
+ function equacao(numeroSegundo){
+      return resultado = numeroPrimeiro - Math.abs(numeroSegundo);
   }
-  function numeroSegundo(num2){
-    return num2;
-  }
-  return primeiroNumero(numeroPrimeiro) - numeroSegundo(numeroSegundo);
+    return equacao;
 }
 
-// como tem de ficar:
 console.log(subtrair(2)(1)); // 1
 console.log(subtrair(0)(0)); // 0
 console.log(subtrair(-1)(-2)); // -3
+
+//5
+//não consegui fazer! //TO_DO
+
+//6
+function ctrlC (valor) {
+    var resultado = {};
+    for(var tipo in valor) {
+        resultado[tipo] = valor[tipo];
+    }
+    return resultado;
+}
+
+var origem = { a: '1' };
+var destino = ctrlC(origem);
+console.log(destino);
+// { a: '1' }
+console.log(origem === destino);
+// false
+console.log(ctrlC(origem, destino));
+// true
+destino = ctrlC({ a: [ { b: '1', c: '2' }, { d: false }, { e: function() { return 3; } } ] });
+console.log(destino.a[2].e());
+// 3
+
+//7
+
+var mesclar = function(primeiroObjeto, segundoObjeto, recursivo){
+
+    for (var index in segundoObjeto){
+      var segundoObjetoAtributo = segundoObjeto.hasOwnProperty(index);
+      var atributosegundoObjeto = typeof segundoObjeto[index] === "object";
+      if(!!recursivo){
+        if (segundoObjetoAtributo) {
+
+          if(atributosegundoObjeto){
+              mesclar(primeiroObjeto[index], segundoObjeto[index], true);
+          }
+        }
+      }
+      if(recursivo) {
+        Object.assign(primeiroObjeto, segundoObjeto);
+ }
+    return primeiroObjeto;
+  }
+}
+
+var objeto1 = {
+  abacaxi: 0,
+  banana: { peso: 52, preco: 100, origem: { cidade: 'taquari', estado: 'rs' } },
+  cereja: 97
+};
+var objeto2 = {
+  banana: { preco: 200, origem: { cidade: 'cachoeira do sul', estado: 'rs' } },
+  damasco: 100
+};
+mesclar(objeto1, objeto2, true);
+console.log(objeto1);
