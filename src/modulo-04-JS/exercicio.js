@@ -1,3 +1,5 @@
+//https://developer.mozilla.org/pt-BR/docs/Web/JavaScript/Reference
+
 //1
 function gerarPiramide(nivel){
 for (var i = 0 ; i < nivel; i++) {
@@ -28,8 +30,34 @@ function diglettDig(){
   }
 }
 diglettDig();
+
+
 //3
-//não consegui fazer! TO_DO
+function find(array, tipo){
+    var resultado = '';
+    for(var i=0; i< array.length; i++){
+        if(tipo(array[i])){
+          resultado += array[i] + ' ';
+        }
+    }
+    return resultado;
+}
+
+var maiorIgualADois = function(elemento) {
+  return elemento >= 2;
+};
+console.log(find([ 1, 2, 3 ], maiorIgualADois));
+// [ 2, 3 ]
+
+console.log(find([ 'a', 5, null, false, 'false' ], function(elem) {
+  return typeof elem === 'string';
+}));
+// [ 'a', 'false' ]
+
+console.log(find([ { nome: 'a' }, { nome: 'b' }  ], function(elem) {
+  return typeof elem.nome === 'c';
+}));
+// []
 //4
 function subtrair (numeroPrimeiro){
  function equacao(numeroSegundo){
@@ -56,6 +84,7 @@ function ctrlC (valor) {
 
 var origem = { a: '1' };
 var destino = ctrlC(origem);
+
 console.log(destino);
 // { a: '1' }
 console.log(origem === destino);
@@ -99,3 +128,7 @@ var objeto2 = {
 };
 mesclar(objeto1, objeto2, true);
 console.log(objeto1);
+
+function b(a, b) { return a+=b, a;
+}
+console.log(b(1, 2));
