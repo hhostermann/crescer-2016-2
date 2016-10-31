@@ -88,16 +88,19 @@ namespace Repositorio
             return this.Funcionarios.Where(Funcionarios => Funcionarios.Cargo.Equals(cargo)).ToList();
         }
 
-    }
 
-    public IList<Funcionario> OrdenadosPorCargo()
+         public IList<Funcionario> OrdenadosPorCargo()
         {
-        return this.Funcionarios.OrderBy(funcionario => funcionario.cargo.Titulo).ThenBy(funcionario => funcionario.Nome).ToList();
+        return this.Funcionarios.OrderBy(funcionario => funcionario.Cargo.Titulo).ThenBy(funcionario => funcionario.Nome).ToList();
         }
 
         public IList<Funcionario> BuscarPorNome(string nome)
         {
-            throw new NotImplementedException();
+        /*3) BuscarPorNome(string nome)
+Deve retornar todos os funcionários que contenham o texto do parâmetro nome, ignorando o case.
+
+OBS: Não vale usar o ToUpper() ou ToLower(), pois a comparação deve passar no Turkey Test.*/
+        return this.Funcionarios.OrderBy(funcionario => funcionario.Cargo.Titulo).ThenBy(funcionario => funcionario.Nome).ToList(); 
         }        
 
         public IList<Funcionario> BuscarPorTurno(params TurnoTrabalho[] turnos)
