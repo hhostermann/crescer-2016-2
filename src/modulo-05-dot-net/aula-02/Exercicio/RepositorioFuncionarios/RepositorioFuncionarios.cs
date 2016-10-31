@@ -91,7 +91,7 @@ namespace Repositorio
 
          public IList<Funcionario> OrdenadosPorCargo()
         {
-        return this.Funcionarios.OrderBy(funcionario => funcionario.Cargo.Titulo).ThenBy(funcionario => funcionario.Nome).ToList();
+             return this.Funcionarios.OrderBy(funcionario => funcionario.Cargo.Titulo).ThenBy(funcionario => funcionario.Nome).ToList();
         }
 
         public IList<Funcionario> BuscarPorNome(string nome)
@@ -100,12 +100,15 @@ namespace Repositorio
 Deve retornar todos os funcionários que contenham o texto do parâmetro nome, ignorando o case.
 
 OBS: Não vale usar o ToUpper() ou ToLower(), pois a comparação deve passar no Turkey Test.*/
-        return this.Funcionarios.OrderBy(funcionario => funcionario.Cargo.Titulo).ThenBy(funcionario => funcionario.Nome).ToList(); 
+             return this.Funcionarios.OrderBy(funcionario => funcionario.Cargo.Titulo).ThenBy(funcionario => funcionario.Nome).ToList(); 
         }        
 
         public IList<Funcionario> BuscarPorTurno(params TurnoTrabalho[] turnos)
         {
-            throw new NotImplementedException();
+            /*4) BuscarPorTurno(params TurnoTrabalho[] turnos)
+Deve aceitar de 0 a n turnos de trabalho como parâmetro. Caso nenhum turno seja passado deve retornar funcionarios de todos os turnos. 
+Caso sejam passados turnos, deve retornar apenas os funcionários referentes aos turnos informados.*/
+            return this.Funcionarios.Where(funcionario => turnos.Contains(funcionario.TurnoTrabalho)).ToList();   
         }        
 
         public IList<Funcionario> FiltrarPorIdadeAproximada(int idade)
