@@ -1,0 +1,36 @@
+﻿
+@{
+    Layout = null;
+}<!DOCTYPE html>
+<html>
+<head>
+    <title>Projeto CRESCER CWI</title>
+    <meta charset="utf-8">
+    <link href="~/Content/estilo.css" rel="stylesheet" />
+</head>
+<body>
+
+    <div class="menu">
+        <span class="links">
+            <a href="index.html">Inicio</a>
+        </span>
+        <span class="links">
+            <a href="https://www.google.com.br/search?q=Street+Fighter&tbm=nws">Noticia</a>
+        </span>
+        <span class="links">
+            <a href="ficha-tecnica.html">Ficha Técnica</a>
+        </span>
+        <span class="links">
+            <a href="sobre.html">Sobre</a>
+        </span>
+    </div>
+
+    <div class="titulo">
+        <h1>
+            <strong>@ViewBag.Title</strong>
+        </h1>
+    </div>
+
+    @RenderBody()
+</body>
+</html>
