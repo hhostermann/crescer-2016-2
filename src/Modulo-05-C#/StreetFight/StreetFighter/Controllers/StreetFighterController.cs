@@ -1,14 +1,10 @@
 ﻿using StreetFighter.Aplicativo;
 using StreetFighter.Dominio;
 using StreetFighter.Models;
-using StreetFighter.Web.Filters;
-using StreetFighter.Web.Models;
-using StreetFighter.Web.Services;
+using StreetFighter.Service;
 using System;
 using System.Collections.Generic;
 using System.Globalization;
-using System.Linq;
-using System.Web;
 using System.Web.Mvc;
 namespace StreetFighter.Controllers
 {
