@@ -1,0 +1,37 @@
+﻿
+@{
+    ViewBag.Title = "Login";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@using StreetFighter.Service
+@{
+    ViewBag.Title = "Login";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="autorizacao">
+    @if (ServicoAutenticacao.UsuarioLogado == null)
+    {
+        using (Html.BeginForm("FazerLogin", "StreetFighter", FormMethod.Post))
+        {
+            <h3>Você não está logado. Faça Login para prosseguir.</h3>
+            @Html.AntiForgeryToken()
+            @Html.TextBox("Login", "", new { placeholder = "Login" })
+            @Html.Password("Senha", "", new { placeholder = "senha" })
+            <button type="submit">Entrar</button>
+        }
+    }
+    else
+    {
+        <h2>Você já logou.</h2>
+    }
+</div>
+
+@section Styles {
+    <style>
+        .autorizacao {
+            text-align: center;
+            padding-top: 25px;
+        }
+    </style>
+}

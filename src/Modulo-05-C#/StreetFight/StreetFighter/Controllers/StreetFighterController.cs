@@ -1,11 +1,15 @@
-﻿using StreetFighter.Models;
+﻿using StreetFighter.Aplicativo;
+using StreetFighter.Dominio;
+using StreetFighter.Models;
+using StreetFighter.Web.Filters;
+using StreetFighter.Web.Models;
+using StreetFighter.Web.Services;
 using System;
 using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
-
 namespace StreetFighter.Controllers
 {
     public class StreetFighterController : Controller
@@ -15,29 +19,74 @@ namespace StreetFighter.Controllers
         {
             return View();
         }
-        public ActionResult FichaTecnica()
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult FazerLogin(string login, string senha)
         {
-            var model = new ModelFichaTecnica();
-            model.PrimeiraAparicao = "Street Fighter II The World Warrior (1991)";
-            model.DataNascimento = DateTime.Parse("12/02/1966", new CultureInfo("pt-BR")); 
-            model.Altura = 192;
-            model.Peso = 96;
-            model.Medidas = "B198, C120, Q172";
-            model.TipoSanguineo = 'B';
-            model.HabilidadesEspeciais = "Caçar, Eletricidade";
-            model.Gosta = "Frutas tropicais, Pirarucu, Sua mãe";
-            model.Desgosta = "Army ants (espécie de formiga)";
-            model.EstiloDeLuta = "Luta Selvagem autodidata (Army Ants) / Capoeira";
-            model.Origem = "Brasil (lugar de nascença é provável como sendo Tailândia)";
-            model.FalaDeVitoria = "\"Ver você em ação é uma piada!\"";
-            model.SSF2Nickname = "\"A selvagem criança da natureza\"";
-            model.SFA3Nickname = "\"A animal pessoa amazônica\"";
-            model.SF4Nickname = "\"Guerreiro da selva\"";
-            model.SFA3Stage = "Ramificação do Rio Madeira - pantano, Brasil (ramificação do rio Madeira: talvez possa ser Mato Grosso, ou Tocantins?)";
-            model.SF2Stage = "Bacia do rio Amazonas (Brasil)";
-            model.GolpesEspeciaisFamosos = "Electric Thunder, Rolling Attack";
-            return View(model);
+            Login usuarioAutenticado = AutenticacaoAplicativo.BuscarUsuario(login, senha);
+
+            if (model.Nome == null)
+            {
+                ServicoAutenticacao.Autenticar(new ModelUsuarioLogado(usuarioAutenticado.Nome, usuarioAutenticado.Permissoes));
+                return RedirectToAction("Index");
+            }
+            return RedirectToAction("Login");
         }
+        public ActionResult Login()
+        {
+            return View();
+        }
+
+        [HttpGet]
+        public ActionResult Excluir(int idPersonagem)
+        {
+            var aplicativo = new PersonagemAplicativo();
+            var personagem = aplicativo.BuscarId(idPersonagem);
+            aplicativo.Excluir(personagem);
+            TempData["Mensagem"] = "Personagem Excluido!";
+            return RedirectToAction("ListarPersonagem");
+        }
+        public ActionResult ListarPersonagem(ModelFichaTecnica personagem = null, string filtro = null)
+        {
+            if (ModelState.IsValid || personagem == null || personagem.Nome == null)
+            {
+                try
+                {
+                    var aplicativo = new PersonagemAplicativo();
+                    if (personagem != null && personagem.Nome != null)
+                    {
+                        aplicativo.Salvar(this.ToPersonagem(personagem));
+                    }
+                    var model = new PersonagemAplicativo().ListarPersonagem(filtro);
+                    return View(model);
+                }
+
+                catch (RegraNegocioException ex)
+                {
+                    ModelState.AddModelError("", ex.Message);
+                }
+                ViewData["ListaOrigem"] = this.ListaOrigem();
+                return View("Cadastro", personagem);
+            }
+            else
+            {
+                return RedirectToAction("Cadastro");
+            }
+        }
+        [HttpGet]
+        public ActionResult FichaTecnica(int idPersonagem)
+        {
+            Personagem character = new PersonagemAplicativo().BuscarId(idPersonagem);
+            if (character != null)
+            {
+                return View(this.ToModelFichaTecnica(character));
+            }
+            else
+            {
+                return RedirectToAction("ListarPersonagem");
+            }
+        }
+
         public ActionResult Sobre()
         {
             var model = new ModelSobre();
@@ -57,5 +106,76 @@ namespace StreetFighter.Controllers
             model.Estilo = "suporte, Tank";
             return View(model);
         }
+        
+        public ActionResult Cadastro()
+        {
+            ViewData["ListaOrigem"] = this.ListaOrigem();
+            var personagem = new PersonagemAplicativo().BuscarId(id);
+            if (personagem == null)
+            {
+                return View(new ModelFichaTecnica() { Id = 0 });
+            }
+            else
+            {
+                TempData["Mensagem"] = "Personagem Editado!";
+            }
+        }
+        private Personagem ToPersonagem(ModelFichaTecnica model)
+        {
+            return new Personagem(
+                model.Id,
+                model.Nome,
+                model.Nascimento,
+                model.Altura,
+                model.Origem,
+                model.Peso,
+                model.Imagem,
+                model.GolpeEspecialFamoso,
+                model.PersonagemOculto
+                );
+        }
+        private ModelFichaTecnica ToModelFichaTecnica(Personagem personagem)
+        {
+            return new ModelFichaTecnica()
+            {
+                Id = personagem.Id,
+                Nome = personagem.Nome,
+                Nascimento = personagem.Nascimento,
+                Altura = personagem.Altura,
+                Peso = personagem.Peso,
+                Origem = personagem.Origem,
+                Imagem = personagem.Imagem,
+                GolpeEspecialFamoso = personagem.GolpeEspecialFamoso,
+                PersonagemOculto = personagem.PersonagemOculto
+            };
+        }
+        private List<SelectListItem> ListaOrigem()
+        {
+            return new List<SelectListItem>()
+            {
+                new SelectListItem() {Value = "BRA", Text = "Brasil" },
+                new SelectListItem() {Value = "EUA", Text = "Estados Unidos" },
+                new SelectListItem() {Value = "ARG", Text = "Argentina" },
+                new SelectListItem() {Value = "JPN", Text = "Japão" },
+                new SelectListItem() {Value = "GER", Text = "Alemanha" },
+                new SelectListItem() {Value = "GRE", Text = "Grécia" },
+                new SelectListItem() {Value = "ITA", Text = "Itália" },
+                new SelectListItem() {Value = "MDP", Text = "Morro Da Pedra" }
+
+                };
+
+        }
     }
 }
+           
+        //    if (ModelState.IsValid)
+        //    {
+
+        //        ViewBag.Mennsagem = "Cadastro Feito Com Sucesso.";
+        //        return View(model);
+        //    }
+        //    else
+        //    {
+        //        return View("Cadastro");
+        //    }
+        //}

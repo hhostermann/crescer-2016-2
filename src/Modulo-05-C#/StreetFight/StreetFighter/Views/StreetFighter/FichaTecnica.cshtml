@@ -9,33 +9,20 @@
 </div>
 <div id="resto">
     <div>
-        <h2>
-            <strong>Blanka</strong>
-        </h2>
+            <h2 class="bottom-title">
+                <strong>@(Model.Nome)</strong>
+            </h2>
     </div>
     <div id="imagem">
-        <img src="~/Content/Imagens/blanka.jpg" alt="blanka tenebroso" style="height: 355px; margin-bottom: 46px;">
+        <img src="@Model.Imagem" style="height: 355px; margin-bottom: 46px;">
     </div>
     <div style="width: 400px;display: inline-block; margin-left: 70px;">
-
-        <strong>Primeira aparição:</strong> @(Model.PrimeiraAparicao) 
-        <strong>Nascimento:</strong> @(Model.DataNascimento.ToString("dd' de 'MMMM' de 'yyyy")).
-        <strong>Altura:</strong> @(Model.Altura)cm.
-        <strong>Peso:</strong> @(Model.Peso)kg.
-        <strong>Medidas:</strong> @(Model.Medidas).
-        <strong>Tipo sanguíneo:</strong> @(Model.TipoSanguineo).
-        <strong>Habilidades especiais:</strong> @(Model.HabilidadesEspeciais).
-        <strong>Gosta:</strong> @(Model.Gosta).
-        <strong>Desgosta:</strong> @(Model.Desgosta).
-        <strong>Estilo de luta:</strong> @(Model.EstiloDeLuta).
-        <strong>Origem:</strong> @(Model.Origem).
-        <strong>Uma fala de vitória:</strong> @(Model.FalaDeVitoria).
-        <strong>SSF2 nickname:</strong> @(Model.SSF2Nickname).
-        <strong>SFA3 nickname:</strong> @(Model.SFA3Nickname).
-        <strong>SF4 nickname:</strong> @(Model.SF4Nickname).
-        <strong>SFA3 stage:</strong> @(Model.SFA3Stage).
-        <strong>SF2 stage:</strong> @(Model.SF2Stage).
-        <strong>Golpes especiais famosos:</strong> @(Model.GolpesEspeciaisFamosos).
+        <strong>Nascimento:</strong> @(Model.DataNascimento.ToString("dd' de 'MMMM' de 'yyyy")).<br />
+        <strong>Altura:</strong> @(Model.Altura)cm.<br />
+        <strong>Peso:</strong> @(Model.Peso)kg.<br />
+        <strong>Origem:</strong> @(Model.Origem).<br />
+        <strong>Golpes especiais famosos:</strong> @(Model.GolpesEspeciaisFamosos).<br />
+        <p class="ficha"><strong>Personagem oculto:</strong> @(Model.PersonagemOculto ? "Sim" : "Não").</p>
     </div>
 </div>
 
