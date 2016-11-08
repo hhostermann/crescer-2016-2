@@ -23,6 +23,10 @@ namespace StreetFighter.Repositorio
                 File.Create(CaminhoArquivo).Close();
             }
         }
+        public List<Personagem> ListarPersonagem()
+        {
+            return this.ListarPersonagem(null);
+        }
         public List<Personagem> ListarPersonagem(string filtroNome)
         {
             var lista = new List<Personagem>();
