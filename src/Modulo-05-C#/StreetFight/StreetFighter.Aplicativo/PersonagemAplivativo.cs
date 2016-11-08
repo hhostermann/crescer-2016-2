@@ -43,9 +43,9 @@ namespace StreetFighter.Aplicativo
         {
             this.repositorio.ExcluirPersonagem(personagem);
         }
-        public Personagem BuscarId(int id)
+        public Personagem BuscarId(int idPersonagem)
         {
-            return this.ListarPersonagem().Find(personagem => personagem.Id == id);
+            return this.ListarPersonagem().Find(personagem => personagem.Id == idPersonagem);
         }
     }
 }

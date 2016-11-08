@@ -21,9 +21,9 @@ namespace StreetFighter.Controllers
         {
             Login usuarioAutenticado = AutenticacaoAplicativo.BuscarUsuario(login, senha);
 
-            if (model.Nome == null)
+            if (usuarioAutenticado  != null)
             {
-                ServicoAutenticacao.Autenticar(new ModelUsuarioLogado(usuarioAutenticado.Nome, usuarioAutenticado.Permissoes));
+                ServicoAutenticacao.Autenticar(new ModelUsuarioLogado(usuarioAutenticado.Nome, usuarioAutenticado.Permissao));
                 return RedirectToAction("Index");
             }
             return RedirectToAction("Login");
@@ -42,7 +42,7 @@ namespace StreetFighter.Controllers
             TempData["Mensagem"] = "Personagem Excluido!";
             return RedirectToAction("ListarPersonagem");
         }
-        public ActionResult ListarPersonagem(ModelFichaTecnica personagem = null, string filtro = null)
+        public ActionResult ListarPersonagem(ModelFichaTecnica personagem = null, string filtroNome = null)
         {
             if (ModelState.IsValid || personagem == null || personagem.Nome == null)
             {
@@ -53,7 +53,7 @@ namespace StreetFighter.Controllers
                     {
                         aplicativo.Salvar(this.ToPersonagem(personagem));
                     }
-                    var model = new PersonagemAplicativo().ListarPersonagem(filtro);
+                    var model = new PersonagemAplicativo().ListarPersonagem(filtroNome);
                     return View(model);
                 }
 
@@ -70,9 +70,9 @@ namespace StreetFighter.Controllers
             }
         }
         [HttpGet]
-        public ActionResult FichaTecnica(int idPersonagem)
+        public ActionResult FichaTecnica(int id)
         {
-            Personagem character = new PersonagemAplicativo().BuscarId(idPersonagem);
+            Personagem character = new PersonagemAplicativo().BuscarId(id);
             if (character != null)
             {
                 return View(this.ToModelFichaTecnica(character));
@@ -103,7 +103,7 @@ namespace StreetFighter.Controllers
             return View(model);
         }
         
-        public ActionResult Cadastro()
+        public ActionResult Cadastro(int id = 0)
         {
             ViewData["ListaOrigem"] = this.ListaOrigem();
             var personagem = new PersonagemAplicativo().BuscarId(id);
@@ -114,6 +114,7 @@ namespace StreetFighter.Controllers
             else
             {
                 TempData["Mensagem"] = "Personagem Editado!";
+                return View(this.ToModelFichaTecnica(personagem));
             }
         }
         private Personagem ToPersonagem(ModelFichaTecnica model)

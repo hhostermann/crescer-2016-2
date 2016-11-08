@@ -85,10 +85,12 @@ namespace StreetFighter.Repositorio
             {
                 File.Delete(CaminhoArquivo);
             }
-            using (File.Create(CaminhoArquivo)) ;
-            foreach (var item in lista)
+            using (File.Create(CaminhoArquivo))
             {
-                this.IncluirPersonagem(item);
+                foreach (var item in lista)
+                {
+                    this.IncluirPersonagem(item);
+                }
             }
         }
         private int ProximoId()
