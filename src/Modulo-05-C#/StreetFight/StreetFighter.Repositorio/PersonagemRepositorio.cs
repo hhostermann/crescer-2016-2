@@ -65,7 +65,7 @@ namespace StreetFighter.Repositorio
             lista.Add(personagem);
             this.ReescreveArquivo(lista);
         }
-        public void ExcluirPersonagem(Personagem personagem)
+        public bool ExcluirPersonagem(Personagem personagem)
         {
             var lista = this.ListarPersonagem();
             foreach (var item in lista)
@@ -108,24 +108,3 @@ namespace StreetFighter.Repositorio
         
     }
 }
-
-//using (var conexao = new SqlConnection(connectionString))
-//{
-//    connection.Open();
-//    string sql = $"SELECT * FROM FichaTecnica WHERE Nome LIKE @param_title";
-//    var command = new SqlCommand(sql, connection);
-//    command.Parameters.Add(new SqlParameter("param_title", Nome));
-//    SqlDataReader reader = command.ExecuteReader();
-    
-//    while(reader.Read())
-//    {
-//        Movie found = ConvertReaderToMovie(reader);
-//        result.Add(found);
-//    }
-//}
-//private Movie ConvertReaderToMovie(SqlDataReader reader)
-//{
-//    int idRow = Convert.ToInt32(reader["Id"]);
-//    string titleRow = reader["Title"].ToString();
-
-//}

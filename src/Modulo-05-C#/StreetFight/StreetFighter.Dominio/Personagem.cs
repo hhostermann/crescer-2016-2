@@ -8,15 +8,15 @@ namespace StreetFighter.Dominio
 {
     public class Personagem
     {
-        public int Id { get; private set; }
+        public int Id { get; set; }
         public string Nome { get; set; }
-        public DateTime Nascimento { get; private set; }
-        public int Altura { get; private set; }
-        public string Origem { get; private set; }
-        public decimal Peso { get; private set; }
-        public string Imagem { get; private set; }
-        public string GolpeEspecialFamoso { get; private set; }
-        public bool PersonagemOculto { get; private set; }
+        public DateTime Nascimento { get; set; }
+        public int Altura { get; set; }
+        public string Origem { get; set; }
+        public decimal Peso { get; set; }
+        public string Imagem { get; set; }
+        public string GolpeEspecialFamoso { get; set; }
+        public bool PersonagemOculto { get; set; }
 
         public Personagem (int id, string nome, DateTime nascimento, int altura, string origem, decimal peso, string imagem, string golpeEspecialFamoso, bool personagemOculto)
             : this(nome, nascimento, altura, origem, peso, imagem, golpeEspecialFamoso, personagemOculto)
