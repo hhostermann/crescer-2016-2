@@ -23,9 +23,9 @@ namespace StreetFighter.Aplicativo
             this.repositorio = repositorio;
         }
 
-        public List<Personagem> ListarPersonagem(string filtroNome)
+        public List<Personagem> ListarPersonagem(string filtroNome = null)
         {
-            return repositorio.ListarPersonagem(filtroNome);
+            return new PersonagemRepositorioBDD().ListarPersonagem(filtroNome);
         }
 
         public void Salvar (Personagem personagem)
