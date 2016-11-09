@@ -51,6 +51,11 @@
   <ItemGroup>
     <Compile Include="DatabaseContext.cs" />
     <Compile Include="LoginRepositorioFW.cs" />
+    <Compile Include="Migrations\201611091306033_Initial.cs" />
+    <Compile Include="Migrations\201611091306033_Initial.Designer.cs">
+      <DependentUpon>201611091306033_Initial.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="PersonagemRepositorioFW.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -63,6 +68,11 @@
       <Project>{1551C301-C129-4C2A-8718-37FD8903DBC9}</Project>
       <Name>StreetFighter.Dominio</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201611091306033_Initial.resx">
+      <DependentUpon>201611091306033_Initial.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

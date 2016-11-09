@@ -23,7 +23,7 @@ namespace StreetFighter.Controllers
 
             if (usuarioAutenticado  != null)
             {
-                ServicoAutenticacao.Autenticar(new ModelUsuarioLogado(usuarioAutenticado.Nome, usuarioAutenticado.Permissao));
+                ServicoAutenticacao.Autenticar(new ModelUsuarioLogado(usuarioAutenticado.Username, usuarioAutenticado.Permissao));
                 return RedirectToAction("Index");
             }
             return RedirectToAction("Login");
@@ -70,7 +70,7 @@ namespace StreetFighter.Controllers
             }
         }
         [HttpGet]
-        public ActionResult FichaTecnica(int id)
+        public ActionResult FichaTecnica(int id= 0 )
         {
             Personagem character = new PersonagemAplicativo().BuscarId(id);
             if (character != null)

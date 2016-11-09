@@ -8,6 +8,6 @@ namespace StreetFighter.Dominio
 {
     public interface ILoginRepositorio
     {
-        Login BuscarUsuario(string nome, string senha);
+        Login BuscarUsuario(string login, string senha);
     }
 }

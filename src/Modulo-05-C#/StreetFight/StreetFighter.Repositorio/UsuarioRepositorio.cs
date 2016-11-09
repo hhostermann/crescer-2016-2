@@ -20,7 +20,7 @@ namespace StreetFighter.Repositorio
                 var parametro = user.Split(';');
                 Login l = new Login()
                 {
-                    Nome = parametro[0],
+                    Username = parametro[0],
                     Senha = parametro[1]
                 };
                 var listaPermissao = new List<string>();

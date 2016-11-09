@@ -12,7 +12,7 @@ namespace StreetFighter.Aplicativo
     {
         public static Login BuscarUsuario(string nome, string senha)
         {
-            Login usuarioEncontrado = UsuarioRepositorio.ListaUsuario().ToArray().FirstOrDefault(usuario => usuario.Nome.Equals(nome));
+            Login usuarioEncontrado = UsuarioRepositorio.ListaUsuario().ToArray().FirstOrDefault(usuario => usuario.Username.Equals(nome));
             string senhaComparar = Criptografia.ConverterMD5($"{nome}_$_{senha}");
             if (usuarioEncontrado != null && usuarioEncontrado.Senha.Equals(senhaComparar))
             {

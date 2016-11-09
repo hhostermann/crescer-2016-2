@@ -4,7 +4,7 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 <div class="opcoes_lista">
-@using (Html.BeginForm("ListarPersonagem", "StreetFighter", FormMethod.Get))
+@using (Html.BeginForm("ListarPersonagem", "StreetFighterController", FormMethod.Get))
 {
     <span class="opcao">
         <strong>
@@ -14,7 +14,7 @@
     </span>
 }
 
-@using (Html.BeginForm("Cadastro", "StreetFighter"))
+@using (Html.BeginForm("Cadastro", "StreetFighterController"))
 {
     <span class="opcao">
         <button type="submit">Cadastro</button>
@@ -32,11 +32,15 @@
     {
         <div class="personagem">
             <img src="@personagem.Imagem">
+            @*<span>
+                @Html.ActionLink(personagem.Nome, "FichaTecnica", "StreetFighterController", new { idPersonagem = personagem.Id }, null)
+            </span>*@
             <span>
-                @Html.ActionLink(personagem.Nome, "FichaTecnica", "StreetFighter", new { idPersonagem = personagem.Id }, null)
+            
+            @Html.ActionLink(personagem.Nome, "FichaTecnica", "StreetFighterController",  new { Id = personagem.id }, null)
             </span>
-            @Html.ActionLink("Excluir", "Excluir", "StreetFighter", new { idPersonagem = personagem.Id }, new { @class = "item_opcao" })
-            @Html.ActionLink("Editar", "Cadastro", "StreetFighter", new { idPersonagem = personagem.Id }, new { @class = "item_opcao" })
+            @Html.ActionLink("Excluir", "Excluir", "StreetFighterController", new { idPersonagem = personagem.Id }, new { @class = "item_opcao" })
+            @Html.ActionLink("Editar", "Cadastro", "StreetFighterController", new { idPersonagem = personagem.Id }, new { @class = "item_opcao" })
         </div>
     }
 }

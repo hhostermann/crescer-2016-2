@@ -7,19 +7,16 @@ using System.Threading.Tasks;
 
 
 namespace StreetFighter.RepositorioFW
-{
-    namespace StreetFighter.RepositorioEF
     {
-        public class UsuarioRepositorioEF
+        public class UsuarioRepositorioFW
         {
-            public static List<Login> ListaUsuarios()
+            public static List<Login> ListarUsuario()
             {
                 using (var context = new DatabaseContext())
                 {
-                    return context.Usuario
+                    return context.Username
                                   .ToList();
                 }
             }
         }
-    }
-}
+ }

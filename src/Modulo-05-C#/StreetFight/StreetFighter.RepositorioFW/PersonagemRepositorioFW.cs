@@ -10,12 +10,12 @@ namespace StreetFighter.RepositorioFW
 {
     public class PersonagemRepositorioFW : IPersonagemRepositorio
     {
-        public List<Personagem> ListarPersonagem(string filtro)
+        public List<Personagem> ListarPersonagem(string filtroNome)
         {
             using (var context = new DatabaseContext())
             {
                 var lista = context.Personagem
-                                   .Where(p => filtro == null || filtro.Equals("") || p.Nome.ToUpper().Contains(filtro.ToUpper()))
+                                   .Where(p => filtroNome == null || filtroNome.Equals("") || p.Nome.ToUpper().Contains(filtroNome.ToUpper()))
                                    .ToList();
                 return lista;
             }

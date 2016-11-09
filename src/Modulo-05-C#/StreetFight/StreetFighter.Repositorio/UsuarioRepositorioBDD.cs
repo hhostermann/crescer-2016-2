@@ -25,7 +25,7 @@ namespace StreetFighter.Repositorio
                 {
                     lista.Add(new Login()
                     {
-                        Nome = leitor["Usuario"].ToString(),
+                        Username = leitor["Usuario"].ToString(),
                         Senha = leitor["Senha"].ToString(),
                         Permissao = leitor["Permissao"].ToString().Split(';')
                     });                        

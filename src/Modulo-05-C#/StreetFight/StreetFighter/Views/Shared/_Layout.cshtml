@@ -4,33 +4,26 @@
 }<!DOCTYPE html>
 <html>
 <head>
-    <title>Projeto CRESCER CWI</title>
     <meta charset="utf-8">
+    @RenderSection("Styles", false)
     <link href="~/Content/estilo.css" rel="stylesheet" />
+    <title>Street Fighter</title>
 </head>
+
 <body>
-
-    <div class="menu">
-        <span class="links">
-            <a href="~/StreetFighter/Index">Inicio</a>
-        </span>
-        <span class="links">
-            <a href="~/StreetFighter/Cadastro">Cadastro</a>
-        </span>
-        <span class="links">
-            <a href="~/StreetFighter/FichaTecnica">Ficha Técnica</a>
-        </span>
-        <span class="links">
-            <a href="~/StreetFighter/Sobre">Sobre</a>
-        </span>
+    <div class="main-options">
+        <a href="~/StreetFighter">Início</a>
+        <a href="~/StreetFighter/ListarPersonagem">Lista de Personagens</a>
+        <a href="~/StreetFighter/Sobre">Sobre</a>
     </div>
-
-    <div class="titulo">
-        <h1>
-            <strong>@ViewBag.Title</strong>
-        </h1>
+    <div class="content">
+        <div class="top-title">
+            <span>@ViewBag.Title</span>
+        </div>
+        <div class="bottom-content">
+            @RenderBody()
+        </div>
     </div>
-
-    @RenderBody()
 </body>
+
 </html>
