@@ -84,7 +84,7 @@ namespace StreetFighter.Repositorio
             throw new NotImplementedException();
         }
 
-        public void ExcluirPersonagem(Personagem personagem)
+        public bool ExcluirPersonagem(Personagem personagem)
         {
             throw new NotImplementedException();
         }
