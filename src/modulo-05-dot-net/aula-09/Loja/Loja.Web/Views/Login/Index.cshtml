@@ -8,9 +8,8 @@
 @using (Html.BeginForm("Entrar", "Login", FormMethod.Post))
 {
     @Html.AntiForgeryToken()
-
+    @Html.ValidationSummary(false, "", new { @class = "login.invalido" })
     @Html.TextBox("email", "", new { placeholder = "email" })
     @Html.Password("senha", "", new { placeholder = "senha" })
-
     <button type="submit">Entrar</button>
 }

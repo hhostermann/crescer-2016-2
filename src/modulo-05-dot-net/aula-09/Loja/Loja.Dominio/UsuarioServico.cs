@@ -20,7 +20,7 @@ namespace Loja.Dominio
         public Usuario BuscarPorAutenticacao(string email, string senha)
         {
             Usuario usuarioEncontrado = this.usuarioRepositorio.BuscarPorEmail(email);
-
+            
             string senhaCriptografada = this.servicoCriptografia.Criptografar(senha);
 
             if(usuarioEncontrado != null && usuarioEncontrado.Senha.Equals(senhaCriptografada))

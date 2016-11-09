@@ -6,12 +6,15 @@ using System.Threading.Tasks;
 
 namespace Loja.Dominio
 {
-    public class Produto
+   public class Produto
     {
-        public int Id { get; set; }
+       public Produto()
+            {
 
-        public string Nome { get; set; }
-
-        public decimal Valor { get; set; }
+            }
+            public int Id { get; set; }
+            public string Nome { get; set; }
+            public decimal Preco { get; set; }
+       
+        }
     }
-}

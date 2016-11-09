@@ -1,0 +1,33 @@
+﻿@{
+    ViewBag.Title = "Sobre";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="titulo">
+</div>
+<div id="resto">
+    <div>
+        <h2>
+            <strong>Henrique Ostermann</strong>
+        </h2>
+    </div>
+    <div id="imagem">
+        <img src="~/Content/Imagens/blanka.jpg" alt="blanka tenebroso" style="height: 355px; margin-bottom: 46px;">
+    </div>
+    <div style="width: 400px;display: inline-block; margin-left: 70px;">
+        <strong>Primeira aparição:</strong>@(Model.PrimeiraAparicao).
+        <strong>Nascimento: </strong>@(Model.DataNascimento.ToString("dd' de 'MMMM' de 'yyyy")).
+        <strong>Altura:</strong> @(Model.Altura)cm.
+        <strong>Peso:</strong>@(Model.Peso)kg.
+        <strong>Medidas:</strong>@(Model.Medidas).
+        <strong>Tipo sanguíneo:</strong>@(Model.TipoSanguineo).
+        <strong>Habilidades especiais:</strong> @(Model.HabilidadesEspeciais).
+        <strong>Gosta:</strong> @(Model.Gosta).
+        <strong>Estilo de luta:</strong> @(Model.EstiloDeLuta).
+        <strong>Origem:</strong>@(Model.Origem)
+        <strong>Uma fala de vitória:</strong>@(Model.FalaDeVitoria).
+        <strong>WoW nickname:</strong> @(Model.WowNickname).
+        <strong>Stean nickname:</strong> @(Model.SteanNickname).
+        <strong>Estilo preferido:</strong>@(Model.Estilo)
+    </div>
+</div>

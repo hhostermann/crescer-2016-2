@@ -25,8 +25,17 @@ namespace Loja.Web.Controllers
             UsuarioServico usuarioServico = ServicoDeDependencias.MontarUsuarioServico();
 
             Usuario usuario = usuarioServico.BuscarPorAutenticacao(email, senha);
-            
-            return null;
+
+            if (usuario != null)
+            {
+                return RedirectToAction("Sobre", "Home");
+            }
+            else
+            {
+                //ViewBag.Mennsagem = "Usuário ou senha inválida.";
+                ModelState.AddModelError("login.invalido", "Usuário ou senha inválida.");
+                return View("Index");
+            }
         }
     }
 }
