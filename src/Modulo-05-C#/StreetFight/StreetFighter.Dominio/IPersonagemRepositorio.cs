@@ -11,6 +11,6 @@ namespace StreetFighter.Dominio
         List<Personagem> ListarPersonagem(string filtroNome);
         void IncluirPersonagem(Personagem personagem);
         void EditarPersonagem(Personagem personagem);
-        bool ExcluirPersonagem(Personagem personagem);
+        void ExcluirPersonagem(Personagem personagem);
     }
 }

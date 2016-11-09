@@ -6,7 +6,7 @@ namespace StreetFighter.RepositorioFW
 {
     public class DatabaseContext : DbContext
     {
-        public DatabaseContext() : base("StreetFighterConection")
+        public DatabaseContext() : base("StreetFighter")
         {
 
         }

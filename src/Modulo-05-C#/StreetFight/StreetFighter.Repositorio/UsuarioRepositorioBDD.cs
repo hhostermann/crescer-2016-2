@@ -11,7 +11,7 @@ namespace StreetFighter.Repositorio
 {
     public class UsuarioRepositorioBDD
     {
-        public static string connectionString = ConfigurationManager.ConnectionStrings["StreetFighterConection"].ConnectionString;
+        public static string connectionString = ConfigurationManager.ConnectionStrings["StreetFighter"].ConnectionString;
         public static List<Login> ListaUsuario()
         {
             var lista = new List<Login>();

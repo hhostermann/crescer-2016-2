@@ -65,7 +65,7 @@ namespace StreetFighter.Repositorio
             lista.Add(personagem);
             this.ReescreveArquivo(lista);
         }
-        public bool ExcluirPersonagem(Personagem personagem)
+        public void ExcluirPersonagem(Personagem personagem)
         {
             var lista = this.ListarPersonagem();
             foreach (var item in lista)

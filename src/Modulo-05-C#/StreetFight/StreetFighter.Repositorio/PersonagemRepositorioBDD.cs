@@ -11,7 +11,7 @@ namespace StreetFighter.Repositorio
 {
     public class PersonagemRepositorioBDD : IPersonagemRepositorio
     {
-        private string connectionString = ConfigurationManager.ConnectionStrings["StreetFighterConection"].ConnectionString;
+        private string connectionString = ConfigurationManager.ConnectionStrings["StreetFighter"].ConnectionString;
 
         public void EditarPersonagem(Personagem personagem)
         {
@@ -84,7 +84,7 @@ namespace StreetFighter.Repositorio
             throw new NotImplementedException();
         }
 
-        public bool ExcluirPersonagem(Personagem personagem)
+        public void ExcluirPersonagem(Personagem personagem)
         {
             throw new NotImplementedException();
         }
