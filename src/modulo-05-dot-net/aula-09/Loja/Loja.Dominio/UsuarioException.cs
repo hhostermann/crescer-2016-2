@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace Loja.Dominio
 {
-    public class RegraNegocioException : Exception
+    public class UsuarioException : Exception
     {
-        public RegraNegocioException(string mensagem) : base(mensagem)
+        public UsuarioException(string mensagem) : base(mensagem)
         {
 
         }

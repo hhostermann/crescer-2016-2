@@ -6,9 +6,11 @@ using System.Threading.Tasks;
 
 namespace Loja.Dominio
 {
-    public interface IUsuarioRepositorio
+    public class ProdutoException : Exception
     {
-        Usuario BuscarPorEmail(string email);
-        void IncluirUsuario(Usuario usuario);
+        public ProdutoException(string mensagem) : base(mensagem)
+        {
+
+        }
     }
 }

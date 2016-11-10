@@ -14,10 +14,19 @@ namespace Loja.Web.Servicos
         {
             UsuarioServico usuarioServico =
                 new UsuarioServico(
-                    new UsuarioRepositorio(), 
+                    new UsuarioRepositorio(),
                     new ServicoDeCriptografia());
 
             return usuarioServico;
+        }
+
+        public static ProdutoServico MontarProdutoServico()
+        {
+            ProdutoServico produtoServico =
+                new ProdutoServico(
+                        new ProdutoRepositorio()
+                    );
+            return produtoServico;
         }
     }
 }

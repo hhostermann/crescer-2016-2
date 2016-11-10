@@ -37,5 +37,27 @@ namespace Loja.Repositorio
                 context.SaveChanges();
             }
         }
+        public Produto BuscarProdutoId (int id)
+        {
+            using (var context = new ContextoDeDados())
+            {
+                return context.Produto.FirstOrDefault(p => p.Id == id);
+            }
+        }
+        public Produto BuscarProdutoNome(string nome)
+        {
+            using (var context = new ContextoDeDados())
+            {
+                return context.Produto.FirstOrDefault(p => p.Nome.Equals(nome));
+            }
+        }
+        public void ExcluirProduto (Produto produto)
+        {
+            using (var context = new ContextoDeDados())
+            {
+                context.Entry<Produto>(produto).State = EntityState.Deleted;
+                context.SaveChanges();
+            }
+        }
     }
 }

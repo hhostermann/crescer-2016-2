@@ -20,15 +20,15 @@ namespace Loja.Web.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Entrar(string email, string senha)
+        public ActionResult Entrar(Usuario usuario)
         {
             UsuarioServico usuarioServico = ServicoDeDependencias.MontarUsuarioServico();
 
-            Usuario usuario = usuarioServico.BuscarPorAutenticacao(email, senha);
+            Usuario usuarios = usuarioServico.BuscarPorAutenticacao(usuario);
 
-            if (usuario != null)
+            if (usuarios != null)
             {
-                return RedirectToAction("Sobre", "Home");
+                return RedirectToAction("Listar", "Produto");
             }
             else
             {

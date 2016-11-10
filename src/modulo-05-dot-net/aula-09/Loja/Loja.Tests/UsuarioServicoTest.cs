@@ -7,22 +7,22 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Loja.Tests
-{
-    [TestClass]
-    public class UsuarioServicoTest
-    {
-        [TestMethod]
-        public void DeveAutenticarComSucesso()
-        {
-            var usuarioServico = new UsuarioServico(
-                new UsuarioRepositorioMock(),
-                new ServicoDeCriptografiaMock());
+//namespace Loja.Tests
+//{
+//    [TestClass]
+//    public class UsuarioServicoTest
+//    {
+//        [TestMethod]
+//        public void DeveAutenticarComSucesso()
+//        {
+//            var usuarioServico = new UsuarioServico(
+//                new UsuarioRepositorioMock(),
+//                new ServicoDeCriptografiaMock());
 
-            Usuario usuario = usuarioServico.BuscarPorAutenticacao(
-                "goku@bol.com", "abc123");
+//            Usuario usuario = usuarioServico.BuscarPorAutenticacao(
+//                "goku@bol.com", "abc123");
 
-            Assert.IsNotNull(usuario);
-        }
-    }
-}
+//            Assert.IsNotNull(usuario);
+//        }
+//    }
+//}

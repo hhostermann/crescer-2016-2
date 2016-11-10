@@ -1,7 +1,8 @@
-﻿
+﻿@model Loja.Web.Models.UsuarioModel
 @{
     ViewBag.Title = "Index";
 }
+
 
 <h2>Login</h2>
 
@@ -12,4 +13,8 @@
     @Html.TextBox("email", "", new { placeholder = "email" })
     @Html.Password("senha", "", new { placeholder = "senha" })
     <button type="submit">Entrar</button>
+}
+@section scripts {
+    <script src="~/Scripts/jquery.validate.min.js"></script>
+    <script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
 }
