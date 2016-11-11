@@ -14,7 +14,13 @@ namespace Marvelflix.Controllers
         // GET: api/Herois
         public IEnumerable<Heroi> GetHeroi()
         {
-            return herois.Todos();
+            //pagina = pagina ?? 1;
+            //tamanhoPagina = tamanhoPagina ?? 5;
+
+            // simulando lentidão
+            System.Threading.Thread.Sleep(1500);
+
+            return herois.Todos(pagina, tamanhoPagina);
         }
 
         // GET: api/Herois/5

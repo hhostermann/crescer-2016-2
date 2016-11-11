@@ -33,7 +33,7 @@ class TelaPrincipal {
   }
 
   renderizarEstadoInicial() {
-    $('.tela-centralizada').removeClass('tela-centralizada');
+    $('section.tela-centralizada').removeClass('tela-centralizada');
     this.$elem.show();
     
     $.get('/api/herois')
