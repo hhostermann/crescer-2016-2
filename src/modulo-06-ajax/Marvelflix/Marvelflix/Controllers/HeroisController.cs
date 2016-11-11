@@ -12,7 +12,7 @@ namespace Marvelflix.Controllers
         private IHeroisRepositorio herois = ServicoDeDependencias.MontarHeroisRepositorio();
 
         // GET: api/Herois
-        public IEnumerable<Heroi> GetHeroi()
+        public IEnumerable<Heroi> GetHeroi(int pagina = 1, int tamanhoPagina = 5)
         {
             //pagina = pagina ?? 1;
             //tamanhoPagina = tamanhoPagina ?? 5;
