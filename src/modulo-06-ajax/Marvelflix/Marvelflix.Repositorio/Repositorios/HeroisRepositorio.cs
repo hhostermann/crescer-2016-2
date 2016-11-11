@@ -7,19 +7,11 @@ namespace Marvelflix.Repositorio
 {
     public class HeroisRepositorio : IHeroisRepositorio
     {
-        public IEnumerable<Heroi> Todos(int pagina, int tamanhoPagina)
+        public IEnumerable<Heroi> Todos()
         {
-            // tamanhoPagina = 1
-            // Skip(1) = 5*(0) = 0
-            // Skip(2) = 5*(2-1) = 5
-            // Skip(3) = 5*(3-1) = 10
             using (var contexto = new ContextoDeDados())
             {
-                return contexto.Heroi
-                    .OrderBy(_ => _.Id)
-                    .Skip(tamanhoPagina * (pagina-1))
-                    .Take(tamanhoPagina)
-                    .ToList();
+                return contexto.Heroi.ToList();
             }
         }
 
