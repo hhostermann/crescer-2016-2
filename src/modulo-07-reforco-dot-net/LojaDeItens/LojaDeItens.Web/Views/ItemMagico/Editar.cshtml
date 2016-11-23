@@ -13,12 +13,30 @@
         OnSuccess = "itemMagicoEditar.sucessoNoCadastro"
     }))
     {
-        @Html.AntiForgeryToken()
-        @Html.ValidationSummary()
+        
+            @Html.AntiForgeryToken()
+            @Html.ValidationSummary()
+        <div class="input-group">
+            @Html.LabelFor(m => m.Nome)
+            @Html.TextBoxFor(m => m.Nome)
+        </div>
+        <div class="input-group">
+            @Html.LabelFor(m => m.Descricao)
+            @Html.TextBoxFor(m => m.Descricao)
+        </div>
+        <div class="input-group">
+            @Html.LabelFor(m => m.Preco)
+            @Html.TextBoxFor(m => m.Preco)
+        </div>
+        <div class="input-group">
+            @Html.LabelFor(m => m.Estoque)
+            @Html.TextBoxFor(m => m.Estoque)
+        </div>
+        <div class="input-group">
+            @Html.LabelFor(m => m.Raro)
+            @Html.CheckBoxFor(m => m.Raro)
+        </div>
 
-        @Html.LabelFor(m => m.Nome)
-        @Html.TextBoxFor(m => m.Nome)
-
-        <button type="submit">Salvar</button>
-    }
+<button type="submit">Salvar</button>
+}
 </div>
