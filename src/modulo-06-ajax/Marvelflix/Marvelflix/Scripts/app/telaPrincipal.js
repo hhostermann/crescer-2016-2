@@ -32,12 +32,29 @@ class TelaPrincipal {
     self.$btnProximaPagina = $('#btn-proxima-pagina');
     self.$btnPaginaAnterior = $('#btn-pagina-anterior');
     self.$btnSincronizar.on('click', self.sincronizar.bind(self));
-    self.$btnProximaPagina = $('#btn-proxima-pagina');
     self.$btnProximaPagina.on('click', self.obterProximaPagina.bind(self));
+    self.$btnPaginaAnterior.on('click', self.obterPaginaAnterior.bind(self));
+
+    // estado inicial do bot�o � desabilitado ou quando volta para primeira p�gina
+    if (self.paginaAtual <= 1) {
+      self.$btnPaginaAnterior.attr('disabled', true);
+    } else {
+      self.$btnPaginaAnterior.removeAttr('disabled');
+      self.$btnProximaPagina.removeAttr('disabled');
+    }
+    let ultimaPagina = self.paginaAtual * self.qtdHeroisPorPagina >= self.qtdTotalRegistros;
+    if (ultimaPagina) {
+      self.$btnProximaPagina.attr('disabled', true);
+    }
+
   }
 
   obterProximaPagina() {
     this.carregarERenderizarHerois(++this.paginaAtual);
+  }
+
+  obterPaginaAnterior() {
+    this.carregarERenderizarHerois(--this.paginaAtual);    
   }
 
   sincronizar() {
@@ -69,14 +86,14 @@ class TelaPrincipal {
   }
 
   carregarERenderizarHerois(pagina) {
-    return $.get('/api/herois', {
-      pagina: pagina,
-      tamanhoPagina: 5
-    }).done(function(res) {
-      this.renderizarHerois(res).then(() => {
-        this.registrarBindsEventos(this);
-      })
-    }.bind(this));
+
+    return this.herois.pegarRegistros(pagina, this.qtdHeroisPorPagina)
+      .done(function (res) {
+        this.qtdTotalRegistros = res.total;
+        this.renderizarHerois(res.dados).then(() => {
+          this.registrarBindsEventos(this);
+        })
+      }.bind(this));
   }
 
   renderizarHerois(heroisServidor) {

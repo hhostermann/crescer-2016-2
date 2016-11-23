@@ -1,4 +1,5 @@
-﻿using LojaDeItens.Dominio.ItemMagico;
+﻿using LojaDeItens.Dominio.Configuracao;
+using LojaDeItens.Dominio.ItemMagico;
 using LojaDeItens.Web.Models.ItemMagico;
 using LojaDeItens.Web.Servicos;
 using System;
@@ -13,9 +14,12 @@ namespace LojaDeItens.Web.Controllers
     public class ItemMagicoController : Controller
     {
         private ItemMagicoServico itemMagicoServico;
+        private IServicoDeConfiguracao servicoDeConfiguracao;
+
         public ItemMagicoController()
-        {   
+        {
             this.itemMagicoServico = ServicoDeDependencia.CriarItemMagicoServico();
+            this.servicoDeConfiguracao = ServicoDeDependencia.CriarServicoDeConfiguracao();
         }
 
         public ActionResult Index()
@@ -25,37 +29,43 @@ namespace LojaDeItens.Web.Controllers
 
         public PartialViewResult CarregarListaComTodosOsItens(int pagina)
         {
-            Thread.Sleep(1000);
-            IList<ItemMagicoEntidade> todosOsItens = this.itemMagicoServico.BuscarTodos();
-            IList<ItemMagicoParaListaViewModel> model = ConverterEmListagemDeItens(todosOsItens);
+            IList<ItemMagicoEntidade> todosOsItens = this.itemMagicoServico.BuscarTodos(pagina);
+            ItemMagicoListagemViewModel model = CriarItemMagicoListagemViewModel(todosOsItens, pagina);
+            model.GridId = "grid-todos-os-itens";
+
             return PartialView("_ListagemDeItensMagicos", model);
         }
-
+        
         public PartialViewResult CarregarListaDeRaros()
         {
             IList<ItemMagicoEntidade> itensRaros = this.itemMagicoServico.BuscarPorRaridade(true);
 
-            IList<ItemMagicoParaListaViewModel> model = ConverterEmListagemDeItens(itensRaros);
+            ItemMagicoListagemViewModel model = CriarItemMagicoListagemViewModel(itensRaros);
+            model.GridId = "grid-itens-raros";
 
-            foreach (ItemMagicoParaListaViewModel item in model)
+            foreach (ItemMagicoParaListaViewModel item in model.Itens)
             {
                 item.PodeEditar = false;
             }
 
             return PartialView("_ListagemDeItensMagicos", model);
-            
         }
         
-
-        private IList<ItemMagicoParaListaViewModel> ConverterEmListagemDeItens(IList<ItemMagicoEntidade> itens)
+        public JsonResult FazNada()
         {
-            IList<ItemMagicoParaListaViewModel> model = new List<ItemMagicoParaListaViewModel>();
+            return Json(new { Mensagem = "Nada!" }, JsonRequestBehavior.AllowGet);
+        }
 
-            foreach (var item in itens)
+        private ItemMagicoListagemViewModel CriarItemMagicoListagemViewModel(IList<ItemMagicoEntidade> todosOsItens, int? pagina = null)
+        {
+            var model = new ItemMagicoListagemViewModel(todosOsItens);
+
+            if(pagina.HasValue)
             {
-                model.Add(new ItemMagicoParaListaViewModel(item));
+                model.PaginaAtual = pagina.Value;
             }
 
+            model.QuantidadeDeItensPorPagina = this.servicoDeConfiguracao.QuantidadeDeItensPorPagina;
             return model;
         }
     }
