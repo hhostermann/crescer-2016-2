@@ -10,7 +10,8 @@
     @using (Ajax.BeginForm("Salvar", "ItemMagico", new AjaxOptions
     {
         HttpMethod = "Post",
-        OnSuccess = "itemMagicoEditar.sucessoNoCadastro"
+        OnSuccess = "itemMagicoEditar.sucessoNoCadastro",
+        OnFailure = "itemMagicoEditar.falhaNoCadastro"
     }))
     {
         
