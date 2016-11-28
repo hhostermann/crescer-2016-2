@@ -10,6 +10,7 @@ import java.util.List;
  * @author Carlos H. Nonnemacher
  */
 public class Run {
+    
 
     private static String normalize(String nome) {
         return Normalizer.normalize(nome, Normalizer.Form.NFD).replaceAll("\\p{InCombiningDiacriticalMarks}+", "");
