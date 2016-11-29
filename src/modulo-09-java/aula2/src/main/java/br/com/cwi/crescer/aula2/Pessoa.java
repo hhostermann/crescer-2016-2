@@ -8,6 +8,14 @@ public class Pessoa {
     private Long idPessoa;
     private String nmPessoa;
 
+    Pessoa(long idPessoa, String nmPessoa) {
+        this.idPessoa = idPessoa;
+        this.nmPessoa = nmPessoa;
+    }
+
+    Pessoa() {
+    }
+
     public Long getIdPessoa() {
         return idPessoa;
     }

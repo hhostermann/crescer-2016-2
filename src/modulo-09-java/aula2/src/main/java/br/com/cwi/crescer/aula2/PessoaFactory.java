@@ -9,11 +9,12 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
+ * @author henrique.ostermann
  */
 public class PessoaFactory {
 
     public void create() {
-        final String ddl = "CREATE TABLE CARLOS ("
+        final String ddl = "CREATE TABLE OSTERAMANN ("
                 + " ID_PESSOA NUMBER(19,0) NOT NULL, "
                 + " NM_PESSOA VARCHAR2(50) NOT NULL, "
                 + " PRIMARY KEY (ID_PESSOA) "
@@ -30,7 +31,7 @@ public class PessoaFactory {
     }
 
     public List<Pessoa> findAll() {
-        final String query = "SELECT * FROM CARLOS";
+        final String query = "SELECT * FROM OSTERAMANN";
         try (
                 final Connection connection = ConnectionUtils.getConnection();
                 final Statement statement = connection.createStatement();
@@ -50,7 +51,7 @@ public class PessoaFactory {
     }
 
     public void delete(Pessoa p) {
-        final String insert = "DELETE CARLOS WHERE ID_PESSOA = ?";
+        final String insert = "DELETE OSTERAMANN WHERE ID_PESSOA = ?";
         try (
                 final Connection connection = ConnectionUtils.getConnection();
                 final PreparedStatement preparedStatement = connection.prepareStatement(insert)) {
@@ -64,7 +65,7 @@ public class PessoaFactory {
     }
 
     public void insert(Pessoa p) {
-        final String insert = "INSERT INTO CARLOS("
+        final String insert = "INSERT INTO OSTERAMANN("
                 + "ID_PESSOA, NM_PESSOA ) "
                 + "VALUES (?, ?)";
         try (
@@ -98,4 +99,3 @@ public class PessoaFactory {
 
 }
 
- * @author Carlos H. Nonnemacher
