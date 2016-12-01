@@ -36,7 +36,7 @@ public class Filme implements Serializable {
     @SequenceGenerator(name = "SEQ_FILME", sequenceName = "SEQ_FILME", allocationSize = 1)
     @Basic(optional = false)
     @Column(name = "ID_FILME")
-    private Long idPessoa;
+    private Long idFilme;
 
     @Basic(optional = false)
     @Column(name = "TITULO_FILME")
@@ -67,12 +67,12 @@ public class Filme implements Serializable {
     @JoinColumn(name = "ID_ELENCO")
     private Elenco elenco;
 
-    public Long getIdPessoa() {
-        return idPessoa;
+    public Long getIdFilme() {
+        return idFilme;
     }
 
-    public void setIdPessoa(Long idPessoa) {
-        this.idPessoa = idPessoa;
+    public void setIdFilme(Long idFilme) {
+        this.idFilme = idFilme;
     }
 
     public String getNomeFilme() {
@@ -130,4 +130,5 @@ public class Filme implements Serializable {
     public void setElenco(Elenco elenco) {
         this.elenco = elenco;
     }
+
 }

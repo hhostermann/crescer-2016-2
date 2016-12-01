@@ -6,6 +6,7 @@
 package br.cwi.crescer.locadora;
 
 import java.util.List;
+import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
@@ -13,6 +14,7 @@ import javax.persistence.PersistenceContext;
  *
  * @author henrique.ostermann
  */
+@Stateless
 public class FilmeBean extends AbstractDao<Filme, Long> {
 
     @PersistenceContext(unitName = "crescer")
@@ -29,7 +31,7 @@ public class FilmeBean extends AbstractDao<Filme, Long> {
 
     @Override
     public List<Filme> findAll() {
-        return this.getEntityManager().createQuery("select f from FILME f").getResultList();
+        return this.getEntityManager().createQuery("select f from Filme f").getResultList();
     }
 
 }
