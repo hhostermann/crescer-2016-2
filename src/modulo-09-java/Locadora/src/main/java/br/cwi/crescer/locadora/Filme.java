@@ -5,14 +5,23 @@
  */
 package br.cwi.crescer.locadora;
 
+import java.io.Serializable;
+import java.util.Date;
+import java.util.List;
 import javax.persistence.Basic;
+import static javax.persistence.CascadeType.ALL;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import static javax.persistence.GenerationType.SEQUENCE;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
+import static javax.persistence.TemporalType.DATE;
 
 /**
  *
@@ -20,40 +29,44 @@ import javax.persistence.Table;
  */
 @Entity
 @Table(name = "FILME")
-public class Filme {
+public class Filme implements Serializable {
+
     @Id
     @GeneratedValue(strategy = SEQUENCE, generator = "SEQ_FILME")
     @SequenceGenerator(name = "SEQ_FILME", sequenceName = "SEQ_FILME", allocationSize = 1)
     @Basic(optional = false)
     @Column(name = "ID_FILME")
     private Long idPessoa;
-    
+
     @Basic(optional = false)
     @Column(name = "TITULO_FILME")
     private String nomeFilme;
-    
+
     @Basic(optional = false)
     @Column(name = "DIRETOR_FILME")
     private String diretorFilme;
-    
-    
-    
-    
-    
-        
-}
-    @Basic(optional = false)
-    @Column(name = "NM_PESSOA")
-    private String nmPessoa;
-    
-    @Column(name = "DT_NASCIMENTO", nullable = true)
+
+    @Column(name = "DT_LANCAMENTO", nullable = true)
     @Temporal(DATE)
     @Basic(optional = true)
-    private Date dtNascimento;
-
-    @OneToMany(cascade = ALL)
-    private List<Filho> filhos;
+    private Date dtLancamento;
     
+    @ManyToOne
+    @JoinColumn(name = "ID_GENERO")
+    private Genero genero;
+
+    @ManyToOne
+    @JoinColumn(name = "ID_CLASSIFICACAO")
+    private Classificacao classificacao;
+    
+    @ManyToOne
+    @JoinColumn(name = "ID_IDIOMA")
+    private Idioma idioma;
+    
+    @ManyToOne
+    @JoinColumn(name = "ID_ELENCO")
+    private Elenco elenco;
+
     public Long getIdPessoa() {
         return idPessoa;
     }
@@ -62,26 +75,59 @@ public class Filme {
         this.idPessoa = idPessoa;
     }
 
-    public String getNmPessoa() {
-        return nmPessoa;
+    public String getNomeFilme() {
+        return nomeFilme;
     }
 
-    public void setNmPessoa(String nmPessoa) {
-        this.nmPessoa = nmPessoa;
+    public void setNomeFilme(String nomeFilme) {
+        this.nomeFilme = nomeFilme;
     }
 
-    public Date getDtNascimento() {
-        return dtNascimento;
+    public String getDiretorFilme() {
+        return diretorFilme;
     }
 
-    public void setDtNascimento(Date dtNascimento) {
-        this.dtNascimento = dtNascimento;
+    public void setDiretorFilme(String diretorFilme) {
+        this.diretorFilme = diretorFilme;
     }
 
-    public List<Filho> getFilhos() {
-        return filhos;
+    public Date getDtLancamento() {
+        return dtLancamento;
     }
 
-    public void setFilhos(List<Filho> filhos) {
-        this.filhos = filhos;
+    public void setDtLancamento(Date dtLancamento) {
+        this.dtLancamento = dtLancamento;
     }
+
+    public Genero getGenero() {
+        return genero;
+    }
+
+    public void setGenero(Genero genero) {
+        this.genero = genero;
+    }
+
+    public Classificacao getClassificacao() {
+        return classificacao;
+    }
+
+    public void setClassificacao(Classificacao classificacao) {
+        this.classificacao = classificacao;
+    }
+
+    public Idioma getIdioma() {
+        return idioma;
+    }
+
+    public void setIdioma(Idioma idioma) {
+        this.idioma = idioma;
+    }
+
+    public Elenco getElenco() {
+        return elenco;
+    }
+
+    public void setElenco(Elenco elenco) {
+        this.elenco = elenco;
+    }
+}
