@@ -9,33 +9,35 @@
     xmlns:f="http://java.sun.com/jsf/core">
 
     <ui:define name="form">
-
+<!--<h:selectOneMenu id="genero" required="true" requiredMessage="#{bundle.filme_genero_requiredMsg}" value="#{cadastroFilme.filme.genero}" converter="generoConverter" styleClass="form-control">
+               <f:selectItems value="#{cadastroFilme.opcoesGenero}" var="g" itemLabel="#{g.descricao}" itemValue="#{g}"/>
+           </h:selectOneMenu>-->
         <div class="form-group"> 
             <h:outputLabel for="nome" value="#{bundle.filme_nome}"></h:outputLabel>
             <h:inputText id="nome" value="#{filmeManager.filme.nomeFilme}" styleClass="form-control"/>
         </div>
-                <div class="form-group"> 
+        <div class="form-group"> 
             <h:outputLabel for="genero" value="#{bundle.filme_genero}"></h:outputLabel>
             <h:inputText id="genero" value="#{filmeManager.filme.genero}" styleClass="form-control"/>
         </div>
-                <div class="form-group"> 
+        <div class="form-group"> 
             <h:outputLabel for="diretor" value="#{bundle.filme_diretor}"></h:outputLabel>
             <h:inputText id="diretor" value="#{filmeManager.filme.diretorFilme}" styleClass="form-control"/>
         </div>
-                <div class="form-group"> 
+        <div class="form-group"> 
             <h:outputLabel for="dtLancamento" value="#{bundle.filme_dt_lancamento}"></h:outputLabel>
             <h:inputText id="dtLancamento" value="#{filmeManager.filme.dtLancamento}" styleClass="form-control"/>
         </div>
-                <div class="form-group"> 
+        <div class="form-group"> 
             <h:outputLabel for="elenco" value="#{bundle.filme_elenco}"></h:outputLabel>
             <h:inputText id="elenco" value="#{filmeManager.filme.elenco}" styleClass="form-control"/>
         </div>
-        
-                <div class="form-group"> 
+
+        <div class="form-group"> 
             <h:outputLabel for="classificacao" value="#{bundle.filme_classificacao}"></h:outputLabel>
             <h:inputText id="classificacao" value="#{filmeManager.filme.classificacao}" styleClass="form-control"/>
         </div>
-                <div class="form-group"> 
+        <div class="form-group"> 
             <h:outputLabel for="idioma" value="#{bundle.filme_idioma}"></h:outputLabel>
             <h:inputText id="idioma" value="#{filmeManager.filme.idioma}" styleClass="form-control"/>
         </div>
