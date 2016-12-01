@@ -31,7 +31,7 @@ public class GeneroBean extends AbstractDao<Genero, Long> {
 
     @Override
     public List<Genero> findAll() {
-        return getEntityManager().createQuery("select g from GENERO g").getResultList();
+        return getEntityManager().createQuery("select g from Genero g").getResultList();
     }
 
 }
